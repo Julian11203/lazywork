@@ -30,7 +30,7 @@ public class PrioridadControlador {
     @GetMapping("/listar")
     public ResponseEntity<List<Prioridad>> findAll(){
         if(prioridadServicio.findAll().isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.OK);
         }else{
             return new ResponseEntity<>(prioridadServicio.findAll(), HttpStatus.OK);
         }
