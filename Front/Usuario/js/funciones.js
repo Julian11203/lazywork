@@ -14,7 +14,8 @@ function buscarUsuarioId(){
         type: "GET",
         dataType: "json",
         success: function(respuesta){
-            $("#tableid tbody").empty();
+            $("#byid").val("");
+            $("#tableid tbody").remove();
             tabla.innerHTML += '<tr><td>' + respuesta.idUser +
             '</td><td>' + respuesta.nombre +
             '</td><td>' + respuesta.apellido +
@@ -31,6 +32,10 @@ function buscarUsuarioId(){
         }
     })
 }
+function buscarUsuarioIdParametro(id){
+    let idAConsultar=$("#byid").val(id);
+    buscarUsuarioId()
+}
 
 function listarUsuarios(){
     let errorMensaje = document.querySelector('#errormsg')
@@ -42,7 +47,7 @@ function listarUsuarios(){
         type: "GET",
         dataType: "json",
         success: function(respuesta){
-            $("#tableid tbody").empty();
+            $("#tableid tbody").remove();
             for(i=0;i<respuesta.length;i++){
                 tabla.innerHTML += '<tr><td>' + respuesta[i].idUser +
                 '</td><td>' + respuesta[i].nombre +
@@ -81,6 +86,11 @@ function insertarUsuarios(){
         contentType:"application/json",
         success: function(){
             $("#registrarModal").modal("hide");
+            $("#nombre").val('');
+            $("#apellido").val('');
+            $("#documento").val('');
+            $("#id").val('');
+            buscarUsuarioIdParametro(id)      
         },
         error: function(xhr) {
             if(xhr.status===409){
@@ -94,13 +104,13 @@ function insertarUsuarios(){
 }
 
 function eliminarUsuario(idUser){
-    $("#confirmarEliminacion").click(function(){
+    $("#confirmarEliminacion").off("click").on("click", function(){
         $.ajax({
             url: "http://localhost:8080/api/usuario/eliminar/"+idUser,
             type: "DELETE",
             success: function(){
+                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
                 $("#exampleModal").modal("hide");   
-                $("#tableid tbody").empty();  
             }
         })
     })
@@ -122,10 +132,9 @@ function cargarDatos(idUser){
     })
 }
 
-$(document).ready(function() {
-    $('#registrarModal').on('show.bs.modal', function (event) {
-        let errorModal = document.querySelector('#errormodal')
-        errorModal.innerHTML='';
-        errorModal.classList.remove('alert-danger')
-    });
+document.getElementById("byid").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        buscarUsuarioId(); 
+    }
 });
