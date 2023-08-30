@@ -31,38 +31,41 @@
       </nav>
 
 
-
-      <div class="container">
-        <div class="container-fluid mt-4 mb-2">
-          <form class="row g-3 " role="search">
-            <input class="col-md-2 me-2" type="text" placeholder="Search by ID" id="byid">
-            <button type="button" class="btn btn-primary mx-2 col-md-2" onclick="buscarUsuarioId()">Buscar</button>
-            <button type="button" class="btn btn-secondary col-md-2" onclick="listarUsuarios()">Listar</button>
-            <button type="button" class="btn btn-success col-md-2" data-bs-toggle="modal" data-bs-target="#registrarModal"> Nuevo registro</button>
-          </form>
+        <div class="container mt-4 mb-2">
+            <div class="row">
+              <div class="col">
+                <div class="input-group">
+                  <input type="number" class="form-control " id="byid" placeholder="Buscar por ID" aria-label="Buscar por ID" aria-describedby="button-addon2">
+                  <a href='#' class='btn buscar-link col-md-1 btn-outline-primary' onclick="buscarUsuarioId()"><i class='material-icons'>search</i></a>
+                  <a href='#' class='btn agregar-link col-md-1 btn-outline-success' data-bs-toggle="modal" data-bs-target="#registrarModal"><i class='material-icons'>add_box</i></a>
+                  <a href='#' class='btn listar-link col-md-1 btn-outline-secondary' onclick="listarUsuarios()"><i class='material-icons'>list</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-auto">
+                <div class="alert alert-dismissible" role="alert" id="errormsg"></div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <table class="table" id="tableid">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+    
+                    </tbody>
+                  </table>
+            </div>
+            </div>
+          </div> 
         </div>
-        <div class="row">
-          <div class="col-auto">
-            <div class="alert alert-dismissible" role="alert" id="errormsg"></div>
-          </div>
-        </div>
-        <div class="col">
-            <table class="table" id="tableid">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Documento</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody class="table-group-divider">
-
-                </tbody>
-              </table>
-        </div>
-      </div>
       
     
     <!-- Modal -->
@@ -91,11 +94,11 @@
           </div>
           <div class="modal-body">
             <form class="row g-3">
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <label class="form-label">ID<span class="required"> *</span></label>
                 <input type="number" class="form-control border-dark" id="id" name="id" required>
               </div>
-              <div class="col-md-10">
+              <div class="col-md-9">
                 <label class="form-label">Nombre<span class="required"> *</span></label>
                 <input type="text" class="form-control border-dark" id="nombre" name="Apellido" required>
               </div>
@@ -134,11 +137,11 @@
               </div>
               <div class="modal-body">
                 <form class="row g-3" id="actu">
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <label class="form-label">ID</label>
                     <input type="number" class="form-control border-dark" id="idAC" name="id" required>
                   </div>
-                  <div class="col-md-10">
+                  <div class="col-md-9">
                     <label class="form-label">Nombre<span class="required"> *</span></label>
                     <input type="text" class="form-control border-dark" id="nombreAC" name="Apellido" required>
                   </div>
