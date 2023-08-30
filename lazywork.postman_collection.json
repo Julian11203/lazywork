@@ -114,7 +114,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/usuario/eliminar/u12345",
+							"raw": "localhost:8080/api/usuario/eliminar/10",
 							"host": [
 								"localhost"
 							],
@@ -123,7 +123,7 @@
 								"api",
 								"usuario",
 								"eliminar",
-								"u12345"
+								"10"
 							]
 						}
 					},
@@ -173,6 +173,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Insertar Inicio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"idInicio\": \"02\",\r\n        \"hora\": \"08:00:00\",\r\n        \"fecha\": \"2020-03-25\",\r\n        \"usuario\": \"u12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/inicio/eliminar/02",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inicio",
+								"eliminar",
+								"02"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar Iniicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"idInicio\": \"01\",\r\n        \"hora\": \"08:00:00\",\r\n        \"fecha\": \"2020-03-25\",\r\n        \"usuario\": \"u12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/inicio/insertar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"inicio",
+								"insertar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -214,6 +273,56 @@
 								"api",
 								"incidencia",
 								"INC001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar Incidencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "      {  \r\n        \"noIncidencia\": \"INC003\",\r\n        \"nombre\": \"Problema eléctrico\",\r\n        \"ubicacion\": \"Oficina A\",\r\n        \"usuario\": \"u12345\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/incidencia/insertar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incidencia",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Incidencia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/incidencia/eliminar/INC003",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incidencia",
+								"eliminar",
+								"INC003"
 							]
 						}
 					},
@@ -387,6 +496,85 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Insertar Encuentra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nRegistro\": \"REG003\",\r\n        \"descripcion\": \"Incidencia de seguridad\",\r\n        \"fechaRegistro\": \"2023-08-14T15:30:00.000+00:00\",\r\n        \"incidencia\": {\r\n            \"noIncidencia\": \"INC001\"\r\n        },\r\n        \"estado\": {\r\n            \"idEstado\": \"E2\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/encuentra/insertar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"encuentra",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Encuentra",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/encuentra/eliminar/REG009",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"encuentra",
+								"eliminar",
+								"REG009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Encuentra",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \"nRegistro\": \"REG003\",\r\n        \"descripcion\": \"Incidencia de software\",\r\n        \"fechaRegistro\": \"2023-09-14T15:30:00.000+00:00\",\r\n        \"incidencia\": {\r\n            \"noIncidencia\": \"INC001\"\r\n        },\r\n        \"estado\": {\r\n            \"idEstado\": \"E3\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/encuentra/actualizar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"encuentra",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -499,7 +687,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "    {\r\n        \"idPrioridad\": \"P4\",\r\n        \"tipoPrioridad\": \"DAVD\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -553,7 +741,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/tiene/1",
+							"raw": "localhost:8080/api/tiene/REG001",
 							"host": [
 								"localhost"
 							],
@@ -561,7 +749,57 @@
 							"path": [
 								"api",
 								"tiene",
-								"1"
+								"REG001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insertar Tiene",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"nRegistro\": \"REG005\",\r\n        \"descripcion\": \"Incidencia de seguridad\",\r\n        \"fechaRegistro\": \"2023-08-14T15:30:00.000+00:00\",\r\n        \"incidencia\": {\r\n            \"noIncidencia\": \"INC001\"\r\n        },\r\n        \"prioridad\":{\r\n            \"idPrioridad\": \"P1\"\r\n        }\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/tiene/insertar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tiene",
+								"insertar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar tiene",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/tiene/eliminar/REG005",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tiene",
+								"eliminar",
+								"REG005"
 							]
 						}
 					},
