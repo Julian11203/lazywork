@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Incidencia;
+import com.lazywork.entidad.Prioridad;
 import com.lazywork.servicios.IncidenciaServicio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,19 +23,21 @@ public class IncidenciaControlador {
         if(incidenciaServicio.existeIncidencia(id)){
             return new ResponseEntity<>(incidenciaServicio.incidenciaPorId(id), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @GetMapping("/listar")
     public ResponseEntity<List<Incidencia>> listaIncidencias(){
         return new ResponseEntity<>(incidenciaServicio.listaIncidencias(), HttpStatus.OK);
     }
+
     @PostMapping("/insertar")
     public ResponseEntity<Incidencia> insertarIncidencia(@RequestBody Incidencia incidencia){
         if(incidenciaServicio.existeIncidencia(incidencia.getNoIncidencia())){
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }else{
-            return new ResponseEntity<>(incidenciaServicio.insertarIncidencia(incidencia), HttpStatus.CREATED);
+            incidenciaServicio.guardarIncidencia(incidencia);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
     @DeleteMapping("/eliminar/{id}")
@@ -46,5 +49,19 @@ public class IncidenciaControlador {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Incidencia incidencia){
+        incidenciaServicio.insertarIncidencia(incidencia);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> actualizarIncidencia(@RequestBody Incidencia incidencia){
+        if(incidenciaServicio.existeIncidencia(incidencia.getNoIncidencia())){
+            incidenciaServicio.guardarIncidencia(incidencia);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -19,12 +19,11 @@ public class IncidenciaServicio {
         this.incidenciaCrudRepository = incidenciaCrudRepository;
         this.usuarioCrudRepository = usuarioCrudRepository;
     }
-    public Incidencia insertarIncidencia (Incidencia incidencia){
-        incidencia.setUsuario(usuarioCrudRepository.findById(incidencia.getUsuario().getIdUser()).get());
-        return incidenciaCrudRepository.save(incidencia);
+    public void guardarIncidencia (Incidencia incidencia){
+        incidenciaCrudRepository.save(incidencia);
     }
-    public void eliminarIncidencia(String idIncidencia){
-        incidenciaCrudRepository.deleteById(idIncidencia);
+    public void eliminarIncidencia(String id){
+        incidenciaCrudRepository.deleteById(id);
     }
     public boolean existeIncidencia(String id){
         return incidenciaCrudRepository.existsById(id);

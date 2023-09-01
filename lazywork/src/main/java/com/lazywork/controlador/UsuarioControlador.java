@@ -54,9 +54,9 @@ public class UsuarioControlador {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Void> re_save(@RequestBody Usuario usuario, @PathVariable String id){
-        if (usuarioServicio.findById(usuario.getIdUser()).isPresent()){
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Usuario usuario){
+        if (usuarioServicio.existeUsuario(usuario.getIdUser())){
             usuarioServicio.save(usuario);
             return new ResponseEntity<>(HttpStatus.OK);
         }else {
