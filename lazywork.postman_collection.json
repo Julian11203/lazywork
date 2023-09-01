@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4ee05405-52a6-41d1-949e-4624f473456b",
+		"_postman_id": "a2a13997-dbb2-4219-b443-46b0a54cd64f",
 		"name": "lazywork",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26127259"
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"idUser\": \"u12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"Cobra\",\r\n  \"documento\": \"1234567890\"\r\n}",
+							"raw": "{\r\n  \"idUser\": \"u12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"David\",\r\n  \"documento\": \"1234567890\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,7 +53,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/usuario/actualizar/1",
+							"raw": "localhost:8080/api/usuario/actualizar/u12345",
 							"host": [
 								"localhost"
 							],
@@ -62,7 +62,7 @@
 								"api",
 								"usuario",
 								"actualizar",
-								"1"
+								"u12345"
 							]
 						}
 					},
@@ -323,6 +323,36 @@
 								"incidencia",
 								"eliminar",
 								"INC002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar incidencia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"noIncidencia\": \"INC001\",\r\n    \"nombre\": \"Problema X\",\r\n    \"ubicacion\": \"Oficina A\",\r\n    \"usuario\": \"u12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/incidencia/actualizar/INC001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"incidencia",
+								"actualizar",
+								"INC001"
 							]
 						}
 					},
