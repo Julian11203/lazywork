@@ -67,32 +67,34 @@ function insertarUsuarios(){
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
     let nRegistro=$("#id").val();
-    let nombre=$("#nombre").val();
-    let apellido=$("#apellido").val();
-    let documento=$("#documento").val();
-    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+    let fecha=$("#fecha").val();
+    let descripcion=$("#descripcion").val();
+    let incidencia=$("#incidencia option:selected").val();
+    let prioridad=$("#prioridad option:selected").val();
+    console.log($("#incidencia option:selected").val())
+    console.log($("#prioridad option:selected").val())
+    if (nRegistro === '' || fecha === '' || descripcion ==='' || incidencia === ''|| prioridad === '') {
         errorModal.classList.add('alert-danger');
         $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");
         return;
     }
     data={
-        idUser: id,
-        nombre: nombre,
-        apellido: apellido,
-        documento: documento
+        nRegistro,
+        fechaRegistro: fecha,
+        descripcion: descripcion,
+        incidencia: {
+          noIncidencia: incidencia
+        },
+        prioridad: {
+          idPrioridad: prioridad
+        }
     }
     $.ajax({
-        url:"http://localhost:8080/api/tiene/listar",
+        url:"http://localhost:8080/api/tiene/insertar",
         type:"POST",
         data: JSON.stringify(data),
         contentType:"application/json",
-        success: function(){
-            $("#registrarModal").modal("hide");
-            $("#nombre").val('');
-            $("#apellido").val('');
-            $("#documento").val('');
-            $("#id").val('');
-            buscarUsuarioIdParametro(id)      
+        success: function(){      
         },
         error: function(xhr) {
             if(xhr.status===409){

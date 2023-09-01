@@ -33,6 +33,8 @@ public class TieneControlador {
     }
     @PostMapping("/insertar")
     public ResponseEntity<Tiene> insertarTiene(@RequestBody Tiene tiene){
+        System.out.println(tiene.getIncidencia().getNoIncidencia());
+        System.out.println(tiene.getPrioridad().getIdPrioridad());
         if(tieneServicio.existeTiene(tiene.getnRegistro())){
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }else{

@@ -14,9 +14,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/incidencia")
-@CrossOrigin("*")
 public class IncidenciaControlador {
-
     IncidenciaServicio incidenciaServicio;
     @Autowired
     public IncidenciaControlador(IncidenciaServicio incidenciaServicio) {
@@ -55,8 +53,7 @@ public class IncidenciaControlador {
     }
     @PutMapping("/actualizar")
     public ResponseEntity<Void> re_save(@RequestBody Incidencia incidencia){
-        incidenciaServicio.guardarIncidencia(incidencia);
+        incidenciaServicio.save(incidencia);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
