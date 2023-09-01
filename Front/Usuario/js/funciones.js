@@ -140,7 +140,18 @@ function actualizarUsuarios(){
     })
 }
 
-
+function eliminarUsuario(idUser) {
+    $("#confirmarEliminacion").off("click").on("click", function () {
+        $.ajax({
+            url: "http://localhost:8080/api/usuario/eliminar/" + idUser,
+            type: "DELETE",
+            success: function () {
+                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
+                $("#exampleModal").modal("hide");
+            }
+        });
+    });
+}
 function cargarDatos(idUser){
     $.ajax({
         url: "http://localhost:8080/api/usuario/"+ idUser,
@@ -162,4 +173,4 @@ document.getElementById("byid").addEventListener("keydown", function(event) {
         event.preventDefault();
         buscarUsuarioId(); 
     }
-});
+})
