@@ -90,7 +90,7 @@ function insertarUsuarios(){
             $("#apellido").val('');
             $("#documento").val('');
             $("#id").val('');
-            buscarUsuarioIdParametro(id)      
+            listarUsuarios()      
         },
         error: function(xhr) {
             if(xhr.status===409){
@@ -100,6 +100,41 @@ function insertarUsuarios(){
             }
         }
         
+    })
+}
+function actualizarUsuarios(){
+    let errorModal = document.querySelector('#errorAc')
+    errorModal.innerHTML='';
+    errorModal.classList.remove('alert-danger')
+    let id=$("#idAC").val();
+    let nombre=$("#nombreAC").val();
+    let apellido=$("#apellidoAC").val();
+    let documento=$("#documentoAC").val();
+    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+        errorModal.classList.add('alert-danger');
+        $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
+        return;
+    }
+    data={
+        idUser: id,
+        nombre: nombre,
+        apellido: apellido,
+        documento: documento
+    }
+    $.ajax({
+        url:"http://localhost:8080/api/usuario/actualizar/" + id,
+        type:"PUT",
+        data: JSON.stringify(data),
+        contentType:"application/json",
+        success: function(){
+            $("#actualizarModal").modal("hide");
+            $("#nombreAC").val('');
+            $("#apellidoAC").val('');
+            $("#documentoAC").val('');
+            $("#idAC").val('');    
+        },
+        error: function(xhr) {
+        }  
     })
 }
 
