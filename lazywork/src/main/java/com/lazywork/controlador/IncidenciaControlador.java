@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/incidencia")
 public class IncidenciaControlador {
@@ -51,17 +51,7 @@ public class IncidenciaControlador {
     }
     @PutMapping("/actualizar")
     public ResponseEntity<Void> re_save(@RequestBody Incidencia incidencia){
-        incidenciaServicio.insertarIncidencia(incidencia);
+        incidenciaServicio.guardarIncidencia(incidencia);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PutMapping("/actualizar")
-    public ResponseEntity<Void> actualizarIncidencia(@RequestBody Incidencia incidencia){
-        if(incidenciaServicio.existeIncidencia(incidencia.getNoIncidencia())){
-            incidenciaServicio.guardarIncidencia(incidencia);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
     }
 }

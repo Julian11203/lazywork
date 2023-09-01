@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RequestMapping("/api/tiene")
 @RestController
+@CrossOrigin("*")
 public class TieneControlador {
 
     private final TieneServicio tieneServicio;
