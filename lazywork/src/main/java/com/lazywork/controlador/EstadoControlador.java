@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Estado;
+import com.lazywork.entidad.Prioridad;
 import com.lazywork.servicios.EstadoServicio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,16 +43,6 @@ public class EstadoControlador {
             return new ResponseEntity<>(estadoCreado, HttpStatus.CREATED);
         }
     }
-
-    @PutMapping("/actualizar")
-    public ResponseEntity<Estado> actualizarEstado(@RequestBody Estado estado) {
-        Estado estadoActualizado = estadoServicio.actualizarEstado(estado);
-        if (estadoActualizado != null) {
-            return new ResponseEntity<>(estadoActualizado, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarEstado(@PathVariable String id){
         Estado estado = estadoServicio.obtenerEstadoPorIdEstado(id);
@@ -62,6 +53,10 @@ public class EstadoControlador {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Estado estado){
+        estadoServicio.crearEstado(estado);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

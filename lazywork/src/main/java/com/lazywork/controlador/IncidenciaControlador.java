@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Incidencia;
+import com.lazywork.entidad.Prioridad;
 import com.lazywork.servicios.IncidenciaServicio;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,11 @@ public class IncidenciaControlador {
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Incidencia incidencia){
+        incidenciaServicio.insertarIncidencia(incidencia);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

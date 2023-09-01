@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Inicio;
+import com.lazywork.entidad.Prioridad;
 import com.lazywork.servicios.InicioServicio;
 import com.lazywork.servicios.UsuarioServicio;
 import org.springframework.http.HttpStatus;
@@ -44,5 +45,10 @@ public class InicioControlador {
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Inicio inicio){
+        inicioServicio.insertarInicio(inicio);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
