@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Tiene;
+import com.lazywork.entidad.Usuario;
 import com.lazywork.servicios.TieneServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,10 @@ public class TieneControlador {
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Tiene tiene){
+            tieneServicio.insertarTiene(tiene);
+            return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -138,19 +138,55 @@ function actualizarUsuarios(){
     })
 }
 
-function eliminarUsuario(idUser){
-    $("#confirmarEliminacion").off("click").on("click", function(){
-        $.ajax({
-            url: "http://localhost:8080/api/usuario/eliminar/"+idUser,
-            type: "DELETE",
-            success: function(){
-                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
-                $("#exampleModal").modal("hide");   
-            }
-        })
+function actualizarUsuarios(){
+    let errorModal = document.querySelector('#errorAc')
+    errorModal.innerHTML='';
+    errorModal.classList.remove('alert-danger')
+    let id=$("#idAC").val();
+    let nombre=$("#nombreAC").val();
+    let apellido=$("#apellidoAC").val();
+    let documento=$("#documentoAC").val();
+    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+        errorModal.classList.add('alert-danger');
+        $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
+        return;
+    }
+    data={
+        idUser: id,
+        nombre: nombre,
+        apellido: apellido,
+        documento: documento
+    }
+    $.ajax({
+        url:"http://localhost:8080/api/usuario/actualizar",
+        type:"PUT",
+        data: JSON.stringify(data),
+        contentType:"application/json",
+        success: function(){
+            $("#actualizarModal").modal("hide");
+            $("#nombreAC").val('');
+            $("#apellidoAC").val('');
+            $("#documentoAC").val('');
+            $("#idAC").val('');
+            buscarUsuarioIdParametro(id)      
+        },
+        error: function(xhr) {
+        }  
     })
 }
 
+function eliminarUsuario(idUser) {
+    $("#confirmarEliminacion").off("click").on("click", function () {
+        $.ajax({
+            url: "http://localhost:8080/api/usuario/eliminar/" + idUser,
+            type: "DELETE",
+            success: function () {
+                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
+                $("#exampleModal").modal("hide");
+            }
+        });
+    });
+}
 function cargarDatos(idUser){
     $.ajax({
         url: "http://localhost:8080/api/usuario/"+ idUser,
@@ -172,4 +208,4 @@ document.getElementById("byid").addEventListener("keydown", function(event) {
         event.preventDefault();
         buscarUsuarioId(); 
     }
-});
+})

@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Prioridad;
+import com.lazywork.entidad.Tiene;
 import com.lazywork.servicios.PrioridadServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,15 +55,10 @@ public class PrioridadControlador {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Void> re_save(@RequestBody Prioridad prioridad, @PathVariable String id){
-        if(prioridadServicio.findById(prioridad.getIdPrioridad()).isPresent()){
-            prioridadServicio.save(prioridad);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PutMapping("/actualizar")
+    public ResponseEntity<Void> re_save(@RequestBody Prioridad prioridad){
+        prioridadServicio.save(prioridad);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

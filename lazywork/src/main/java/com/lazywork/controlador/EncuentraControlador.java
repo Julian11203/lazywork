@@ -1,6 +1,7 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Encuentra;
+import com.lazywork.entidad.Prioridad;
 import com.lazywork.servicios.EncuentraServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,12 +40,9 @@ public class EncuentraControlador {
         }
     }
     @PutMapping("/actualizar")
-    public ResponseEntity<Encuentra> actualizarEncuentra(@RequestBody Encuentra encuentra){
-        if(encuentraServicio.existeEncuentra(encuentra.getnRegistro())){
-            return new ResponseEntity<>(encuentraServicio.insertarEncuentra(encuentra), HttpStatus.CREATED);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Void> re_save(@RequestBody Encuentra encuentra){
+        encuentraServicio.insertarEncuentra(encuentra);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarEncuentra(@PathVariable String id){
