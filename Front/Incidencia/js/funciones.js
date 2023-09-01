@@ -1,4 +1,4 @@
-function buscarUsuarioId(){
+function findById(){
     let errorMensaje = document.querySelector('#errormsg')
     errorMensaje.innerHTML='';
     errorMensaje.classList.remove('alert-danger')
@@ -10,17 +10,17 @@ function buscarUsuarioId(){
         return;
     }
     $.ajax({
-        url: "http://localhost:8080/api/usuario/"+ idAConsultar,
+        url: "http://localhost:8080/api/incidencia/"+ idAConsultar,
         type: "GET",
         dataType: "json",
         success: function(respuesta){
             $("#byid").val("");
             $("#tableid tbody").remove();
-            tabla.innerHTML += '<tr><td>' + respuesta.idUser +
+            tabla.innerHTML += '<tr><td>' + respuesta.noIncidencia +
             '</td><td>' + respuesta.nombre +
-            '</td><td>' + respuesta.apellido +
-            '</td><td>' + respuesta.documento +
-            '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarUsuario(\""+respuesta.idUser+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta.idUser+"\")'> <i class='material-icons'>edit</i></a>" +
+            '</td><td>' + respuesta.ubicacion +
+            '</td><td>' + respuesta.usuario.idUser +
+            '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarIncidencia(\""+respuesta.noIncidencia+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta.noIncidencia+"\")'> <i class='material-icons'>edit</i></a>" +
             '</td></tr>';         
         },
         error: function(xhr) {
@@ -32,137 +32,141 @@ function buscarUsuarioId(){
         }
     })
 }
-function buscarUsuarioIdParametro(id){
-    let idAConsultar=$("#byid").val(id);
-    buscarUsuarioId()
+function buscarIncidenciaIdParametro(noIncidencia){
+    let idAConsultar=$("#byid").val(noIncidencia);
+    buscarIncidenciaId()
 }
 
-function listarUsuarios(){
+function findAll(){
     let errorMensaje = document.querySelector('#errormsg')
     errorMensaje.innerHTML='';
     errorMensaje.classList.remove('alert-danger')
     let tabla=document.querySelector("#tableid");
     $.ajax({
-        url: "http://localhost:8080/api/usuario/listar",
+        url: "http://localhost:8080/api/incidencia/listar",
         type: "GET",
         dataType: "json",
         success: function(respuesta){
             $("#tableid tbody").remove();
             for(i=0;i<respuesta.length;i++){
-                tabla.innerHTML += '<tr><td>' + respuesta[i].idUser +
+                tabla.innerHTML += '<tr><td>' + respuesta[i].noIncidencia +
                 '</td><td>' + respuesta[i].nombre +
-                '</td><td>' + respuesta[i].apellido +
-                '</td><td>' + respuesta[i].documento +
-                '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarUsuario(\""+respuesta[i].idUser+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta[i].idUser+"\")'> <i class='material-icons'>edit</i></a>" +
+                '</td><td>' + respuesta[i].ubicacion +
+                '</td><td>' + respuesta[i].usuario.idUser +
+                '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarIncidencia(\""+respuesta[i].noIncidencia+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta[i].noIncidencia+"\")'> <i class='material-icons'>edit</i></a>" +
                 '</td></tr>';
             }      
         }
     })
 }
-
-function insertarUsuarios(){
+function save(){
     let errorModal = document.querySelector('#errormodal')
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
-    let id=$("#id").val();
+    let noIncidencia=$("#noIncidencia").val();
     let nombre=$("#nombre").val();
-    let apellido=$("#apellido").val();
-    let documento=$("#documento").val();
-    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+    let ubicacion=$("#ubicacion").val();
+    let usuario=$("#usuario").val();
+    if (noIncidencia === '' || nombre === '' || ubicacion ==='' || usuario === '') {
         errorModal.classList.add('alert-danger');
         $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");
         return;
     }
     data={
-        idUser: id,
+        noIncidencia: noIncidencia,
         nombre: nombre,
-        apellido: apellido,
-        documento: documento
+        ubicacion: ubicacion,
+        usuario: usuario
     }
     $.ajax({
-        url:"http://localhost:8080/api/usuario/insertar",
+        url:"http://localhost:8080/api/incidencia/insertar",
         type:"POST",
         data: JSON.stringify(data),
         contentType:"application/json",
         success: function(){
             $("#registrarModal").modal("hide");
+            $("#noIncidencia").val('');
             $("#nombre").val('');
-            $("#apellido").val('');
-            $("#documento").val('');
-            $("#id").val('');
-            listarUsuarios()      
+            $("#ubicacion").val('');
+            $("#usuario").val('');
+            buscarIncidenciaIdParametro(noIncidencia) 
         },
         error: function(xhr) {
             if(xhr.status===409){
                 errorModal.classList.add('alert-danger');
-                $("#errormodal").text("❌ El id "+ id +" ya existe, ingrese otro...");
+                $("#errormodal").text("❌ El id "+ noIncidencia +" ya existe, ingrese otro...");
+                return;
+            }
+            else{
+                errorModal.classList.add('alert-danger');
+                $("#errormodal").text("❌ El usuario "+ usuario +" no existe...");
                 return;
             }
         }
         
     })
 }
-function actualizarUsuarios(){
+function update(){
     let errorModal = document.querySelector('#errorAc')
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
-    let id=$("#idAC").val();
+    let id=$("#noIncidenciaAC").val();
     let nombre=$("#nombreAC").val();
-    let apellido=$("#apellidoAC").val();
-    let documento=$("#documentoAC").val();
-    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+    let ubicacion=$("#ubicacionAC").val();
+    let usuario=$("#usuarioAC").val();
+    if (id === '' || nombre === '' || ubicacion ==='' || usuario === '') {
         errorModal.classList.add('alert-danger');
         $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
         return;
     }
     data={
-        idUser: id,
+        noIncidencia: id,
         nombre: nombre,
-        apellido: apellido,
-        documento: documento
+        ubicacion: ubicacion,
+        usuario: usuario
     }
     $.ajax({
-        url:"http://localhost:8080/api/usuario/actualizar/" + id,
+        url:"http://localhost:8080/api/incidencia/actualizar/" + id,
         type:"PUT",
         data: JSON.stringify(data),
         contentType:"application/json",
         success: function(){
             $("#actualizarModal").modal("hide");
+            $('#noIncidenciaAC').val('')
             $("#nombreAC").val('');
-            $("#apellidoAC").val('');
-            $("#documentoAC").val('');
-            $("#idAC").val('');    
+            $("#ubicacionAC").val('');
+            $("#usuarioAC").val('');
+            findAll()
         },
         error: function(xhr) {
         }  
     })
 }
 
-function eliminarUsuario(idUser){
+function eliminarIncidencia(noIncidencia){
     $("#confirmarEliminacion").off("click").on("click", function(){
         $.ajax({
-            url: "http://localhost:8080/api/usuario/eliminar/"+idUser,
+            url: "http://localhost:8080/api/incidencia/eliminar/"+noIncidencia,
             type: "DELETE",
             success: function(){
-                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
+                $("#tableid tbody").find("td:contains('" + noIncidencia + "')").closest("tr").remove();
                 $("#exampleModal").modal("hide");   
             }
         })
     })
 }
-
-function cargarDatos(idUser){
+function cargarDatos(noIncidencia){
     $.ajax({
-        url: "http://localhost:8080/api/usuario/"+ idUser,
+        url: "http://localhost:8080/api/incidencia/"+ noIncidencia,
         type: "GET",
         dataType: "json",
         success: function(respuesta){
             $("#actu input").val('');
-            $("#idAC").val(respuesta.idUser);
-            $("#idAC").prop('disabled', true);
+            $("#noIncidenciaAC").val(respuesta.noIncidencia);
+            $("#noIncidenciaAC").prop('disabled', true);
             $("#nombreAC").val(respuesta.nombre);
-            $("#apellidoAC").val(respuesta.apellido);
-            $("#documentoAC").val(respuesta.documento);
+            $("#ubicacionAC").val(respuesta.ubicacion);
+            $("#usuarioAC").val(respuesta.usuario.idUser);
         }
     })
 }
@@ -170,6 +174,6 @@ function cargarDatos(idUser){
 document.getElementById("byid").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        buscarUsuarioId(); 
+        buscarIncidenciaId(); 
     }
 });
