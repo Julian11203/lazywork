@@ -13,27 +13,32 @@ public class InicioServicio {
     private InicioCrudRepository inicioCrudRepository;
     private UsuarioCrudRepository usuarioCrudRepository;
 
-    public InicioServicio(InicioCrudRepository inicioCrudRepository, UsuarioCrudRepository usuarioCrudRepository) {
+    public InicioServicio(InicioCrudRepository inicioCrudRepository) {
         this.inicioCrudRepository = inicioCrudRepository;
-        this.usuarioCrudRepository = usuarioCrudRepository;
     }
 
-    public Inicio insertarInicio(Inicio inicio){
-        inicio.setUsuario(usuarioCrudRepository.findById(inicio.getUsuario().getIdUser()).get());
+    public Inicio actualizarInicio(Inicio inicio) {
         return inicioCrudRepository.save(inicio);
     }
+
     public void eliminarInicio(String idInicio){
         inicioCrudRepository.deleteById(idInicio);
     }
 
     public boolean existeInicio(String id){
-        return  inicioCrudRepository.existsById(id);
+        return inicioCrudRepository.existsById(id);
     }
-    public Inicio inicioPorId(String id){
-        return  inicioCrudRepository.findById(id).get();
+
+    public Inicio obtenerInicioPorId(String id){
+        return inicioCrudRepository.findById(id).get();
     }
-    public List<Inicio> listaInicios (){
+
+    public List<Inicio> listarInicios(){
         return (List<Inicio>) inicioCrudRepository.findAll();
     }
 
+    public Inicio insertarInicio(Inicio inicio) {
+        // Aquí no es necesario cargar el usuario ya que JPA administrará la relación
+        return inicioCrudRepository.save(inicio);
+    }
 }

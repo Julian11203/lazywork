@@ -60,48 +60,58 @@ function listarUsuarios(){
     })
 }
 
-function insertarUsuarios(){
+function insertarInicio() {
     let errorModal = document.querySelector('#errormodal')
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
-    let id=$("#id").val();
-    let nombre=$("#nombre").val();
-    let apellido=$("#apellido").val();
-    let documento=$("#documento").val();
-    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
+    let idInicio = $("#idInicio").val();
+    
+    let hora = $("#" + tipo + "hora").val(); // Nuevo campo para "inicio"
+    let fecha = $("#" + tipo + "fecha").val(); // Nuevo campo para "inicio"
+    let nombre = $("#" + tipo + "nombre").val();
+    let apellido = $("#" + tipo + "apellido").val();
+    let documento = $("#" + tipo + "documento").val();
+
+    if (idInicio === '' || isNaN(idInicio)) {
         errorModal.classList.add('alert-danger');
-        $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");
+        $("#errormodal").text("❌ Ingrese un ID de inicio válido...");
         return;
     }
-    data={
-        idUser: id,
-        nombre: nombre,
-        apellido: apellido,
-        documento: documento
+     let data = {
+        idInicio: idInicio,
+        hora: hora, // Reemplaza 'hora' y 'fecha' con tus valores correctos
+        fecha: fecha
     }
+    
     $.ajax({
-        url:"http://localhost:8080/api/usuario/insertar",
-        type:"POST",
+        url: "http://localhost:8080/api/inicio/insertar",
+        type: "POST",
         data: JSON.stringify(data),
-        contentType:"application/json",
-        success: function(){
+        contentType: "application/json",
+        success: function () {
             $("#registrarModal").modal("hide");
-            $("#nombre").val('');
-            $("#apellido").val('');
-            $("#documento").val('');
-            $("#id").val('');
-            listarUsuarios()      
+            $("#" + tipo + "nombre").val('');
+            $("#" + tipo + "apellido").val('');
+            $("#" + tipo + "documento").val('');
+            $("#" + tipo + "id").val('');
+            
+            // Llamar a la función correspondiente para listar (listarUsuarios o listarInicios)
+            if (tipo === "usuario") {
+                listarUsuarios();
+            } else if (tipo === "inicio") {
+                listarInicios();
+            }
         },
-        error: function(xhr) {
-            if(xhr.status===409){
+        error: function (xhr) {
+            if (xhr.status === 409) {
                 errorModal.classList.add('alert-danger');
-                $("#errormodal").text("❌ El id "+ id +" ya existe, ingrese otro...");
+                $("#errormodal").text("❌ El id " + id + " ya existe, ingrese otro...");
                 return;
             }
         }
-        
     })
 }
+
 function actualizarUsuarios(){
     let errorModal = document.querySelector('#errorAc')
     errorModal.innerHTML='';
