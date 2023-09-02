@@ -20,7 +20,7 @@ public class IncidenciaControlador {
     public IncidenciaControlador(IncidenciaServicio incidenciaServicio) {
         this.incidenciaServicio = incidenciaServicio;
     }
-
+//buscar por id
     @GetMapping("/{id}")
     public  ResponseEntity<Incidencia> finById(@PathVariable String id){
         if(incidenciaServicio.existsById(id)){
