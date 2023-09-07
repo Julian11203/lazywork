@@ -13,7 +13,7 @@ public class UsuarioRol {
 
     @ManyToOne
     @JoinColumn(name = "UsuarioID", nullable = false)
-    private UsuarioSistema usuario;
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "RolID", nullable = false)
@@ -29,11 +29,11 @@ public class UsuarioRol {
         this.usuarioRolID = usuarioRolID;
     }
 
-    public UsuarioSistema getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(UsuarioSistema usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
