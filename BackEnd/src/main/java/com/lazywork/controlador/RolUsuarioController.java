@@ -33,9 +33,6 @@ public class RolUsuarioController {
         this.servRol = servRol;
     }
 
-
-
-
     @GetMapping("/findAll")
     public ResponseEntity<List<RolUsuario>> findAll() {
         respuesta.clear();
@@ -88,7 +85,6 @@ public class RolUsuarioController {
             return new ResponseEntity<>(respuesta, HttpStatus.CONFLICT);
         }
     }
-
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<ArrayList> deleteById(@PathVariable Long id) {
         respuesta.clear();
@@ -100,35 +96,6 @@ public class RolUsuarioController {
         }else{
             mensaje = "El rol de usuario con id "+id+" no existe";
             respuesta.add(mensaje);
-            status = HttpStatus.NOT_FOUND;
-        }
-        return new ResponseEntity<>(respuesta, status);
-    }
-
-    @PutMapping("/re_save")
-    public ResponseEntity<ArrayList>re_save(@RequestBody RolUsuario rolUsuario){
-        respuesta.clear();
-        if(servRolUsuario.existsById(rolUsuario.getRolUsuarioID())){
-            if(servUsuario.existsById(rolUsuario.getUsuario().getUsuarioID())){
-                if(servRolUsuario.existsByUsuarioId(rolUsuario.getUsuario().getUsuarioID()).isEmpty() && rolUsuario.getUsuario().getUsuarioID().equals(servRolUsuario.existsByUsuarioId(rolUsuario.getUsuario().getUsuarioID()))){
-                    if(servRol.existsById(rolUsuario.getRol().getRolID())){
-                        servRolUsuario.save(rolUsuario);
-                        respuesta.add("Se ha actualizado el rol de usuario exitosamente");
-                        status = HttpStatus.CREATED;
-                    }else{
-                        respuesta.add("El rol con id "+rolUsuario.getRol().getRolID()+" no existe");
-                        status = HttpStatus.NOT_FOUND;
-                    }
-                }else{
-                    respuesta.add("No fue posible, el usuario con id "+rolUsuario.getUsuario().getUsuarioID()+" ya esta registrado");
-                    status = HttpStatus.BAD_REQUEST;
-                }
-            }else{
-                respuesta.add("El usuario con id "+rolUsuario.getUsuario().getUsuarioID()+" no existe");
-                status = HttpStatus.NOT_FOUND;
-            }
-        }else{
-            respuesta.add("El rol de usuario con id "+rolUsuario.getRolUsuarioID()+" no existe");
             status = HttpStatus.NOT_FOUND;
         }
         return new ResponseEntity<>(respuesta, status);
