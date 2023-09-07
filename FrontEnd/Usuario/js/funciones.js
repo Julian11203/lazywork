@@ -1,20 +1,20 @@
-function buscarUsuarioId(){
+function findById(){
     let errorMensaje = document.querySelector('#errormsg')
     errorMensaje.innerHTML='';
     errorMensaje.classList.remove('alert-danger')
-    let idAConsultar=$("#byid").val();
+    let id=$("#findById").val();
     let tabla=document.querySelector("#tableid");
-    if (idAConsultar === '') {
+    if (id === '') {
         errorMensaje.classList.add('alert-danger');
         $("#errormsg").text("❌ Ingrese un id para realizar la consulta");
         return;
     }
     $.ajax({
-        url: "http://localhost:8080/api/usuario/"+ idAConsultar,
+        url: "http://localhost:8080/api/rolusuario/"+ id,
         type: "GET",
         dataType: "json",
         success: function(respuesta){
-            $("#byid").val("");
+            $("#findById").val("");
             $("#tableid tbody").remove();
             tabla.innerHTML += '<tr><td>' + respuesta.idUser +
             '</td><td>' + respuesta.nombre +
@@ -26,14 +26,14 @@ function buscarUsuarioId(){
         error: function(xhr) {
             if(xhr.status===404){
                 errorMensaje.classList.add('alert-danger');
-                $("#errormsg").text("❌ El id "+ idAConsultar +" no se encontro...");
+                $("#errormsg").text("❌ El id "+ id +" no se encontro...");
                 return;
             }
         }
     })
 }
 function buscarUsuarioIdParametro(id){
-    let idAConsultar=$("#byid").val(id);
+    let id=$("#findById").val(id);
     buscarUsuarioId()
 }
 
@@ -148,43 +148,6 @@ function actualizarUsuarios(){
     })
 }
 
-function actualizarUsuarios(){
-    let errorModal = document.querySelector('#errorAc')
-    errorModal.innerHTML='';
-    errorModal.classList.remove('alert-danger')
-    let id=$("#idAC").val();
-    let nombre=$("#nombreAC").val();
-    let apellido=$("#apellidoAC").val();
-    let documento=$("#documentoAC").val();
-    if (id === '' || nombre === '' || apellido ==='' || documento === '') {
-        errorModal.classList.add('alert-danger');
-        $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
-        return;
-    }
-    data={
-        idUser: id,
-        nombre: nombre,
-        apellido: apellido,
-        documento: documento
-    }
-    $.ajax({
-        url:"http://localhost:8080/api/usuario/actualizar",
-        type:"PUT",
-        data: JSON.stringify(data),
-        contentType:"application/json",
-        success: function(){
-            $("#actualizarModal").modal("hide");
-            $("#nombreAC").val('');
-            $("#apellidoAC").val('');
-            $("#documentoAC").val('');
-            $("#idAC").val('');
-            buscarUsuarioIdParametro(id)      
-        },
-        error: function(xhr) {
-        }  
-    })
-}
-
 function eliminarUsuario(idUser) {
     $("#confirmarEliminacion").off("click").on("click", function () {
         $.ajax({
@@ -213,7 +176,7 @@ function cargarDatos(idUser){
     })
 }
 
-document.getElementById("byid").addEventListener("keydown", function(event) {
+document.findById("findById").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
         buscarUsuarioId(); 
