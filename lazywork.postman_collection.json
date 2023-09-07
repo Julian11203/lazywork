@@ -38,7 +38,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/rolusuario/findById/2",
+									"raw": "localhost:8080/api/rolusuario/findById/1",
 									"host": [
 										"localhost"
 									],
@@ -47,7 +47,7 @@
 										"api",
 										"rolusuario",
 										"findById",
-										"2"
+										"1"
 									]
 								}
 							},
@@ -60,7 +60,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"rolUsuarioID\": 2,\r\n    \"usuario\": {\r\n        \"usuarioID\": 2\r\n    },\r\n    \"rol\": {\r\n        \"rolID\": 1\r\n    }\r\n}",
+									"raw": "{\r\n    \"rolUsuarioID\": 2,\r\n    \"usuario\": {\r\n        \"usuarioID\": 2\r\n    },\r\n    \"rol\": {\r\n        \"rolID\": 2\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -83,41 +83,12 @@
 							"response": []
 						},
 						{
-							"name": "re_save",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"rolUsuarioID\": 2,\r\n    \"usuario\": {\r\n        \"usuarioID\": 2\r\n    },\r\n    \"rol\": {\r\n        \"rolID\": 1\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "localhost:8080/api/rolusuario/re_save",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"rolusuario",
-										"re_save"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "deleteById",
 							"request": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/rolusuario/deleteById/1",
+									"raw": "localhost:8080/api/rolusuario/deleteById/2",
 									"host": [
 										"localhost"
 									],
@@ -126,7 +97,7 @@
 										"api",
 										"rolusuario",
 										"deleteById",
-										"1"
+										"2"
 									]
 								}
 							},
