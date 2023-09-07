@@ -16,7 +16,7 @@ public class Incidencia {
 
     @ManyToOne
     @JoinColumn(name = "UsuarioID", nullable = false)
-    private UsuarioSistema usuario;
+    private Usuario usuario;
 
     @Column(name = "Ubicacion", nullable = false)
     private String ubicacion;
@@ -48,11 +48,11 @@ public class Incidencia {
         this.incidenciaID = incidenciaID;
     }
 
-    public UsuarioSistema getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(UsuarioSistema usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
