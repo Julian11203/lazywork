@@ -3,13 +3,15 @@ package com.lazywork.entidad;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "UsuarioRoles")
-public class UsuarioRol {
+@Table(name = "rol_usuario")
+public class RolUsuario {
 
     @Id
+    /*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UsuarioRolID")
-    private Long usuarioRolID;
+     */
+    @Column
+    private Long rolUsuarioID;
 
     @ManyToOne
     @JoinColumn(name = "UsuarioID", nullable = false)
@@ -19,14 +21,13 @@ public class UsuarioRol {
     @JoinColumn(name = "RolID", nullable = false)
     private Rol rol;
 
-    // Getters y Setters
 
-    public Long getUsuarioRolID() {
-        return usuarioRolID;
+    public Long getRolUsuarioID() {
+        return rolUsuarioID;
     }
 
-    public void setUsuarioRolID(Long usuarioRolID) {
-        this.usuarioRolID = usuarioRolID;
+    public void setRolUsuarioID(Long rolUsuarioID) {
+        this.rolUsuarioID = rolUsuarioID;
     }
 
     public Usuario getUsuario() {
@@ -43,14 +44,5 @@ public class UsuarioRol {
 
     public void setRol(Rol rol) {
         this.rol = rol;
-    }
-
-    @Override
-    public String toString() {
-        return "UsuarioRol{" +
-                "usuarioRolID=" + usuarioRolID +
-                ", usuario=" + usuario +
-                ", rol=" + rol +
-                '}';
     }
 }

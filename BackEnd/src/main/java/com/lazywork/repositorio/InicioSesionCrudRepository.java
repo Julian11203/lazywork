@@ -5,4 +5,3 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface InicioSesionCrudRepository extends CrudRepository<InicioSesion, String> {
 }
-
