@@ -3,7 +3,7 @@ package com.lazywork.controlador;
 import com.lazywork.entidad.RolUsuario;
 import com.lazywork.servicios.RolService;
 import com.lazywork.servicios.RolUsuarioService;
-import com.lazywork.servicios.UsuarioService;
+import com.lazywork.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.RandomAccess;
 
 @RestController
 @RequestMapping("/api/rolusuario")
@@ -20,14 +18,14 @@ import java.util.RandomAccess;
 public class RolUsuarioController {
 
     private RolUsuarioService servRolUsuario;
-    private UsuarioService servUsuario;
+    private UsuarioServicio servUsuario;
     private RolService servRol;
     private String mensaje;
     private HttpStatus status;
     private ArrayList respuesta = new ArrayList<>();
 
     @Autowired
-    public RolUsuarioController(RolUsuarioService servRolUsuario, UsuarioService servUsuario, RolService servRol) {
+    public RolUsuarioController(RolUsuarioService servRolUsuario, UsuarioServicio servUsuario, RolService servRol) {
         this.servRolUsuario = servRolUsuario;
         this.servUsuario = servUsuario;
         this.servRol = servRol;
@@ -57,34 +55,32 @@ public class RolUsuarioController {
         return new ResponseEntity<>(respuesta, status);
     }
 
-
     @PostMapping("/save")
-    public ResponseEntity<ArrayList> save(@RequestBody RolUsuario rolUsuario) {
-        respuesta.clear();
-        if(servRolUsuario.existsById(rolUsuario.getRolUsuarioID()) == false){
-            if(servUsuario.existsById(rolUsuario.getUsuario().getUsuarioID())){
-                if(servRolUsuario.existsByUsuarioId(rolUsuario.getUsuario().getUsuarioID()).isEmpty()){
-                    if(servRol.existsById(rolUsuario.getRol().getRolID())){
-                        servRolUsuario.save(rolUsuario);
-                        respuesta.add("Se ha creado el rol de usuario exitosamente");
-                        return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
-                    }else{
-                        respuesta.add("El rol con id "+rolUsuario.getRol().getRolID()+" no existe");
-                        return new ResponseEntity<>(respuesta, HttpStatus.NOT_FOUND);
-                    }
-                }else{
-                    respuesta.add("No fue posible, el usuario con id "+rolUsuario.getUsuario().getUsuarioID()+" ya esta registrado");
-                    return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
-                }
-            }else{
-                respuesta.add("El usuario con id "+rolUsuario.getUsuario().getUsuarioID()+" no existe");
-                return new ResponseEntity<>(respuesta, HttpStatus.NOT_FOUND);
-            }
-        }else{
-            respuesta.add("El rol de usuario con id "+rolUsuario.getRolUsuarioID()+" ya existe");
-            return new ResponseEntity<>(respuesta, HttpStatus.CONFLICT);
+    public ResponseEntity<String> save(@RequestBody RolUsuario rolUsuario) {
+        Long usuarioId = rolUsuario.getUsuario().getId();
+        Long rolId = rolUsuario.getRol().getRolID();
+
+        if (servRolUsuario.existsById(rolUsuario.getRolUsuarioID())) {
+            return new ResponseEntity<>("El rol de usuario con id " + rolUsuario.getRolUsuarioID() + " ya existe", HttpStatus.CONFLICT);
         }
+
+        if (!servUsuario.existsById(String.valueOf(usuarioId))) {
+            return new ResponseEntity<>("El usuario con id " + usuarioId + " no existe", HttpStatus.NOT_FOUND);
+        }
+
+        if (!servRol.existsById(rolId)) {
+            return new ResponseEntity<>("El rol con id " + rolId + " no existe", HttpStatus.NOT_FOUND);
+        }
+
+        if (servRolUsuario.existsByUsuarioId(usuarioId)) {
+            return new ResponseEntity<>("No fue posible, el usuario con id " + usuarioId + " ya está registrado", HttpStatus.BAD_REQUEST);
+        }
+
+        servRolUsuario.save(rolUsuario);
+        return new ResponseEntity<>("Se ha creado el rol de usuario exitosamente", HttpStatus.CREATED);
     }
+
+
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<ArrayList> deleteById(@PathVariable Long id) {
         respuesta.clear();
