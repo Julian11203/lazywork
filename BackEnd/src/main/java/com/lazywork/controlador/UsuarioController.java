@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
@@ -36,8 +36,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<ArrayList> findById(@PathVariable String id) {
-        respuesta.clear();
+    public ResponseEntity<Optional<Usuario>> findById(@PathVariable Long id) {
         if (servicioU.existsById(Long.valueOf(id))) {
             respuesta.add(servicioU.findById(id).get());
             status = HttpStatus.OK;
@@ -81,6 +80,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/deleteById/{id}")
+
     public ResponseEntity<ArrayList> deleteById(@PathVariable Long id) {
         respuesta.clear();
         if(servicioU.existsById(Long.valueOf(id))){
