@@ -6,18 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32fd9b04-c8a7-43a0-acb4-aee5c13cf9f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazywork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lazywork.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/CambioEstadoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/CambioEstadoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/entidad/CambioEstado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/entidad/CambioEstado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/entidad/EstadoIncidencia.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/entidad/EstadoIncidencia.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/CambioEstadoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/CambioEstadoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/EstadosIncidenciasService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/EstadosIncidenciasService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/servicios/UsuarioService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
