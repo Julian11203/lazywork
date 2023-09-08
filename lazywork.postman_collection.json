@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a2a13997-dbb2-4219-b443-46b0a54cd64f",
+		"_postman_id": "a230666b-f073-40fe-ab82-d53a432ee753",
 		"name": "lazywork",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26127259"
@@ -10,124 +10,104 @@
 			"name": "Usuario",
 			"item": [
 				{
-					"name": "Insertar Usuario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"idUser\": \"u12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"Pérez\",\r\n  \"documento\": \"1234567890\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "findAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/rolusuario/findAll",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"rolusuario",
+										"findAll"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/api/usuario/insertar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"insertar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar Usuario",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"idUser\": \"u12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"David\",\r\n  \"documento\": \"1234567890\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "findById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/rolusuario/findById/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"rolusuario",
+										"findById",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/api/usuario/actualizar/u12345",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"actualizar",
-								"u12345"
-							]
+						{
+							"name": "save",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rolUsuarioID\": 2,\r\n    \"usuario\": {\r\n        \"usuarioID\": 2\r\n    },\r\n    \"rol\": {\r\n        \"rolID\": 2\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/rolusuario/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"rolusuario",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/rolusuario/deleteById/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"rolusuario",
+										"deleteById",
+										"2"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Consulta ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/u12345",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"u12345"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Consultar lista",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"listar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Usuario",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/eliminar/10",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"eliminar",
-								"10"
-							]
-						}
-					},
-					"response": []
+					"name": "joinQuerys",
+					"item": []
 				}
 			]
 		},
@@ -285,7 +265,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "      {  \r\n        \"noIncidencia\": \"INC002\",\r\n        \"nombre\": \"Problema eléctrico\",\r\n        \"ubicacion\": \"Oficina A\",\r\n        \"usuario\": \"u12345\"\r\n      }",
+							"raw": "      {  \r\n        \"noIncidencia\": \"INC003\",\r\n        \"nombre\": \"Problema eléctrico\",\r\n        \"ubicacion\": \"Oficina A\",\r\n        \"usuario\": \"u12345\"\r\n      }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -313,7 +293,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/incidencia/eliminar/INC002",
+							"raw": "localhost:8080/api/incidencia/eliminar/INC003",
 							"host": [
 								"localhost"
 							],
@@ -322,37 +302,7 @@
 								"api",
 								"incidencia",
 								"eliminar",
-								"INC002"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar incidencia",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"noIncidencia\": \"INC001\",\r\n    \"nombre\": \"Problema X\",\r\n    \"ubicacion\": \"Oficina A\",\r\n    \"usuario\": \"u12345\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/incidencia/actualizar/INC001",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"actualizar",
-								"INC001"
+								"INC003"
 							]
 						}
 					},
