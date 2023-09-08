@@ -38,7 +38,6 @@ public class Incidencia {
     @Column(name = "FechaRegistro", nullable = false)
     private Date fechaRegistro;
 
-    // Getters y Setters
 
     public Long getIncidenciaID() {
         return incidenciaID;

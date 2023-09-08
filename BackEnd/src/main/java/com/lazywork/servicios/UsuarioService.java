@@ -17,10 +17,10 @@ public class UsuarioService {
     private UsuarioCrudRepository repoUsuario;
 
     public boolean existsById(Long id) {
-        return repoUsuario.existsById(String.valueOf(id));
+        return repoUsuario.existsById(id);
     }
 
-    public Optional<Usuario> findById(String id) {
+    public Optional<Usuario> findById(Long id) {
         return repoUsuario.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class UsuarioService {
         }
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         repoUsuario.deleteById(id);
     }
 }

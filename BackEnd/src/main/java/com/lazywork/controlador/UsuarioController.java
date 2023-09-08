@@ -27,7 +27,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Optional<Usuario>> findById(@PathVariable String id) {
+    public ResponseEntity<Optional<Usuario>> findById(@PathVariable Long id) {
         if (servicioU.existsById(Long.valueOf(id))) {
             return new ResponseEntity<>(servicioU.findById(id), HttpStatus.OK);
         } else {
@@ -59,7 +59,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         if(servicioU.existsById(Long.valueOf(id))){
             servicioU.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
