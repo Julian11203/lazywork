@@ -7,65 +7,91 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
-
-    @Autowired
     private UsuarioService servicioU;
-
+    private HttpStatus status;
+    private ArrayList respuesta = new ArrayList<>();
+    @Autowired
     public UsuarioController(UsuarioService servicioU) {
         this.servicioU = servicioU;
     }
 
     @GetMapping("/findAll")
     public ResponseEntity<List<Usuario>> findAll() {
-        return new ResponseEntity<>(servicioU.findAll(), HttpStatus.OK);
+        respuesta.clear();
+        status = HttpStatus.OK;
+        if(!servicioU.findAll().isEmpty()){
+            respuesta.add(servicioU.findAll());
+            return new ResponseEntity<>(respuesta, status);
+        }else{
+            return new ResponseEntity<>(status);
+        }
+
     }
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<Optional<Usuario>> findById(@PathVariable Long id) {
         if (servicioU.existsById(Long.valueOf(id))) {
-            return new ResponseEntity<>(servicioU.findById(id), HttpStatus.OK);
+            respuesta.add(servicioU.findById(id).get());
+            status = HttpStatus.OK;
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            respuesta.add("No se encontro el usuario");
+            status = HttpStatus.NOT_FOUND;
         }
+        return new ResponseEntity<>(respuesta, status);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
+    public ResponseEntity<ArrayList> save(@RequestBody Usuario usuario) {
+        respuesta.clear();
         if(servicioU.existsById(usuario.getUsuarioID()) == false){
             servicioU.save(usuario);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            respuesta.add("Se ha creado el usuario exitosamente");
+            status = HttpStatus.CREATED;
+
         }
         else{
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            respuesta.add("El usuario ya existe");
+            status = HttpStatus.CONFLICT;
         }
+        return new ResponseEntity<>(respuesta, status);
     }
 
 
     @PutMapping("/re_save")
-    public ResponseEntity<Usuario> re_save(@RequestBody Usuario usuario) {
+    public ResponseEntity<ArrayList> re_save(@RequestBody Usuario usuario) {
+        respuesta.clear();
         if(servicioU.existsById(usuario.getUsuarioID())){
             servicioU.save(usuario);
-            return new ResponseEntity<>(HttpStatus.OK);
+            respuesta.add("Se ha actualizado correctamente");
+            status = HttpStatus.OK;
         }
         else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            respuesta.add("El usuario a actualizar no existe");
+            status = HttpStatus.NOT_FOUND;
         }
+        return new ResponseEntity<>(respuesta, status);
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+
+    public ResponseEntity<ArrayList> deleteById(@PathVariable Long id) {
+        respuesta.clear();
         if(servicioU.existsById(Long.valueOf(id))){
             servicioU.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            respuesta.add("Se elimino correctamente");
+            status = HttpStatus.OK;
         }
         else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            respuesta.add("Imposible eliminar, el usuario no existe");
+            status = HttpStatus.NOT_FOUND;
         }
+        return new ResponseEntity<>(respuesta, status);
     }
 }
