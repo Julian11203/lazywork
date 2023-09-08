@@ -71,8 +71,6 @@ function insertarUsuarios(){
     let descripcion=$("#descripcion").val();
     let incidencia=$("#incidencia option:selected").val();
     let prioridad=$("#prioridad option:selected").val();
-    console.log($("#incidencia option:selected").val())
-    console.log($("#prioridad option:selected").val())
     if (nRegistro === '' || fecha === '' || descripcion ==='' || incidencia === ''|| prioridad === '') {
         errorModal.classList.add('alert-danger');
         $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");

@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/estados ")
+@RequestMapping("/estados")
 
 public class EstadoIncidenciaController {
 
     @Autowired
     EstadosIncidenciasService estadosIncidenciasService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<EstadoIncidencia>> obtenerTodasLosEstadosIncidencia() {
         List<EstadoIncidencia> estadoIncidencias = estadosIncidenciasService.obtenerTodasLosEstadosIncidencias();
         return ResponseEntity.ok(estadoIncidencias);

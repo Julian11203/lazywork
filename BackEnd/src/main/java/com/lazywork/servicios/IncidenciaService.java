@@ -8,6 +8,8 @@ import com.lazywork.repositorio.UsuarioCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +41,7 @@ public class IncidenciaService {
         incidencia.setEstado(estadosIncidenciasCrudRepository.findById(incidencia.getEstado().getEstadoID()).get());
         incidencia.setPrioridad(prioridadesIncidenciasCrudRepository.findById(incidencia.getPrioridad().getPrioridadID()).get());
         incidencia.setUsuario(usuarioCrudRepository.findById(incidencia.getUsuario().getUsuarioID()).get());
+        incidencia.setFechaRegistro(LocalDate.now());
         return incidenciaRepository.save(incidencia);
     }
 

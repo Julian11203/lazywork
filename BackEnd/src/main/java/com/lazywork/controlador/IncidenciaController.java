@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/incidencia")
 public class IncidenciaController {
@@ -17,7 +17,7 @@ public class IncidenciaController {
     @Autowired
     private IncidenciaService incidenciaService;
 
-    @GetMapping("/lisar")
+    @GetMapping("/listar")
     public ResponseEntity<List<Incidencia>> obtenerTodasLasIncidencias() {
         List<Incidencia> incidencias = incidenciaService.obtenerTodasLasIncidencias();
         return ResponseEntity.ok(incidencias);
@@ -35,13 +35,8 @@ public class IncidenciaController {
 
     @PostMapping("/crear")
     public ResponseEntity<Incidencia> crearIncidencia(@RequestBody Incidencia incidenciaG) {
-        Optional<Incidencia> incidencia = incidenciaService.obtenerIncidenciaPorId(incidenciaG.getIncidenciaID());
-        if (incidencia.isPresent()) {
-            return ResponseEntity.notFound().build();
-        } else {
             incidenciaService.crearIncidencia(incidenciaG);
-            return ResponseEntity.ok(incidencia.get());
-        }
+            return ResponseEntity.ok(incidenciaG);
     }
 
     @PutMapping("/actualizar")
