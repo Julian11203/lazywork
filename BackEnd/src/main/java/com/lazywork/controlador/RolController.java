@@ -3,7 +3,7 @@ package com.lazywork.controlador;
 
 
         import com.lazywork.entidad.Rol;
-        import com.lazywork.servicios.RolesService;
+        import com.lazywork.servicios.RolService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
@@ -13,37 +13,61 @@ package com.lazywork.controlador;
         import java.util.Optional;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/rol")
 public class RolController {
 
     @Autowired
-    private RolesService rolesService;
+    private RolService servRol;
 
-    @GetMapping
-    public ResponseEntity<List<Rol>> obtenerTodosLosRoles() {
-        List<Rol> roles = rolesService.obtenerTodosLosRoles();
-        return ResponseEntity.ok(roles);
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Rol>> findAll() {
+        if(servRol.finAll().isEmpty()){
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.ok(servRol.finAll());
+        }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Rol> obtenerRolesPorId(@PathVariable String id) {
-        Optional<Rol> roles = rolesService.obtenerRolesPorId(id);
-        if (roles.isPresent()) {
-            return ResponseEntity.ok(roles.get());
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Rol> findById(@PathVariable String id) {
+        Optional<Rol> rol = servRol.findById(id);
+        if (rol.isPresent()) {
+            return ResponseEntity.ok(rol.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Rol> crearRoles(@RequestBody Rol roles) {
-        Rol rolesCreado = rolesService.crearRoles(roles);
-        return ResponseEntity.status(HttpStatus.CREATED).body(rolesCreado);
+    @PostMapping("/save")
+    public ResponseEntity<Rol> save(@RequestBody Rol rol) {
+        if(servRol.existsById(String.valueOf(rol.getRolID())) == false){
+            servRol.save(rol);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+    @PutMapping("/re_save")
+    public ResponseEntity<Rol> re_save(@RequestBody Rol rol) {
+        if(servRol.existsById(String.valueOf(rol.getRolID()))){
+            servRol.save(rol);
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarRoles(@PathVariable String id) {
-        rolesService.eliminarRoles(id);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+        if(servRol.existsById(id)){
+            if(servRol.existsInUsuarioRol(id)){
+                return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            }else{
+                servRol.deleteById(id);
+                return ResponseEntity.ok().build();
+            }
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 }
