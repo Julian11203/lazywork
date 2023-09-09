@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/Rol/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Rol/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/Rol/js/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Rol/js/funciones.js" afterDir="false" />
-    </list>
+    <list default="true" id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
