@@ -38,7 +38,7 @@ public class InicioSesionControlador {
     public ResponseEntity<InicioSesion> insertarInicioSesion(@RequestBody InicioSesion inicioSesion) {
         // Asegúrate de que el usuario asociado a inicioSesion exista en la base de datos antes de insertar.
         // Puedes hacer la verificación en el servicio antes de realizar la inserción.
-        Long usuarioId = inicioSesion.getUsuario().getId(); // Suponiendo que tienes un método getId() en Usuario
+        String usuarioId = String.valueOf(inicioSesion.getUsuario().getId()); // Suponiendo que tienes un método getId() en Usuario
         if (usuarioId != null && UsuarioServicio.existeUsuario(usuarioId)) {
             InicioSesion nuevoInicioSesion = inicioSesionServicios.insertarInicioSesion(inicioSesion);
             if (nuevoInicioSesion != null) {
