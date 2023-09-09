@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/iniciosesion")
+@CrossOrigin("*")
 public class InicioSesionControlador {
     private final InicioSesionServicios inicioSesionServicios;
 

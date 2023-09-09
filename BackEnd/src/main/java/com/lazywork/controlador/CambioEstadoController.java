@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/cambio-estado")
+@CrossOrigin("*")
 public class CambioEstadoController {
 
     @Autowired

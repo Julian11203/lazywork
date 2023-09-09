@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/incidencia")
+@CrossOrigin("*")
 public class IncidenciaController {
 
     @Autowired

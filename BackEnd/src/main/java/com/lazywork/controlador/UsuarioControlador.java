@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuario")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin("*")
  // Cambia esto al origen de tu sitio web
 public class UsuarioControlador {
 

@@ -14,6 +14,7 @@ package com.lazywork.controlador;
 
 @RestController
 @RequestMapping("/rol")
+@CrossOrigin("*")
 public class RolController {
 
     @Autowired
