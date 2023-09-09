@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/Rol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
