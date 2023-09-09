@@ -30,9 +30,9 @@ function findById(){
         }
     })
 }
-function buscarUsuarioIdParametro(id){
+function buscarRolIdParametro(id){
     let idAConsultar=$("#byid").val(id);
-    buscarUsuarioId()
+    findById()
 }
 
 function findAll(){
@@ -56,51 +56,40 @@ function findAll(){
     })
 }
 
-function save() {
+function save(){
     let errorModal = document.querySelector('#errormodal')
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
-    let idInicio = $("#idInicio").val();
-    
-    let hora = $("#" + tipo + "hora").val();
-    let fecha = $("#" + tipo + "fecha").val();
-    let nombre = $("#" + tipo + "nombre").val();
-
-    if (idInicio === '' || isNaN(idInicio)) {
+    let rolID=$("#rolId").val();
+    let nombreRol=$("#nombreRol").val();
+    if (rolID === '' || nombreRol === '') {
         errorModal.classList.add('alert-danger');
-        $("#errormodal").text("❌ Ingrese un ID de inicio válido...");
+        $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");
         return;
     }
-     let data = {
-        idInicio: idInicio,
-        hora: hora, // Reemplaza 'hora' y 'fecha' con tus valores correctos
-        fecha: fecha
+    data={
+        rolID: rolID,
+        nombreRol: nombreRol
     }
-    
     $.ajax({
-        url: "http://localhost:8080/rol/save",
-        type: "POST",
+        url:"http://localhost:8080/rol/save",
+        type:"POST",
         data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function () {
+        contentType:"application/json",
+        success: function(){
             $("#registrarModal").modal("hide");
-            $("#" + tipo + "rolID").val('');
-            $("#" + tipo + "nombreRol").val('');
-            
-            
-            if (tipo === "usuario") {
-                listarUsuarios();
-            } else if (tipo === "inicio") {
-                listarInicios();
-            }
+            $("#rolId").val('');
+            $("#nombreRol").val('');
+            findAll(); 
         },
-        error: function (xhr) {
-            if (xhr.status === 409) {
+        error: function(xhr) {
+            if(xhr.status===409){
                 errorModal.classList.add('alert-danger');
-                $("#errormodal").text("❌ El id " + id + " ya existe, ingrese otro...");
+                $("#errormodal").text("❌ El id "+ rolID +" ya existe, ingrese otro...");
                 return;
             }
         }
+        
     })
 }
 
@@ -108,16 +97,16 @@ function re_save(){
     let errorModal = document.querySelector('#errorAc')
     errorModal.innerHTML='';
     errorModal.classList.remove('alert-danger')
-    let id=$("#rolidAC").val();
-    let nombre=$("#nombrerolAC").val();
-    if (id === '' || nombre === '') {
+    let rolID=$("#rolidAC").val();
+    let nombreRol=$("#nombrerolAC").val();
+    if (rolID === '' || nombreRol === '') {
         errorModal.classList.add('alert-danger');
         $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
         return;
     }
     data={
-        idUser: id,
-        nombre: nombre
+        rolID: rolID,
+        nombreRol: nombreRol
     }
     $.ajax({
         url:"http://localhost:8080/rol/re_save",
@@ -128,6 +117,7 @@ function re_save(){
             $("#actualizarModal").modal("hide");
             $("#rolidAC").val('');
             $("#nombrerolAC").val('');
+            findAll();
         },
         error: function(xhr) {
         }  
@@ -136,21 +126,21 @@ function re_save(){
 
 
 
-function deleteById(idUser) {
+function deleteById(rolID) {
     $("#confirmarEliminacion").off("click").on("click", function () {
         $.ajax({
-            url: "http://localhost:8080/api/usuario/eliminar/" + idUser,
+            url: "http://localhost:8080/rol/deleteById/" + rolID,
             type: "DELETE",
             success: function () {
-                $("#tableid tbody").find("td:contains('" + idUser + "')").closest("tr").remove();
+                $("#tableid tbody").find("td:contains('" + rolID + "')").closest("tr").remove();
                 $("#exampleModal").modal("hide");
             }
         });
     });
 }
-function cargarDatos(idUser){
+function cargarDatos(rolID){
     $.ajax({
-        url: "http://localhost:8080/api/usuario/"+ idUser,
+        url: "http://localhost:8080/rol/findById/"+ rolID,
         type: "GET",
         dataType: "json",
         success: function(respuesta){
@@ -162,7 +152,13 @@ function cargarDatos(idUser){
     })
 }
 
-document.getById("byid").addEventListener("keydown", function(event) {
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Llama a la función findAll para mostrar la lista despues de refrescar la página
+    findAll();
+});
+
+document.getElementById("byid").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
         findById(); 

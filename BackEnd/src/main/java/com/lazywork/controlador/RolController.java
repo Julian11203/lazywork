@@ -1,16 +1,13 @@
 package com.lazywork.controlador;
+import com.lazywork.entidad.Rol;
+import com.lazywork.servicios.RolService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-
-
-        import com.lazywork.entidad.Rol;
-        import com.lazywork.servicios.RolService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
-
-        import java.util.List;
-        import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/rol")
@@ -19,6 +16,10 @@ public class RolController {
 
     @Autowired
     private RolService servRol;
+
+    public RolController(RolService servRol) {
+        this.servRol = servRol;
+    }
 
     @GetMapping("/findAll")
     public ResponseEntity<List<Rol>> findAll() {
