@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioRolesService {
+public class UsuarioRolService {
 
     @Autowired
     private UsuarioRolCrudRepository repoUsuarioRol;
@@ -22,7 +22,7 @@ public class UsuarioRolesService {
     public Optional<UsuarioRol> findById(String id) {
         return repoUsuarioRol.findById(id);
     }
-    public boolean existsByID(String id){
+    public boolean existsById(String id){
         return repoUsuarioRol.existsById(id);
     }
 
