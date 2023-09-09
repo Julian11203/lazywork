@@ -28,7 +28,7 @@ public class UsuarioRolesController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioRol> findById(@PathVariable Long id) {
+    public ResponseEntity<UsuarioRol> findById(@PathVariable String id) {
         Optional<UsuarioRol> usuarioRoles = servUsuarioRol.findById(id);
         if (usuarioRoles.isPresent()) {
             return ResponseEntity.ok(usuarioRoles.get());
@@ -44,7 +44,7 @@ public class UsuarioRolesController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
         servUsuarioRol.deleteById(id);
         return ResponseEntity.noContent().build();
     }

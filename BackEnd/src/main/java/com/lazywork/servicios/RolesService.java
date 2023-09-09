@@ -19,7 +19,7 @@ public class RolesService {
         return (List<Rol>) rolesRepository.findAll();
     }
 
-    public Optional<Rol> obtenerRolesPorId(Long id) {
+    public Optional<Rol> obtenerRolesPorId(String id) {
         return rolesRepository.findById(id);
     }
 
@@ -27,7 +27,7 @@ public class RolesService {
         return rolesRepository.save(roles);
     }
 
-    public void eliminarRoles(Long id) {
+    public void eliminarRoles(String id) {
         rolesRepository.deleteById(id);
     }
 }

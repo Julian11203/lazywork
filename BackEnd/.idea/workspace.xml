@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/InicioSesionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/InicioSesionControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioRolCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioRolCrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioServicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/controlador/RolController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioRolesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioRolesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioRolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioRolesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/RolCrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/RolCrudRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/UsuarioCrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/UsuarioCrudRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/UsuarioRolCrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lazywork/repositorio/UsuarioRolCrudRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

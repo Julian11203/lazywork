@@ -19,10 +19,10 @@ public class UsuarioRolesService {
         return (List<UsuarioRol>) repoUsuarioRol.findAll();
     }
 
-    public Optional<UsuarioRol> findById(Long id) {
+    public Optional<UsuarioRol> findById(String id) {
         return repoUsuarioRol.findById(id);
     }
-    public boolean existsByID(Long id){
+    public boolean existsByID(String id){
         return repoUsuarioRol.existsById(id);
     }
 
@@ -30,7 +30,7 @@ public class UsuarioRolesService {
         return repoUsuarioRol.save(usuarioRoles);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         repoUsuarioRol.deleteById(id);
     }
 }

@@ -26,7 +26,7 @@ public class RolController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Rol> obtenerRolesPorId(@PathVariable Long id) {
+    public ResponseEntity<Rol> obtenerRolesPorId(@PathVariable String id) {
         Optional<Rol> roles = rolesService.obtenerRolesPorId(id);
         if (roles.isPresent()) {
             return ResponseEntity.ok(roles.get());
@@ -42,7 +42,7 @@ public class RolController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarRoles(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarRoles(@PathVariable String id) {
         rolesService.eliminarRoles(id);
         return ResponseEntity.noContent().build();
     }
