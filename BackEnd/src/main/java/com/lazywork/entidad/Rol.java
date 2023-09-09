@@ -3,18 +3,18 @@ package com.lazywork.entidad;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Rol")
+@Table(name = "Roles")
 public class Rol {
 
     @Id
-    /*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     */
-    @Column
+    @Column(name = "RolID")
     private Long rolID;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "NombreRol", nullable = false)
     private String nombreRol;
+
+    // Getters y Setters
 
     public Long getRolID() {
         return rolID;

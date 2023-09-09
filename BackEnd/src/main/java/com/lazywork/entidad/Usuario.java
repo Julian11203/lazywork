@@ -3,49 +3,47 @@ package com.lazywork.entidad;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "Usuarios")
 public class Usuario {
 
     @Id
-    /*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     */
-    private Long usuarioID;
+    @Column(name = "UsuarioID")
+    private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String codigoUnico;
-
-    @Column(nullable = false, length = 50)
+    @Column(name = "Nombre", length = 50, nullable = false)
     private String nombre;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Apellido", length = 50, nullable = false)
     private String apellido;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Documento", length = 50, nullable = false)
     private String documento;
 
-    @Column(nullable = false, length = 50)
-    private String nivelSoporte;
+    @Column(name = "NivelSoporte", length = 50, nullable = false)  // Corrección: Eliminado espacio en el nombre
+    private String NivelSoporte;
 
-    @Column(nullable = false, length = 50)
-    private Integer tiempoUsoSistemaMinutos;
-
-
-
-    public Long getUsuarioID() {
-        return usuarioID;
+    // Constructor por defecto
+    public Usuario() {
     }
 
-    public void setUsuarioID(Long usuarioID) {
-        this.usuarioID = usuarioID;
+    // Constructor con parámetros
+    public Usuario(String nombre, String apellido, String documento, String NivelSoporte) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.documento = documento;
+        this.NivelSoporte = NivelSoporte;
     }
 
-    public String getCodigoUnico() {
-        return codigoUnico;
+    // Getters y setters
+
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigoUnico(String codigoUnico) {
-        this.codigoUnico = codigoUnico;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -73,18 +71,21 @@ public class Usuario {
     }
 
     public String getNivelSoporte() {
-        return nivelSoporte;
+        return NivelSoporte;
     }
 
     public void setNivelSoporte(String nivelSoporte) {
-        this.nivelSoporte = nivelSoporte;
+        NivelSoporte = nivelSoporte;
     }
 
-    public Integer getTiempoUsoSistemaMinutos() {
-        return tiempoUsoSistemaMinutos;
-    }
-
-    public void setTiempoUsoSistemaMinutos(Integer tiempoUsoSistemaMinutos) {
-        this.tiempoUsoSistemaMinutos = tiempoUsoSistemaMinutos;
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", documento='" + documento + '\'' +
+                ", NivelSoporte='" + NivelSoporte + '\'' +
+                '}';
     }
 }

@@ -18,42 +18,30 @@ public class CambioEstadoController {
     @Autowired
     private CambioEstadoService cambioEstadoService;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<CambioEstado>> obtenerTodasLosCambioEstado() {
+    @GetMapping
+    public ResponseEntity<List<CambioEstado>> obtenerTodosLosCambioEstado() {
         List<CambioEstado> cambioEstado = cambioEstadoService.obtenerTodosLosCambioEstado();
         return ResponseEntity.ok(cambioEstado);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CambioEstado> obtenerCambioestadoPorId(@PathVariable Long id) {
-        Optional<CambioEstado> cambioestado = cambioEstadoService.obtenerCambioEstadoPorId(id);
-        if (cambioestado.isPresent()) {
-            return ResponseEntity.ok(cambioestado.get());
+    public ResponseEntity<CambioEstado> obtenerCambioEstadoPorId(@PathVariable String id) {
+        Optional<CambioEstado> cambioEstado = cambioEstadoService.obtenerCambioEstadoPorId(id);
+        if (cambioEstado.isPresent()) {
+            return ResponseEntity.ok(cambioEstado.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PostMapping("/crear")
-    public ResponseEntity<CambioEstado> crearCambioestado(@RequestBody CambioEstado cambioEstado) {
-        CambioEstado cambioestadoCreado = cambioEstadoService.crearCambioEstado(cambioEstado);
-        return ResponseEntity.status(HttpStatus.CREATED).body(cambioestadoCreado);
-    }
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<CambioEstado> actualizarCambioestado(@PathVariable Long id, @RequestBody CambioEstado cambioEstado){
-        Optional<CambioEstado> cambioestadoActual = cambioEstadoService.obtenerCambioEstadoPorId((id));
-        if (cambioestadoActual.isPresent()) {
-            cambioEstado.setId(id);
-            CambioEstado cambioestadoActualizado = cambioEstadoService.actualizarCambioEstado(cambioEstado);
-            return ResponseEntity.ok(cambioestadoActualizado);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
-
+    @PostMapping
+    public ResponseEntity<CambioEstado> crearCambioEstado(@RequestBody CambioEstado cambioEstado) {
+        CambioEstado cambioEstadoCreado = cambioEstadoService.crearCambioEstado(cambioEstado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(cambioEstadoCreado);
     }
 
-    @DeleteMapping("/delete{id}")
-    public ResponseEntity<Void> eliminarcambioEstado(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarCambioEstado(@PathVariable String id) {
         cambioEstadoService.eliminarCambioEstado(id);
         return ResponseEntity.noContent().build();
     }

@@ -15,26 +15,20 @@ public class CambioEstadoService {
     @Autowired
     private CambioEstadoCrudRepository cambioEstadoRepository;
 
-
-
     public List<CambioEstado> obtenerTodosLosCambioEstado() {
         return (List<CambioEstado>) cambioEstadoRepository.findAll();
     }
 
-    public Optional<CambioEstado> obtenerCambioEstadoPorId(Long id) {
-        return cambioEstadoRepository.findById(String.valueOf(id));
+    public Optional<CambioEstado> obtenerCambioEstadoPorId(String id) {
+        return cambioEstadoRepository.findById(id);
     }
 
     public CambioEstado crearCambioEstado(CambioEstado cambioEstado) {
         return cambioEstadoRepository.save(cambioEstado);
     }
 
-    public CambioEstado actualizarCambioEstado(CambioEstado cambioEstado){
-        return cambioEstadoRepository.save(cambioEstado);
-    }
-
-    public void eliminarCambioEstado(Long id) {
-        cambioEstadoRepository.deleteById(String.valueOf(id));
+    public void eliminarCambioEstado(String id) {
+        cambioEstadoRepository.deleteById(id);
     }
 }
 

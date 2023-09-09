@@ -4,8 +4,230 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32fd9b04-c8a7-43a0-acb4-aee5c13cf9f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../BD_lazywork.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_4_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__ch_qos_logback_logback_core_1_4_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_15_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_8_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_33.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_4_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__com_zaxxer_HikariCP_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__io_micrometer_micrometer_commons_1_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__io_micrometer_micrometer_observation_1_11_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__io_smallrye_jandex_3_0_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_2_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_inject_jakarta_inject_api_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_4_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_14_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_14_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__net_minidev_accessors_smart_2_4_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__net_minidev_json_smart_2_4_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_20_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_20_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_10_1_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_assertj_assertj_core_3_24_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_eclipse_angus_angus_activation_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_core_4_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_4_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_glassfish_jaxb_txw2_4_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_6_0_6_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_hibernate_orm_hibernate_core_6_2_5_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_mockito_mockito_core_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_objenesis_objenesis_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_ow2_asm_asm_9_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_2_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_data_spring_data_commons_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_3_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_aop_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_aspects_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_beans_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_context_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_core_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_expression_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_jcl_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_jdbc_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_orm_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_test_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_tx_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_web_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_springframework_spring_webmvc_6_0_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/libraries/Maven__org_yaml_snakeyaml_1_33.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/lazywork.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/CambioEstadoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/EstadoIncidenciaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/InicioSesionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/RolUsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/CambioEstado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/InicioSesion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/UsuarioRolCrudRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/IncidenciaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/InicioSesionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/RolService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/RolUsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/LazyworkApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/CambioEstadoController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/CambioPrioridadController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/IncidenciaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/InicioSesionController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/PrioridadesIncidenciasController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/RolController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/RolUsuarioController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/controlador/UsuarioController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/CambioEstado.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/CambioPrioridad.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/EstadoIncidencia.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/Incidencia.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/InicioSesion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/PrioridadIncidencia.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/Rol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/RolUsuario.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/entidad/Usuario.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/CambioEstadoCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/CambioPrioridadCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/EstadosIncidenciasCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/IncidenciaCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/InicioSesionCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/PrioridadesIncidenciasCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/RolCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/UsuarioCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/repositorio/UsuarioRolCrudRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/CambioEstadoService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/CambioPrioridadService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/EstadosIncidenciasService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/IncidenciaService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/InicioSesionService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/PrioridadesIncidenciasService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/RolService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/RolUsuarioService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BackEnd/target/classes/com/lazywork/servicios/UsuarioService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/Incidencia/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/Incidencia/js/cargar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/RolUsuario/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/RolUsuario/js/funciones.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/js/enviar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/js/funcion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/RolUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/RolUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Encuentra/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Encuentra/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Estado/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Estado/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Incidencia/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Inicio/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Incidencia/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Incidencia/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Incidencia/js/code.jquery.com_jquery-3.7.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Incidencia/js/code.jquery.com_jquery-3.7.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Incidencia/js/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Incidencia/js/funciones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Inicio/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/RolUsuario/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Inicio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Inicio/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Inicio/js/code.jquery.com_jquery-3.7.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Inicio/js/code.jquery.com_jquery-3.7.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Inicio/js/funcionesinicio.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Inicio/js/funcionesinicio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Prioridad/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Prioridad/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Tiene/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Tiene/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Tiene/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Tiene/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Tiene/js/cargar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Tiene/js/cargar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Tiene/js/code.jquery.com_jquery-3.7.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Tiene/js/code.jquery.com_jquery-3.7.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Tiene/js/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Tiene/js/funciones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Usuario/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Usuario/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Usuario/js/code.jquery.com_jquery-3.7.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/js/code.jquery.com_jquery-3.7.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front/Usuario/js/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/Usuario/js/funciones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lazywork.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/../lazywork.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/LazyworkApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/LazyworkApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/CambioEstadoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/CambioPrioridadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/CambioPrioridadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/IncidenciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/IncidenciaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/InicioSesionControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/PrioridadesIncidenciasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/controlador/PrioridadesIncidenciasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/RolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioRolesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/controlador/UsuarioRolesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/CambioEstado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/CambioPrioridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/CambioPrioridad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/EstadoIncidencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/EstadoIncidencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/Incidencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/Incidencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/InicioSesion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/PrioridadIncidencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/PrioridadIncidencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/Rol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/entidad/Rol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/entidad/UsuarioRol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/CambioEstadoCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/CambioEstadoCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/CambioPrioridadCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/CambioPrioridadCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/EstadosIncidenciasCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/EstadosIncidenciasCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/IncidenciaCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/IncidenciaCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/InicioSesionCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/InicioSesionCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/PrioridadesIncidenciasCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/PrioridadesIncidenciasCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/RolCrudRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/repositorio/UsuarioCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioRolCrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/repositorio/UsuarioRolCrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/CambioEstadoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/CambioEstadoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/CambioPrioridadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/CambioPrioridadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/EstadosIncidenciasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/EstadosIncidenciasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/IncidenciaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/InicioSesionServicios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/PrioridadesIncidenciasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/main/java/com/lazywork/servicios/PrioridadesIncidenciasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/RolesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioRolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioRolesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lazywork/servicios/UsuarioServicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lazywork/LazyworkApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/src/test/java/com/lazywork/LazyworkApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,22 +247,24 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
-  <component name="ProjectId" id="2V4rImpNEBJvw3Tz1VF36JqvSvm" />
+  <component name="ProjectId" id="2V93TA7l3WUQ6VNwkR4bCHO1XDD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/colaj/Downloads/lazywork/BackEnd&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/colaj/Downloads/lazywork/lazywork"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="LazyworkApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lazywork.LazyworkApplication" />
@@ -55,17 +279,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.LazyworkApplication" />
@@ -75,35 +288,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4069b7c5-95fb-420d-837d-faa54b0402dd" name="Changes" comment="" />
-      <created>1694106120814</created>
+      <changelist id="0d52b5dd-e339-4c55-985f-45074513abdd" name="Changes" comment="" />
+      <created>1694234475497</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1694106120814</updated>
+      <updated>1694234475497</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="ramaJulian" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

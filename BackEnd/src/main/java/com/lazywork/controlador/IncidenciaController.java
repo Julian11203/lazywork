@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/incidencia")
 public class IncidenciaController {
@@ -17,7 +17,7 @@ public class IncidenciaController {
     @Autowired
     private IncidenciaService incidenciaService;
 
-    @GetMapping("/listar")
+    @GetMapping("/lisar")
     public ResponseEntity<List<Incidencia>> obtenerTodasLasIncidencias() {
         List<Incidencia> incidencias = incidenciaService.obtenerTodasLasIncidencias();
         return ResponseEntity.ok(incidencias);
@@ -34,17 +34,18 @@ public class IncidenciaController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Incidencia> crearIncidencia(@RequestBody Incidencia incidenciaG) {
-            incidenciaService.crearIncidencia(incidenciaG);
-            return ResponseEntity.ok(incidenciaG);
+    public ResponseEntity<Incidencia> crearIncidencia(@RequestBody Incidencia incidencia) {
+        Incidencia incidenciaCreada = incidenciaService.crearIncidencia(incidencia);
+        return ResponseEntity.status(HttpStatus.CREATED).body(incidenciaCreada);
     }
 
-    @PutMapping("/actualizar")
-    public ResponseEntity<Incidencia> actualizarIncidencia(@RequestBody Incidencia incidenciaG) {
-        Optional<Incidencia> incidencia = incidenciaService.obtenerIncidenciaPorId(incidenciaG.getIncidenciaID());
-        if (incidencia.isPresent()) {
-            incidenciaService.crearIncidencia(incidenciaG);
-            return ResponseEntity.ok(incidencia.get());
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<Incidencia> actualizarIncidencia(@PathVariable Long id, @RequestBody Incidencia incidencia) {
+        Optional<Incidencia> incidenciaActual = incidenciaService.obtenerIncidenciaPorId(id);
+        if (incidenciaActual.isPresent()) {
+            incidencia.setId(id);
+            Incidencia incidenciaActualizada = incidenciaService.actualizarIncidencia(incidencia);
+            return ResponseEntity.ok(incidenciaActualizada);
         } else {
             return ResponseEntity.notFound().build();
         }
