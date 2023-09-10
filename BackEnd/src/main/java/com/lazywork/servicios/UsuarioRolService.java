@@ -33,4 +33,8 @@ public class UsuarioRolService {
     public void deleteById(String id) {
         repoUsuarioRol.deleteById(id);
     }
+
+    public List<UsuarioRol> existsUsuario(String id){
+        return repoUsuarioRol.existsUsuario(id);
+    }
 }

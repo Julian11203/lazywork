@@ -1,7 +1,9 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.UsuarioRol;
+import com.lazywork.servicios.RolService;
 import com.lazywork.servicios.UsuarioRolService;
+import com.lazywork.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ public class UsuarioRolController {
 
     @Autowired
     private UsuarioRolService servUsuarioRol;
+    private UsuarioServicio servUsuario;
+    private RolService servRol;
 
     @GetMapping("/findAll")
     public ResponseEntity<List<UsuarioRol>> findAlll() {
@@ -36,10 +40,22 @@ public class UsuarioRolController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<UsuarioRol> save(@RequestBody UsuarioRol usuarioRol) {
+    public ResponseEntity<Void> save(@RequestBody UsuarioRol usuarioRol) {
         if(servUsuarioRol.existsById(String.valueOf(usuarioRol.getUsuarioRolID())) == false){
-            servUsuarioRol.save(usuarioRol);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            if(servUsuario.findById(String.valueOf(usuarioRol.getUsuario().getId())).isPresent()){
+                if(servUsuarioRol.existsUsuario(String.valueOf(usuarioRol.getUsuario().getId())).isEmpty()){
+                    if(servRol.existsById(String.valueOf(usuarioRol.getRol().getRolID()))){
+                        servUsuarioRol.save(usuarioRol);
+                        return ResponseEntity.status(HttpStatus.CREATED).build();
+                    }else{
+                        return ResponseEntity.notFound().build();
+                    }
+                }else{
+                    return ResponseEntity.badRequest().build();
+                }
+            }else{
+                return ResponseEntity.notFound().build();
+            }
         }else{
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
