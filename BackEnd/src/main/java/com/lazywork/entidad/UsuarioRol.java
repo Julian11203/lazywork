@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 public class UsuarioRol {
 
     @Id
-    /*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     */
     @Column(name = "UsuarioRolID")
     private Long usuarioRolID;
 
@@ -21,7 +19,14 @@ public class UsuarioRol {
     @JoinColumn(name = "RolID", nullable = false)
     private Rol rol;
 
-    // Getters y Setters
+    public UsuarioRol(Long usuarioRolID, Usuario usuario, Rol rol) {
+        this.usuarioRolID = usuarioRolID;
+        this.usuario = usuario;
+        this.rol = rol;
+    }
+
+    public UsuarioRol() {
+    }
 
     public Long getUsuarioRolID() {
         return usuarioRolID;
