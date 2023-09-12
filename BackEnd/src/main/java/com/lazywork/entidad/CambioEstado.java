@@ -2,6 +2,7 @@ package com.lazywork.entidad;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,28 +27,59 @@ public class CambioEstado {
     private String descripcion;
 
     @Column(name = "FechaRegistro", nullable = false)
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
+    public CambioEstado(Long cambioEstadoID, Incidencia incidencia, EstadoIncidencia estado, String descripcion, LocalDate fechaRegistro) {
+        this.cambioEstadoID = cambioEstadoID;
+        this.incidencia = incidencia;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public CambioEstado() {
+    }
     // Getters y Setters
+
 
     public Long getCambioEstadoID() {
         return cambioEstadoID;
+    }
+
+    public void setCambioEstadoID(Long cambioEstadoID) {
+        this.cambioEstadoID = cambioEstadoID;
     }
 
     public Incidencia getIncidencia() {
         return incidencia;
     }
 
+    public void setIncidencia(Incidencia incidencia) {
+        this.incidencia = incidencia;
+    }
+
     public EstadoIncidencia getEstado() {
         return estado;
+    }
+
+    public void setEstado(EstadoIncidencia estado) {
+        this.estado = estado;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public Date getFechaRegistro() {
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
     @Override
@@ -60,6 +92,7 @@ public class CambioEstado {
                 ", fechaRegistro=" + fechaRegistro +
                 '}';
     }
+
     public void setId(Long id){
 
     }

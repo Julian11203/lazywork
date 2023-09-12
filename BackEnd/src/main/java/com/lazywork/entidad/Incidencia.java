@@ -40,7 +40,7 @@ public class Incidencia {
 
     // Getters y Setters
 
-    public Long getIncidenciaID() {
+    public String getIncidenciaID() {
         return incidenciaID;
     }
 
