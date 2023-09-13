@@ -1,7 +1,5 @@
 package com.lazywork.entidad;
-
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,15 +15,16 @@ public class InicioSesion {
     @JoinColumn(name = "UsuarioID", referencedColumnName = "UsuarioID", nullable = false)
     private Usuario usuario;
 
-    @Column(name = "Tiempodesesion", nullable = false)
-    private LocalDateTime tiempodesesion; // Corregido el tipo de dato a LocalDateTime
+
+    @Column(nullable = false)
+    private LocalDateTime tiempodesesion;
 
     @Column(name = "FechaHoraInicio", nullable = false)
     private LocalDateTime fechaHoraInicio;
 
+
     @Column(nullable = true)
     private LocalDateTime FechaHoraFin;
-
     // Constructor por defecto
     public InicioSesion() {
     }
@@ -62,24 +61,15 @@ public class InicioSesion {
         this.fechaHoraInicio = fechaHoraInicio;
     }
 
-
-    public LocalDateTime getTiempodesesion() {
-        return tiempodesesion;
-    }
-
     public void setTiempodesesion(LocalDateTime tiempodesesion) {
         this.tiempodesesion = tiempodesesion;
-    }
-
-    public LocalDateTime getFechaHoraFin() {
-        return FechaHoraFin;
     }
 
     public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
         FechaHoraFin = fechaHoraFin;
     }
+// Puedes agregar otros métodos y personalizar la entidad según tus necesidades
 
-    // Puedes agregar otros métodos y personalizar la entidad según tus necesidades
 
     @Override
     public String toString() {

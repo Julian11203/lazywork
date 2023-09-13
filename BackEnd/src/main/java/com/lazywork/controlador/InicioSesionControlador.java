@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/iniciosesion")
-@CrossOrigin("*")
 public class InicioSesionControlador {
     private final InicioSesionServicios inicioSesionServicios;
-
+    @Autowired
+    private UsuarioServicio usuarioServicio;
     @Autowired
     public InicioSesionControlador(InicioSesionServicios inicioSesionServicios) {
         this.inicioSesionServicios = inicioSesionServicios;
@@ -36,19 +36,23 @@ public class InicioSesionControlador {
     }
 
     @PostMapping("/insertar")
-    public ResponseEntity<InicioSesion> insertarInicioSesion(@RequestBody InicioSesion inicioSesion) {
-        // Asegúrate de que el usuario asociado a inicioSesion exista en la base de datos antes de insertar.
-        // Puedes hacer la verificación en el servicio antes de realizar la inserción.
-        String usuarioId = String.valueOf(inicioSesion.getUsuario().getId()); // Suponiendo que tienes un método getId() en Usuario
-        if (usuarioId != null && UsuarioServicio.existeUsuario(usuarioId)) {
+
+    public ResponseEntity<?> insertarInicioSesion(@RequestBody InicioSesion inicioSesion) {
+        if (inicioSesion.getUsuario() == null) {
+            return new ResponseEntity<>("El usuario no puede ser nulo", HttpStatus.BAD_REQUEST);
+        }
+
+        Long usuarioId = inicioSesion.getUsuario().getId();
+        if (usuarioId != null && usuarioServicio.existeUsuario(usuarioId)) {
+            inicioSesion.setTiempodesesion(LocalDateTime.now()); // Establece el valor del tiempo de sesión
             InicioSesion nuevoInicioSesion = inicioSesionServicios.insertarInicioSesion(inicioSesion);
             if (nuevoInicioSesion != null) {
                 return new ResponseEntity<>(nuevoInicioSesion, HttpStatus.CREATED);
             } else {
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>("No se pudo crear el inicio de sesión", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // El usuario no existe en la base de datos.
+            return new ResponseEntity<>("El usuario no existe", HttpStatus.BAD_REQUEST);
         }
     }
 

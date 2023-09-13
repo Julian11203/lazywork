@@ -17,10 +17,6 @@ public class InicioSesionServicios {
         this.inicioSesionRepository = inicioSesionRepository;
     }
 
-    public Optional<InicioSesion> findInicioSesionById(Long id) {
-        return inicioSesionRepository.findById(String.valueOf(id));
-    }
-
     public List<InicioSesion> listaIniciosSesion() {
         return (List<InicioSesion>) inicioSesionRepository.findAll();
     }
@@ -44,7 +40,9 @@ public class InicioSesionServicios {
         }
         return null;
     }
-
+    public Optional<InicioSesion> findInicioSesionById(Long id) {
+        return inicioSesionRepository.findById(String.valueOf(id));
+    }
     public void eliminarInicioSesion(Long id) {
         inicioSesionRepository.deleteById(String.valueOf(id));
     }

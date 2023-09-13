@@ -1,9 +1,12 @@
 package com.lazywork.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "Usuarios")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario {
 
     @Id
@@ -20,24 +23,21 @@ public class Usuario {
     @Column(name = "Documento", length = 50, nullable = false)
     private String documento;
 
-    @Column(name = "NivelSoporte", length = 50, nullable = false)  // Corrección: Eliminado espacio en el nombre
-    private String NivelSoporte;
+    @NotNull
+    private String nivelSoporte;
 
     // Constructor por defecto
     public Usuario() {
     }
 
     // Constructor con parámetros
-    public Usuario(String nombre, String apellido, String documento, String NivelSoporte) {
+    public Usuario(Long id, String nombre, String apellido, String documento, String nivelSoporte) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.documento = documento;
-        this.NivelSoporte = NivelSoporte;
+        this.nivelSoporte = nivelSoporte;
     }
-
-    // Getters y setters
-
-
     public Long getId() {
         return id;
     }
@@ -71,11 +71,11 @@ public class Usuario {
     }
 
     public String getNivelSoporte() {
-        return NivelSoporte;
+        return nivelSoporte;
     }
 
     public void setNivelSoporte(String nivelSoporte) {
-        NivelSoporte = nivelSoporte;
+        this.nivelSoporte = nivelSoporte;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Usuario {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", documento='" + documento + '\'' +
-                ", NivelSoporte='" + NivelSoporte + '\'' +
+                ", nivelSoporte='" + nivelSoporte + '\'' +
                 '}';
     }
 }

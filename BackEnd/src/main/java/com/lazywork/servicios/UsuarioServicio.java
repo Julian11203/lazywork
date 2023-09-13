@@ -18,9 +18,10 @@ public class UsuarioServicio {
         UsuarioServicio.usuarioRepository = usuarioRepository;
     }
 
-    public static boolean existeUsuario(String usuarioId) {
+
+    public static boolean existeUsuario(Long usuarioId) {
         // Utiliza el repositorio de usuarios para buscar el usuario por su ID.
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(String.valueOf(usuarioId));
 
         // Verificar si se encontró el usuario
         return usuarioOptional.isPresent();
@@ -62,7 +63,10 @@ public class UsuarioServicio {
         }
     }
 
-
+    public boolean existsById(String id) {
+        // Lógica para verificar si un usuario existe por su ID
+        return usuarioRepository.existsById(id);
+    }
 
     // Puedes agregar más métodos según tus necesidades, como actualización, búsqueda por otros campos, etc.
 }

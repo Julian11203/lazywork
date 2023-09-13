@@ -51,8 +51,9 @@
                 <table class="table" id="tableid">
                     <thead>
                       <tr>
-                        <th scope="col">rol id</th>
-                        <th scope="col">Nombre rol</th>
+                        <th scope="col">Usuario rol (ID)</th>
+                        <th scope="col">Usuario (ID)</th>
+                        <th scope="col">Rol (ID)</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -70,7 +71,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro de eliminar el rol?</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro de eliminar el rol al usuario?</h1>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -86,18 +87,22 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar nuevo rol</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar nuevo rol al usuario</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form class="row g-3">
               <div class="col-md-3">
-                <label class="form-label">rol id<span class="required"> *</span></label>
-                <input type="text" class="form-control border-dark" id="rolId" name="RolId" required>
+                <label class="form-label">Usuario rol (ID)<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="usuarioRolId" name="UsuarioRolId" required>
               </div>
               <div class="col-md-9">
-                <label class="form-label">Nombre rol<span class="required"> *</span></label>
-                <input type="text" class="form-control border-dark" id="nombreRol" name="NombreRol" required>
+                <label class="form-label">Usuario (ID)<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="usuarioId" name="UsuarioId" required>
+              </div>
+              <div class="col-md-9">
+                <label class="form-label">Rol (ID)<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="rolId" name="RolId" required>
               </div>
 
               <div class="col-auto">
@@ -120,18 +125,22 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Rol</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Rol al Usuario</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form class="row g-3" id="actu">
                   <div class="col-md-3">
-                    <label class="form-label">Rol id</label>
-                    <input type="text" class="form-control border-dark" id="rolidAC" name="RolId" required>
+                    <label class="form-label">Usuario rol (ID)</label>
+                    <input type="text" class="form-control border-dark" id="usuariorolidAC" name="UsuarioRol" required>
                   </div>
                   <div class="col-md-9">
-                    <label class="form-label">Nombre rol<span class="required"> *</span></label>
-                    <input type="text" class="form-control border-dark" id="nombrerolAC" name="NombreRol" required>
+                    <label class="form-label">Usuario (ID)<span class="required"> *</span></label>
+                    <input type="text" class="form-control border-dark" id="usuarioidAC" name="UsuarioId" required>
+                  </div>
+                  <div class="col-md-9">
+                    <label class="form-label">Rol (ID)<span class="required"> *</span></label>
+                    <input type="text" class="form-control border-dark" id="rolidAC" name="RolId" required>
                   </div>
                   <div class="col-auto">
                     <div class="alert alert-dismissible" role="alert" id="errorAc"></div>
