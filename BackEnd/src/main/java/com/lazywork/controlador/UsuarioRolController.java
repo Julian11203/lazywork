@@ -44,17 +44,26 @@ public class UsuarioRolController {
             return ResponseEntity.notFound().build();
         }
     }
-    // Corregir
-    @PostMapping("/save/{usuarioID}/{rolID}")
-    public ResponseEntity<Void> save(@PathVariable String usuarioID, @PathVariable String rolID) {
-        if((servUsuario.findById(usuarioID).isPresent() && servRol.existsById(rolID)) && (servUsuarioRol.existsUsuario(usuarioID).isEmpty())){
-            UsuarioRol usuarioRol = new UsuarioRol();
-            usuarioRol.setUsuario(servUsuario.findById(usuarioID).get());
-            usuarioRol.setRol(servRol.findById(rolID).get());
-            servUsuarioRol.save(usuarioRol);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+
+    @PostMapping("/save")
+    public ResponseEntity<Void> save(@RequestBody UsuarioRol usuarioRol) {
+        if(servUsuarioRol.existsById(String.valueOf(usuarioRol.getUsuarioRolID())) == false){
+            if(servUsuario.findById(String.valueOf(usuarioRol.getUsuario().getId())).isPresent()){
+                if(servUsuarioRol.existsUsuario(String.valueOf(usuarioRol.getUsuario().getId())).isEmpty()){
+                    if(servRol.existsById(String.valueOf(usuarioRol.getRol().getRolID()))){
+                        servUsuarioRol.save(usuarioRol);
+                        return ResponseEntity.status(HttpStatus.CREATED).build();
+                    }else{
+                        return ResponseEntity.notFound().build();
+                    }
+                }else{
+                    return ResponseEntity.badRequest().build();
+                }
+            }else{
+                return ResponseEntity.notFound().build();
+            }
         }else{
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
     }
 
