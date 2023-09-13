@@ -49,7 +49,8 @@ function findAll(){
             $("#tableid tbody").remove();
             for(i=0;i<respuesta.length;i++){
                 tabla.innerHTML += '<tr><td>' + respuesta[i].usuarioRolID +
-                '</td><td>' + respuesta[i].nombreRol +
+                '</td><td>' + respuesta[i].usuario.id +
+                '</td><td>' + respuesta[i].rol.rolID +
                 '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='deleteById(\""+respuesta[i].usuarioRolID+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta[i].usuarioRolID+"\")'> <i class='material-icons'>edit</i></a>" +
                 '</td></tr>';
             }      
@@ -69,21 +70,26 @@ function save(){
         $("#errormodal").text("❌ Ingrese todos los campos requeridos para ingresar...");
         return;
     }
+
     data={
         usuarioRolID: usuarioRolID,
-        usuario: usuario,
-        rol: rol
+        usuario: {
+            id: usuario
+        },
+        rol: {
+            rolID: rol
+        }
     }
     $.ajax({
-        url:"http://localhost:8080/usuario-rol/save/" + usuario+"/"+rol,
+        url:"http://localhost:8080/usuario-rol/save",
         type:"POST",
         data: JSON.stringify(data),
         contentType:"application/json",
         success: function(){
             $("#registrarModal").modal("hide");
             $("#usuarioRolId").val('');
-            $("#usuario").val('');
-            $("#rol").val('');
+            $("#usuarioId").val('');
+            $("#rolId").val('');
             findAll(); 
         },
         error: function(xhr) {
@@ -102,39 +108,7 @@ function save(){
     })
 }
 
-function re_save(){
-    let errorModal = document.querySelector('#errorAc')
-    errorModal.innerHTML='';
-    errorModal.classList.remove('alert-danger')
-    let usuarioRolID=$("#usuariorolidAC").val();
-    let usuario=$("#usuarioAC").val();
-    let rol=$("#rolAC").val();
-    if (usuarioRolID === '' || usuario === '' || rol === '') {
-        errorModal.classList.add('alert-danger');
-        $("#errorAc").text("❌ Ingrese todos los campos requeridos para actualizar...");
-        return;
-    }
-    data={
-        usuarioRolID: usuarioRolID,
-        usuario: usuario,
-        rol: rol
-    }
-    $.ajax({
-        url:"http://localhost:8080/usuario-rol/re_save",
-        type:"PUT",
-        data: JSON.stringify(data),
-        contentType:"application/json",
-        success: function(){
-            $("#actualizarModal").modal("hide");
-            $("#usuariorolidAC").val('');
-            $("#usuarioAC").val('');
-            $("#rolAC").val('');
-            findAll();
-        },
-        error: function(xhr) {
-        }  
-    })
-}
+
 
 
 
