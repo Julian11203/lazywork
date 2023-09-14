@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -17,10 +16,10 @@ public class UsuarioService {
     private UsuarioCrudRepository repoUsuario;
 
     public boolean existsById(Long id) {
-        return repoUsuario.existsById(String.valueOf(id));
+        return repoUsuario.existsById(id);
     }
 
-    public Optional<Usuario> findById(String id) {
+    public Optional<Usuario> findById(Long id) {
         return repoUsuario.findById(id);
     }
 
@@ -37,7 +36,7 @@ public class UsuarioService {
         }
     }
 
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         repoUsuario.deleteById(id);
     }
 }

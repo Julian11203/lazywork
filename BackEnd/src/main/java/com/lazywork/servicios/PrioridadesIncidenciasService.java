@@ -20,7 +20,7 @@ public class PrioridadesIncidenciasService {
     }
 
     public Optional<PrioridadIncidencia> obtenerPrioridadesIncidenciasPorId(Long id) {
-        return prioridadesIncidenciasCrudRepository.findById(String.valueOf(id));
+        return prioridadesIncidenciasCrudRepository.findById(id);
     }
 
     public PrioridadIncidencia crearPrioridadesIncidencias(PrioridadIncidencia prioridadesIncidencias) {
@@ -32,6 +32,6 @@ public class PrioridadesIncidenciasService {
     }
 
     public void eliminarPrioridadesIncidencias(Long id) {
-        prioridadesIncidenciasCrudRepository.deleteById(String.valueOf(id));
+        prioridadesIncidenciasCrudRepository.deleteById(id);
     }
 }

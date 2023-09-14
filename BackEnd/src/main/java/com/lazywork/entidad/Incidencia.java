@@ -3,6 +3,7 @@ package com.lazywork.entidad;
 import jakarta.persistence.*;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -36,9 +37,20 @@ public class Incidencia {
     private PrioridadIncidencia prioridad;
 
     @Column(name = "FechaRegistro", nullable = false)
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
-    // Getters y Setters
+    public Incidencia(Usuario usuario, String ubicacion, String nombreIncidencia, String descripcion, EstadoIncidencia estado, PrioridadIncidencia prioridad, LocalDate fechaRegistro) {
+        this.usuario = usuario;
+        this.ubicacion = ubicacion;
+        this.nombreIncidencia = nombreIncidencia;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.prioridad = prioridad;
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public Incidencia() {
+    }
 
     public String getIncidenciaID() {
         return incidenciaID;
@@ -96,11 +108,11 @@ public class Incidencia {
         this.prioridad = prioridad;
     }
 
-    public Date getFechaRegistro() {
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
