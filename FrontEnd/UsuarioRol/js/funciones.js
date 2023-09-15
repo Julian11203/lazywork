@@ -17,8 +17,8 @@ function findById(){
             $("#byid").val("");
             $("#tableid tbody").remove();
             tabla.innerHTML += '<tr><td>' + respuesta.usuarioRolID +
-            '</td><td>' + respuesta.usuario +
-            '</td><td>' + respuesta.rol +
+            '</td><td>' + respuesta.usuario.id +
+            '</td><td>' + respuesta.rol.rolID +
             '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='deleteById(\""+respuesta.usuarioRolID+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta.usuarioRolID+"\")'> <i class='material-icons'>edit</i></a>" +
             '</td></tr>';         
         },
