@@ -19,21 +19,26 @@ public class RolService {
         this.repoRol = repoRol;
     }
 
-    public List<Rol> findAll() {
+    public List<Rol> finAll() {
         return (List<Rol>) repoRol.findAll();
     }
-    public boolean existsById(Long id){
-        return repoRol.existsById(String.valueOf(id));
+
+    public boolean existsById(String id){
+        return repoRol.existsById(id);
     }
-    public Optional<Rol> findById(Long id) {
-        return repoRol.findById(String.valueOf(id));
+    public Optional<Rol> findById(String id) {
+        return repoRol.findById(id);
     }
 
     public Rol save(Rol roles) {
         return repoRol.save(roles);
     }
 
-    public void deleteById(Long id) {
-        repoRol.deleteById(String.valueOf(id));
+    public void deleteById(String id) {
+        repoRol.deleteById(id);
+    }
+
+    public boolean existsInUsuarioRol(String id){
+        return repoRol.existsInUsuarioRol(id);
     }
 }

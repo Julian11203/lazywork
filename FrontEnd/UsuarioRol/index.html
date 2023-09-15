@@ -36,9 +36,10 @@
               <div class="col">
                 <div class="input-group">
                   <input type="number" class="form-control " id="byid" placeholder="Buscar por ID" aria-label="Buscar por ID" aria-describedby="button-addon2">
-                  <a href='#' class='btn buscar-link col-md-1 btn-outline-primary' onclick="buscarUsuarioId()"><i class='material-icons'>search</i></a>
+                  <a href='#' class='btn buscar-link col-md-1 btn-outline-primary' onclick="findById()"><i class='material-icons'>search</i></a>
                   <a href='#' class='btn agregar-link col-md-1 btn-outline-success' data-bs-toggle="modal" data-bs-target="#registrarModal"><i class='material-icons'>add_box</i></a>
-                  <a href='#' class='btn listar-link col-md-1 btn-outline-secondary' onclick="listarUsuarios()"><i class='material-icons'>list</i></a>
+                  <a href='#' class='btn listar-link col-md-1 btn-outline-secondary' onclick="findAll()"><i class='material-icons'>list</i></a>
+                  
                 </div>
               </div>
             </div>
@@ -51,15 +52,13 @@
                 <table class="table" id="tableid">
                     <thead>
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Nº registro</th>
+                        <th scope="col">Usuario (ID)</th>
+                        <th scope="col">Rol (ID)</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
-    
+                      
                     </tbody>
                   </table>
             </div>
@@ -68,12 +67,12 @@
         </div>
       
     
-    <!-- Modal -->
+    <!-- Modal ELIMINAR-->
     <div class="modal fade modal-sm" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro de eliminar el usuario?</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro de eliminar el rol al usuario?</h1>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -89,26 +88,22 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar nuevo Usuario</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar nuevo rol al usuario</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form class="row g-3">
               <div class="col-md-3">
-                <label class="form-label">ID<span class="required"> *</span></label>
-                <input type="text" class="form-control border-dark" id="id" name="id" required>
+                <label class="form-label">Nº Registro<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="usuarioRolId" name="UsuarioRolId" required>
               </div>
               <div class="col-md-9">
-                <label class="form-label">Nombre<span class="required"> *</span></label>
-                <input type="text" class="form-control border-dark" id="nombre" name="Apellido" required>
+                <label class="form-label">Usuario (ID)<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="usuarioId" name="UsuarioId" required>
               </div>
-              <div class="col-md-8">
-                <label class="form-label">Apellido<span class="required"> *</span></label>
-                <input type="text" class="form-control border-dark" id="apellido" name="Apellido" required>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Documento<span class="required">*</span></label>
-                <input type="number" class="form-control border-dark" id="documento" name="Documento" required>
+              <div class="col-md-9">
+                <label class="form-label">Rol (ID)<span class="required"> *</span></label>
+                <input type="text" class="form-control border-dark" id="rolId" name="RolId" required>
               </div>
 
               <div class="col-auto">
@@ -119,51 +114,14 @@
           <div class="modal-footer">
             <div class="alert" role="alert" id="errormodal"></div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-success" type="submit" id="enviar" onclick="insertarUsuarios()">Registrar</button>
+            <button class="btn btn-success" type="submit" id="enviar" onclick="save()">Registrar</button>
           </div>
         </div>
       </div>
     </div>
 
 
-        <!-- Modal ACTUALIZAR -->
-        <div class="modal fade " id="actualizarModal" tabindex="-1" aria-labelledby="actualizarModal" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Usuario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form class="row g-3" id="actu">
-                  <div class="col-md-3">
-                    <label class="form-label">ID</label>
-                    <input type="text" class="form-control border-dark" id="idAC" name="id" required>
-                  </div>
-                  <div class="col-md-9">
-                    <label class="form-label">Nombre<span class="required"> *</span></label>
-                    <input type="text" class="form-control border-dark" id="nombreAC" name="Nombre" required>
-                  </div>
-                  <div class="col-md-8">
-                    <label class="form-label">Apellido<span class="required"> *</span></label>
-                    <input type="text" class="form-control border-dark" id="apellidoAC" name="Apellido" required>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label">Documento<span class="required">*</span></label>
-                    <input type="number" class="form-control border-dark" id="documentoAC" name="Documento" required>
-                  </div>
-                  <div class="col-auto">
-                    <div class="alert alert-dismissible" role="alert" id="errorAc"></div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" type="submit" id="enviar" onclick="actualizarUsuarios()">Actualizar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       
 
     <script src="js/funciones.js"></script>

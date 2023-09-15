@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/prioridades")
+@CrossOrigin("*")
 public class PrioridadesIncidenciasController {
 
     @Autowired
     private PrioridadesIncidenciasService prioridadesIncidenciasService;
 
-    @GetMapping("/listar")
+    @GetMapping
     public ResponseEntity<List<PrioridadIncidencia>> obtenerTodasLasPrioridadesIncidencias() {
         List<PrioridadIncidencia> prioridadesIncidencias = prioridadesIncidenciasService.obtenerTodasLasPrioridadesIncidencias();
         return ResponseEntity.ok(prioridadesIncidencias);
