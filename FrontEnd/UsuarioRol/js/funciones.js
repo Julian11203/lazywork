@@ -95,12 +95,12 @@ function save(){
         error: function(xhr) {
             if(xhr.status===409){
                 errorModal.classList.add('alert-danger');
-                $("#errormodal").text("❌ El id "+ usuarioRolID +" ya existe, ingrese otro...");
+                $("#errormodal").text("❌ El Nº Registro "+ usuarioRolID +" ya existe, ingrese otro...");
                 return;
             }
             else if(xhr.status===400){
                 errorModal.classList.add('alert-danger');
-                $("#errormodal").text("❌ El usuario o el rol no existe");
+                $("#errormodal").text("❌ Vuelva a verificar los campos Usuario y Rol");
                 return;
             }
         }
