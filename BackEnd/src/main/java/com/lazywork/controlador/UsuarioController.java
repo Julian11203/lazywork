@@ -44,7 +44,7 @@ public class UsuarioController {
             respuesta.add("No se encontro el usuario");
             status = HttpStatus.NOT_FOUND;
         }
-        return new ResponseEntity<>(respuesta, status);
+        return new ResponseEntity(respuesta, status);
     }
 
     @PostMapping("/save")

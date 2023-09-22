@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "Incidencias")
@@ -52,7 +51,7 @@ public class Incidencia {
     public Incidencia() {
     }
 
-    public String getIncidenciaID() {
+    public Long getIncidenciaID() {
         return incidenciaID;
     }
 

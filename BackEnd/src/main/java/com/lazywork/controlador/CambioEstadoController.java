@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/cambio-estado")
+@RequestMapping("/cambioestado")
 public class CambioEstadoController {
 
     @Autowired

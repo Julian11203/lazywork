@@ -18,7 +18,7 @@ public class EstadoIncidencia {
     public EstadoIncidencia() {
     }
 
-    public String getEstadoID() {
+    public Long getEstadoID() {
         return estadoID;
     }
 

@@ -38,7 +38,7 @@ public class IncidenciaService {
     }
 
     public Incidencia crearIncidencia(Incidencia incidencia) {
-        incidencia.setEstado(estadosIncidenciasCrudRepository.findById(incidencia.getEstado().getEstadoID()).get());
+        incidencia.setEstado(estadosIncidenciasCrudRepository.findById(Long.valueOf(incidencia.getEstado().getEstadoID())).get());
         incidencia.setPrioridad(prioridadesIncidenciasCrudRepository.findById(incidencia.getPrioridad().getPrioridadID()).get());
         incidencia.setUsuario(usuarioCrudRepository.findById(incidencia.getUsuario().getUsuarioID()).get());
         incidencia.setFechaRegistro(LocalDate.now());

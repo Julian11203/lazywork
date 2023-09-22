@@ -34,8 +34,8 @@ public class CambioEstadoService {
         return cambioEstadoRepository.findById(id);}
 
     public CambioEstado crearCambioEstado(CambioEstado cambioEstado) {
-        cambioEstado.setIncidencia(incidenciaCrudRepository.findById(cambioEstado.getIncidencia().getIncidenciaID()).get());
-        cambioEstado.setEstado(estadosIncidenciasCrudRepository.findById(cambioEstado.getEstado().getEstadoID()).get());
+        cambioEstado.setIncidencia(incidenciaCrudRepository.findById(Long.valueOf(cambioEstado.getIncidencia().getIncidenciaID())).get());
+        cambioEstado.setEstado(estadosIncidenciasCrudRepository.findById(Long.valueOf(cambioEstado.getEstado().getEstadoID())).get());
         cambioEstado.setFechaRegistro(LocalDate.now());
         return cambioEstadoRepository.save(cambioEstado);
     }
