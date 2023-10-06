@@ -36,7 +36,7 @@ public class UsuarioControlador {
         return new ResponseEntity<>("Usuario creado exitosamente", HttpStatus.CREATED);
     }
     @GetMapping("/buscarporid/{id}")
-    public ResponseEntity<Usuario> findById(@PathVariable String id) {
+    public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioServicio.findById(id);
         return usuario.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -48,7 +48,7 @@ public class UsuarioControlador {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioServicio.findById(id);
         if (usuario.isPresent()) {
             usuarioServicio.delete(id);
@@ -59,7 +59,7 @@ public class UsuarioControlador {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Usuario> actualizarUsuario(@RequestBody Usuario usuarioActualizado, @PathVariable String id) {
+    public ResponseEntity<Usuario> actualizarUsuario(@RequestBody Usuario usuarioActualizado, @PathVariable Long id) {
         try {
             Usuario usuarioGuardado = usuarioServicio.actualizarUsuario(id, usuarioActualizado);
             return new ResponseEntity<>(usuarioGuardado, HttpStatus.OK);

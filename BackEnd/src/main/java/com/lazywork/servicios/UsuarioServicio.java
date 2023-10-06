@@ -21,7 +21,7 @@ public class UsuarioServicio {
 
     public static boolean existeUsuario(Long usuarioId) {
         // Utiliza el repositorio de usuarios para buscar el usuario por su ID.
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(String.valueOf(usuarioId));
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById((usuarioId));
 
         // Verificar si se encontró el usuario
         return usuarioOptional.isPresent();
@@ -31,7 +31,7 @@ public class UsuarioServicio {
         return (List<Usuario>) usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> findById(String id) {
+    public Optional<Usuario> findById(Long id) {
         return usuarioRepository.findById(id);
     }
 
@@ -39,12 +39,12 @@ public class UsuarioServicio {
         return usuarioRepository.save(usuario);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         usuarioRepository.deleteById(id);
     }
 
 
-    public Usuario actualizarUsuario(String id, Usuario usuarioActualizado) {
+    public Usuario actualizarUsuario(Long id, Usuario usuarioActualizado) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
@@ -63,7 +63,7 @@ public class UsuarioServicio {
         }
     }
 
-    public boolean existsById(String id) {
+    public boolean existsById(Long id) {
         // Lógica para verificar si un usuario existe por su ID
         return usuarioRepository.existsById(id);
     }

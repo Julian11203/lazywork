@@ -19,7 +19,7 @@ public class EstadosIncidenciasService {
     }
 
     public Optional<EstadoIncidencia> obtenerEstadosIncidenciasPorId(Long id) {
-        return estadosIncidenciasRepository.findById(String.valueOf(id));
+        return estadosIncidenciasRepository.findById((id));
     }
 
     public EstadoIncidencia crearEstadosIncidencias(EstadoIncidencia estadosIncidencias) {
@@ -31,6 +31,6 @@ public class EstadosIncidenciasService {
     }
 
     public void eliminarEstadosIncidencias(Long id) {
-        estadosIncidenciasRepository.deleteById(String.valueOf(id));
+        estadosIncidenciasRepository.deleteById(id);
     }
 }

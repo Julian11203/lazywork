@@ -7,9 +7,9 @@ import jakarta.persistence.*;
 public class UsuarioRol {
 
     @Id
-    /*
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     */
+
     @Column(name = "UsuarioRolID")
     private Long usuarioRolID;
 
