@@ -1,37 +1,48 @@
 package com.lazywork.entidad;
-
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "inicio_sesion")
+@Table(name = "IniciosSesion")
 public class InicioSesion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "InicioID")
-    private Long inicioID;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id") // Esto puede variar dependiendo de tu modelo de datos
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UsuarioID", referencedColumnName = "UsuarioID", nullable = false)
     private Usuario usuario;
 
-    // Agrega el campo usuarioid con su respectiva columna y relación con el usuario
-    @Column(name = "usuarioid", nullable = false)
-    private Long usuarioid;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHoraInicio = new Date();
+    private LocalDateTime tiempodesesion;
 
-    // Getters y Setters
+    @Column(name = "FechaHoraInicio", nullable = false)
+    private LocalDateTime fechaHoraInicio;
 
-    public Long getInicioID() {
-        return inicioID;
+
+    @Column(nullable = true)
+    private LocalDateTime FechaHoraFin;
+    // Constructor por defecto
+    public InicioSesion() {
     }
 
-    public void setInicioID(Long inicioID) {
-        this.inicioID = inicioID;
+    // Constructor con parámetros
+    public InicioSesion(Usuario usuario, LocalDateTime fechaHoraInicio) {
+        this.usuario = usuario;
+        this.fechaHoraInicio = fechaHoraInicio;
+    }
+
+    // Getters y setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Usuario getUsuario() {
@@ -40,32 +51,34 @@ public class InicioSesion {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        // Asigna el ID del usuario al campo 'usuarioid'
-        this.usuarioid = usuario != null ? usuario.getUsuarioID() : null;
     }
 
-    public Long getUsuarioid() {
-        return usuarioid;
-    }
-
-    public void setUsuarioid(Long usuarioid) {
-        this.usuarioid = usuarioid;
-    }
-
-    public Date getFechaHoraInicio() {
+    public LocalDateTime getFechaHoraInicio() {
         return fechaHoraInicio;
     }
 
-    public void setFechaHoraInicio(Date fechaHoraInicio) {
+    public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
         this.fechaHoraInicio = fechaHoraInicio;
     }
+
+    public void setTiempodesesion(LocalDateTime tiempodesesion) {
+        this.tiempodesesion = tiempodesesion;
+    }
+
+    public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
+        FechaHoraFin = fechaHoraFin;
+    }
+// Puedes agregar otros métodos y personalizar la entidad según tus necesidades
+
 
     @Override
     public String toString() {
         return "InicioSesion{" +
-                "inicioID=" + inicioID +
+                "id=" + id +
                 ", usuario=" + usuario +
+                ", Tiempodesesion=" + tiempodesesion +
                 ", fechaHoraInicio=" + fechaHoraInicio +
+                ", FechaHoraFin=" + FechaHoraFin +
                 '}';
     }
 }

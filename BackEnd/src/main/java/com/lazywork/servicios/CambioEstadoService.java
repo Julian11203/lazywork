@@ -20,6 +20,7 @@ public class CambioEstadoService {
     private  EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository;
 
     @Autowired
+
     public CambioEstadoService(CambioEstadoCrudRepository cambioEstadoCrudRepository, IncidenciaCrudRepository incidenciaCrudRepository, EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository) {
         this.cambioEstadoRepository = cambioEstadoCrudRepository;
         this.incidenciaCrudRepository = incidenciaCrudRepository;
@@ -30,15 +31,20 @@ public class CambioEstadoService {
         return (List<CambioEstado>) cambioEstadoRepository.findAll();
     }
 
+
     public Optional<CambioEstado> obtenerCambioEstadoPorId(Long id) {
         return cambioEstadoRepository.findById(id);}
 
+
+
+
     public CambioEstado crearCambioEstado(CambioEstado cambioEstado) {
-        cambioEstado.setIncidencia(incidenciaCrudRepository.findById(Long.valueOf(cambioEstado.getIncidencia().getIncidenciaID())).get());
-        cambioEstado.setEstado(estadosIncidenciasCrudRepository.findById(Long.valueOf(cambioEstado.getEstado().getEstadoID())).get());
+        cambioEstado.setIncidencia(incidenciaCrudRepository.findById(cambioEstado.getIncidencia().getIncidenciaID()).get());
+        cambioEstado.setEstado(estadosIncidenciasCrudRepository.findById(cambioEstado.getEstado().getEstadoID()).get());
         cambioEstado.setFechaRegistro(LocalDate.now());
         return cambioEstadoRepository.save(cambioEstado);
     }
+
     public void eliminarCambioEstado(Long id) {
         cambioEstadoRepository.deleteById(id);
     }

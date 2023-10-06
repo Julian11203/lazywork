@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/cambio-prioridad")
+@CrossOrigin("*")
 public class CambioPrioridadController {
 
     @Autowired

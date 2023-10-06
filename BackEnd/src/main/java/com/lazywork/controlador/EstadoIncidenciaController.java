@@ -20,7 +20,7 @@ public class EstadoIncidenciaController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<EstadoIncidencia>> obtenerTodasLosEstadosIncidencia() {
-        List<EstadoIncidencia> estadoIncidencias = estadosIncidenciasService.obtenerTodasLosEstadosIncidencias();
+        List<EstadoIncidencia> estadoIncidencias = estadosIncidenciasService.obtenerTodosLosEstadosIncidencias();
         return ResponseEntity.ok(estadoIncidencias);
     }
 
@@ -44,7 +44,7 @@ public class EstadoIncidenciaController {
     public ResponseEntity<EstadoIncidencia> actualizarEstadosIncidencias(@PathVariable Long id, @RequestBody EstadoIncidencia estadoIncidencia) {
         Optional<EstadoIncidencia>estadoIncidenciasActual = estadosIncidenciasService.obtenerEstadosIncidenciasPorId(id);
         if (estadoIncidenciasActual.isPresent()) {
-            estadoIncidencia.setId(id);
+            estadoIncidencia.setEstadoID(id);
             EstadoIncidencia actualizarEstadosIncidencias = estadosIncidenciasService.actualizarEstadosIncidencias(estadoIncidencia);
             return ResponseEntity.ok(actualizarEstadosIncidencias);
         } else {

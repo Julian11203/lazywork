@@ -1,0 +1,114 @@
+/* Estilos para input[type=number] */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Estilos para campos obligatorios */
+.required {
+    color: red;
+}
+
+/* Estilos para enlaces de eliminar */
+.eliminar-link {
+    color: red;
+}
+
+/* Estilos para enlaces de editar */
+.editar-link {
+    color: yellow;
+}
+
+/* Estilos para enlaces de agregar */
+.agregar-link {
+    color: white;
+}
+
+/* Estilo para el ícono de check */
+#check {
+    fill: green;
+}
+
+/* Estilo para el campo de búsqueda por ID */
+#byid {
+    border-color: #185BEA;
+}
+
+/* Estilos para tablas */
+table, th, td {
+    border: 3px solid black;
+    border-color: black !important;
+}
+
+#tableid {
+    box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.7);
+}
+
+#tableid thead tr th {
+    background-color: #185BEA;
+}
+
+#tableid tbody tr td {
+    background-color: #ABBBDE;
+}
+
+/* Estilos para el fondo del cuerpo */
+body {
+    background-color: #E5E5E5;
+}
+
+/* Estilos para el modal de registro */
+#registrarModal {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#registrarModal .modal-content {
+    background-color: #E5E5E5;
+    box-shadow: 9px 7px 11px rgba(0, 0, 0, 0.9);
+}
+
+#registrarModal .modal-body label {
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#registrarModal .modal-header {
+    background-color: gray;
+}
+
+#registrarModal .modal-title {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+/* Estilos para el modal de actualización */
+#actualizarModal .modal-title {
+    color: black;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#actualizarModal .modal-header {
+    background-color: gray;
+}
+
+#actualizarModal {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#actualizarModal .modal-content {
+    background-color: #E5E5E5;
+    box-shadow: 9px 7px 11px rgba(0, 0, 0, 0.9);
+}
+
+#actualizarModal .modal-body label {
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+}

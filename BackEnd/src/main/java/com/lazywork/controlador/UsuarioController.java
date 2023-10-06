@@ -1,7 +1,8 @@
 package com.lazywork.controlador;
 
 import com.lazywork.entidad.Usuario;
-import com.lazywork.servicios.UsuarioService;
+
+import com.lazywork.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
-    private UsuarioService servicioU;
+    private UsuarioServicio servicioU  ;
+
     private HttpStatus status;
     private ArrayList respuesta = new ArrayList<>();
     @Autowired
-    public UsuarioController(UsuarioService servicioU) {
+    public UsuarioController(UsuarioServicio servicioU) {
         this.servicioU = servicioU;
     }
 
@@ -37,7 +39,7 @@ public class UsuarioController {
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<Optional<Usuario>> findById(@PathVariable Long id) {
-        if (servicioU.existsById(Long.valueOf(id))) {
+        if (servicioU.existsById(id)) {
             respuesta.add(servicioU.findById(id).get());
             status = HttpStatus.OK;
         } else {
@@ -50,7 +52,7 @@ public class UsuarioController {
     @PostMapping("/save")
     public ResponseEntity<ArrayList> save(@RequestBody Usuario usuario) {
         respuesta.clear();
-        if(servicioU.existsById(usuario.getUsuarioID()) == false){
+        if(servicioU.existsById(usuario.getId()) == false){
             servicioU.save(usuario);
             respuesta.add("Se ha creado el usuario exitosamente");
             status = HttpStatus.CREATED;
@@ -67,7 +69,7 @@ public class UsuarioController {
     @PutMapping("/re_save")
     public ResponseEntity<ArrayList> re_save(@RequestBody Usuario usuario) {
         respuesta.clear();
-        if(servicioU.existsById(usuario.getUsuarioID())){
+        if(servicioU.existsById(usuario.getId())){
             servicioU.save(usuario);
             respuesta.add("Se ha actualizado correctamente");
             status = HttpStatus.OK;
@@ -83,8 +85,8 @@ public class UsuarioController {
 
     public ResponseEntity<ArrayList> deleteById(@PathVariable Long id) {
         respuesta.clear();
-        if(servicioU.existsById(Long.valueOf(id))){
-            servicioU.deleteById(id);
+        if(servicioU.existsById(id)){
+            servicioU.delete(id);
             respuesta.add("Se elimino correctamente");
             status = HttpStatus.OK;
         }

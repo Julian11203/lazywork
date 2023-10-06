@@ -20,7 +20,7 @@ public class PrioridadesIncidenciasService {
     }
 
     public Optional<PrioridadIncidencia> obtenerPrioridadesIncidenciasPorId(Long id) {
-        return prioridadesIncidenciasCrudRepository.findById(id);
+        return prioridadesIncidenciasCrudRepository.findById((id));
     }
 
     public PrioridadIncidencia crearPrioridadesIncidencias(PrioridadIncidencia prioridadesIncidencias) {

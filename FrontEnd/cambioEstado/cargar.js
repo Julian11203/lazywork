@@ -1,35 +1,54 @@
-// ... (código anterior)
+$(document).ready(function () {
+    let listaInci = document.querySelector('#incidencia')
+    listaInci.innerHTML = ""
+    let listaInciAC = document.querySelector('#incidenciaAC')
+    listaInciAC.innerHTML = ""
+    
+    // Función para cargar la lista de Incidencias en el formulario de registro
+    $.ajax({
+        url: "http://localhost:8080/incidencia/lisar",
+        type: "GET",
+        dataType: "JSON",
+        success: function (respuesta) {
+            listaInci.innerHTML += '<option selected> </option>'
+            listaInciAC.innerHTML += '<option selected> </option>'
+            for (i = 0; i < respuesta.length; i++) {
+                listaInci.innerHTML += '<option value="' + respuesta[i].incidenciaID + '">'
+                    + respuesta[i].incidenciaID + ' '
+                    + respuesta[i].NombreIncidencia + ' '
+                    + respuesta[i].Descripcion + ' '
+                    + respuesta[i].Ubicacion + '</option>';
 
-function findAll() {
-    let errorMessage = document.querySelector('#errormsg');
-    errorMessage.innerHTML = '';
-    errorMessage.classList.remove('alert-danger');
-    let tabla = document.querySelector("#tableid");
+                listaInciAC.innerHTML += '<option value="' + respuesta[i].incidenciaID + '">'
+                    + respuesta[i].incidenciaID + ' '
+                    + respuesta[i].NombreIncidencia + ' '
+                    + respuesta[i].Descripcion + ' '
+                    + respuesta[i].Ubicacion + '</option>';
+            }
+        }
+    });
+
+    // Función para cargar la lista de Estados en el formulario de registro
+    let listaEst = document.querySelector('#estado')
+    listaEst.innerHTML = ''
+    let listaEstAC = document.querySelector('#estadoAC')
+    listaEstAC.innerHTML = ''
     $.ajax({
         url: "http://localhost:8080/estados/listar",
         type: "GET",
-        dataType: "json",
+        datatype: "JSON",
         success: function (respuesta) {
-            $("#tableid tbody").empty(); // Vaciar el contenido de la tabla antes de agregar nuevos datos
-            for (let i = 0; i < respuesta.length; i++) {
-                tabla.innerHTML += '<tr><td>' + respuesta[i].estadoID +
-                    '</td><td>' + respuesta[i].tipoEstado +
-                    '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarEstadoIncidencia(" + respuesta[i].estadoID + ")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(" + respuesta[i].estadoID + ")'> <i class='material-icons'>edit</i></a>" +
-                    '</td></tr>';
+            listaEst.innerHTML += '<option selected> </option>'
+            listaEstAC.innerHTML += '<option selected> </option>'
+            for (i = 0; i < respuesta.length; i++) {
+                listaEst.innerHTML += '<option value="' + respuesta[i].estadoID + '">'
+                    + respuesta[i].estadoID + ' '
+                    + respuesta[i].tipoEstado + '</option>';
+
+                listaEstAC.innerHTML += '<option value="' + respuesta[i].estadoID + '">'
+                    + respuesta[i].estadoID + ' '
+                    + respuesta[i].tipoEstado + '</option>';
             }
-        },
-        error: function (xhr) {
-            console.error("Error al cargar los estados: " + xhr.statusText);
         }
     });
-}
-
-// Resto de tu código (save, update, y otras funciones) permanece sin cambios.
-
-document.getElementById("byid").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        findById();
-    }
 });
-s

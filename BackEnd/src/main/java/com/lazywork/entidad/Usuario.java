@@ -1,51 +1,49 @@
 package com.lazywork.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
-@Table
+@Table(name = "Usuarios")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario {
 
     @Id
-    /*
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     */
-    private Long usuarioID;
+    @Column(name = "UsuarioID")
+    private Long id;
 
-    @Column(nullable = false, length = 50)
-    private String codigoUnico;
-
-    @Column(nullable = false, length = 50)
+    @Column(name = "Nombre", length = 50, nullable = false)
     private String nombre;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Apellido", length = 50, nullable = false)
     private String apellido;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "Documento", length = 50, nullable = false)
     private String documento;
 
-    @Column(nullable = false, length = 50)
+    @NotNull
     private String nivelSoporte;
 
-    @Column(nullable = false, length = 50)
-    private Integer tiempoUsoSistemaMinutos;
-
-
-
-    public Long getUsuarioID() {
-        return usuarioID;
+    // Constructor por defecto
+    public Usuario() {
     }
 
-    public void setUsuarioID(Long usuarioID) {
-        this.usuarioID = usuarioID;
+    // Constructor con parámetros
+    public Usuario(Long id, String nombre, String apellido, String documento, String nivelSoporte) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.documento = documento;
+        this.nivelSoporte = nivelSoporte;
+    }
+    public Long getId() {
+        return id;
     }
 
-    public String getCodigoUnico() {
-        return codigoUnico;
-    }
-
-    public void setCodigoUnico(String codigoUnico) {
-        this.codigoUnico = codigoUnico;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -80,11 +78,14 @@ public class Usuario {
         this.nivelSoporte = nivelSoporte;
     }
 
-    public Integer getTiempoUsoSistemaMinutos() {
-        return tiempoUsoSistemaMinutos;
-    }
-
-    public void setTiempoUsoSistemaMinutos(Integer tiempoUsoSistemaMinutos) {
-        this.tiempoUsoSistemaMinutos = tiempoUsoSistemaMinutos;
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", documento='" + documento + '\'' +
+                ", nivelSoporte='" + nivelSoporte + '\'' +
+                '}';
     }
 }
