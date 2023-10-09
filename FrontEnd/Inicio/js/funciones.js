@@ -101,21 +101,22 @@ function ActualizarInicio() {
     errorModal.classList.remove('alert-danger');
 
     // Obtener los datos del formulario
-    let inicioId= $("#idinicioAC")
+    let inicioId = $("#idInicioAC").val(); // Corregimos el ID del campo oculto
+
     let id = $("#usuarioIdAC").val();
     let fecha = $("#fechaAC").val();
 
     // Crear un objeto con los datos
     let data = {
         id: inicioId,
-        usuario:{
+        usuario: {
             id: id,
         },
         fechaHoraInicio: fecha 
     }; 
 
     $.ajax({
-        url: "http://localhost:8080/api/iniciosesion/actualizar/" + id,
+        url: "http://localhost:8080/api/iniciosesion/actualizar/" + inicioId,
         type: "PUT",
         data: JSON.stringify(data),
         contentType: "application/json",
@@ -123,7 +124,7 @@ function ActualizarInicio() {
             // Limpiar los campos del formulario
             $("#usuarioIdAC").val('');
             $("#fechaAC").val('');
-            $('#registrarModal').modal('hide');
+            $('#actualizarModal').modal('hide'); // Usamos el ID correcto del modal
             listarInicios() 
             
             // Puedes mostrar un mensaje de éxito si lo deseas
@@ -135,6 +136,7 @@ function ActualizarInicio() {
         }
     });
 }
+
 
 
 function eliminarInicio(id) {

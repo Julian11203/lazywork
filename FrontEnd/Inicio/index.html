@@ -110,46 +110,37 @@
 </div>
 
 <!-- Modal ACTUALIZAR INICIO -->
-<div class="modal fade" id="actualizarModal" tabindex="-1" aria-labelledby="actualizarModal" aria-hidden="true">
+
+<!-- Modal ACTUALIZAR INICIO -->
+<div class="modal fade" id="actualizarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Inicio</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Inicio de Sesión</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form class="row g-3" id="actu">
-                    <div class="col-md-3">
-                        <label class="form-label">ID</label>
-                        <input type="text" class="form-control border-dark" id="idAC" name="id" required>
-                    </div>
-                    <div class="col-md-8">
-                        <label class="form-label">Hora<span class="required"> *</span></label>
-                        <input type="time" class="form-control border-dark" id="horaAC" name="hora" required>
-                    </div>
-                    <div class="col-md-8">
-                        <label class="form-label">Fecha<span class="required"> *</span></label>
-                        <input type="date" class="form-control border-dark" id="fechaAC" name="fecha" required>
-                    </div>
-                    <div class="col-md-8">
-                        <label class="form-label">Usuario ID<span class="required"> *</span></label>
-                        <input type="number" class="form-control border-dark" id="usuarioIdAC" name="usuarioId" required>
-                    </div>
-                    <div class="col-auto">
-                        <div class="alert alert-dismissible" role="alert" id="errorAc"></div>
-                    </div>
-                </form>
-                <select id="usuarios">
-                    <option value="">Seleccione un usuario</option>
-                </select>
-            </div>
+            <form>
+                <div class="mb-3">
+                    <label for="usuarioIdAC" class="col-form-label">ID de Usuario:</label>
+                    <input type="number" class="form-control" id="usuarioIdAC">
+                </div>
+                <div class="mb-3">
+                    <label for="fechaAC" class="col-form-label">Fecha y Hora de Inicio:</label>
+                    <input type="datetime-local" class="form-control" id="fechaAC">
+                </div>
+                <!-- Agrega un campo oculto para almacenar el ID del inicio de sesión que se está actualizando -->
+                <input type="hidden" id="idInicioAC">
+            </form>
+            <div class="alert alert-dismissible" role="alert" id="errormodal"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" type="submit" id="enviar" onclick="actualizarInicio(event)">Actualizar</button>
+                <button type="button" class="btn btn-success" onclick="ActualizarInicio()">Guardar cambios</button>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- Modal ELIMINAR INICIO -->
 <div class="modal fade modal-sm" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModal" aria-hidden="true">

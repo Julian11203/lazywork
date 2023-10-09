@@ -25,6 +25,7 @@ public class InicioSesionServicios {
         return inicioSesionRepository.save(inicioSesion);
     }
 
+
     public InicioSesion actualizarInicioSesion(Long id, InicioSesion inicioSesionActualizado) {
         if (existeInicioSesion(id)) {
             InicioSesion inicioSesionExistente = inicioSesionRepository.findById(String.valueOf(id)).orElse(null);

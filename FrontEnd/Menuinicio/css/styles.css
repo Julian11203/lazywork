@@ -1,0 +1,135 @@
+/* Estilos CSS en styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://cdn.pixabay.com/photo/2019/04/10/11/56/watercolor-4116932_1280.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container {
+  max-width: 90%;
+  margin:  auto;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  background-image: url('https://cdn.pixabay.com/photo/2020/08/02/14/18/blue-5457731_1280.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  margin-left: auto;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para manejar el contenido en filas en dispositivos más pequeños */
+}
+.header-left {
+  flex: 1;
+  text-align: left;
+}
+
+.header-right {
+  flex: 1;
+  text-align: right;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 50%;
+}
+
+.product {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border: 2px solid #ccc;
+  transition: transform 0.3s ease-in-out;
+  border: 3px solid black;
+  border-color: black !important;
+  /* Centra el contenido horizontalmente y ocupa todo el ancho */
+  margin: 100px;
+    margin-left: center  ;
+  max-width: center;
+
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product img {
+  max-width: 50px;
+  height: auto;
+}
+
+
+/* Estilos adicionales para dispositivos más pequeños */
+@media (max-width: 768px) {
+  .product-container {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.product-row > div {
+  flex: 1;
+  max-width: calc(33.33% - 20px); /* Para tres elementos por fila */
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .product-row > div {
+    max-width: calc(50% - 20px); /* Para dos elementos por fila en dispositivos más pequeños */
+  }
+}

@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/api/iniciosesion")
+@CrossOrigin("*")
+
 public class InicioSesionControlador {
     private final InicioSesionServicios inicioSesionServicios;
     @Autowired
@@ -58,19 +60,24 @@ public class InicioSesionControlador {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<InicioSesion> actualizarInicioSesion(
+    public ResponseEntity<?> actualizarInicioSesion(
             @PathVariable Long id,
             @RequestBody InicioSesion inicioSesionActualizado
     ) {
-        // Asegúrate de que el usuario asociado a inicioSesionActualizado exista en la base de datos antes de actualizar.
-        // Puedes hacer la verificación en el servicio antes de realizar la actualización.
-        InicioSesion inicioSesion = inicioSesionServicios.actualizarInicioSesion(id, inicioSesionActualizado);
-        if (inicioSesion != null) {
-            return new ResponseEntity<>(inicioSesion, HttpStatus.OK);
+        // Verificar si el inicio de sesión con el ID especificado existe
+        if (inicioSesionServicios.existeInicioSesion(id)) {
+            // Realizar la actualización
+            InicioSesion inicioSesion = inicioSesionServicios.actualizarInicioSesion(id, inicioSesionActualizado);
+            if (inicioSesion != null) {
+                return ResponseEntity.ok(inicioSesion);
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al actualizar el inicio de sesión");
+            }
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inicio de sesión no encontrado");
         }
     }
+
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarInicioSesion(@PathVariable Long id) {
