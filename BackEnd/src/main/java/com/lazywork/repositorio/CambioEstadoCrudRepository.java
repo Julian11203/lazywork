@@ -3,7 +3,9 @@ package com.lazywork.repositorio;
 import com.lazywork.entidad.CambioEstado;
 import com.lazywork.entidad.CambioPrioridad;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CambioEstadoCrudRepository extends CrudRepository<CambioEstado, Long> {
 }
 

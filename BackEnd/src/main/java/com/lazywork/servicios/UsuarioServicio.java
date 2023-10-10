@@ -25,7 +25,7 @@ public class UsuarioServicio {
 
         // Verificar si se encontró el usuario
         return usuarioOptional.isPresent();
-    }    @Autowired
+    }
 
     public List<Usuario> findAll() {
         return (List<Usuario>) usuarioRepository.findAll();
