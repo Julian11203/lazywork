@@ -1,3 +1,3 @@
-Julian Guzman
-Jair Sevillano
-Edilson Bedoya
+- Julian Guzman
+- Jair Sevillano
+- Edilson Bedoya
