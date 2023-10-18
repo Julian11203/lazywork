@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2f9e7ebd-507e-43e1-8b81-ee11274bfb24",
+		"_postman_id": "d3c0316c-8e93-46fb-a423-ecbbc387ba04",
 		"name": "lazywork",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26127259"
@@ -1006,7 +1006,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rolID\": \"1\",\r\n    \"nombreRol\": \"Administrador\"\r\n}",
+							"raw": "{\r\n    \"rolID\": \"1\",\r\n    \"nombreRol\": \"Admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1047,7 +1047,62 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "lazy250217300",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "postgres",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
