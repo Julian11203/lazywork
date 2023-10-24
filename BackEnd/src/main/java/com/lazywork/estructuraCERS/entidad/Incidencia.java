@@ -1,5 +1,6 @@
 package com.lazywork.estructuraCERS.entidad;
 
+import com.lazywork.User.User;
 import jakarta.persistence.*;
 
 
@@ -18,7 +19,7 @@ public class Incidencia {
 
     @ManyToOne
     @JoinColumn(name = "UsuarioID", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
     @Column(name = "Ubicacion", nullable = false)
     private String ubicacion;
@@ -50,11 +51,11 @@ public class Incidencia {
         this.incidenciaID = incidenciaID;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 

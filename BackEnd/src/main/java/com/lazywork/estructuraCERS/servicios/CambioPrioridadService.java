@@ -2,7 +2,7 @@ package com.lazywork.estructuraCERS.servicios;
 
 
 import com.lazywork.estructuraCERS.entidad.CambioPrioridad;
-import com.lazywork.estructuraCERS.repositorio.CambioPrioridadCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.CambioPrioridadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CambioPrioridadService {
 
     @Autowired
-    private CambioPrioridadCrudRepository cambioPrioridadRepository;
+    private CambioPrioridadRepository cambioPrioridadRepository;
 
     public List<CambioPrioridad> obtenerTodosLosCambioPrioridad() {
         return (List<CambioPrioridad>) cambioPrioridadRepository.findAll();

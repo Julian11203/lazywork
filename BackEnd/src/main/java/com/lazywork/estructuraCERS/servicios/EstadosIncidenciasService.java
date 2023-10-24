@@ -1,7 +1,7 @@
 package com.lazywork.estructuraCERS.servicios;
 
 import com.lazywork.estructuraCERS.entidad.EstadoIncidencia;
-import com.lazywork.estructuraCERS.repositorio.EstadosIncidenciasCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.EstadoIncidenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class EstadosIncidenciasService {
 
     @Autowired
-    private EstadosIncidenciasCrudRepository estadosIncidenciasRepository;
+    private EstadoIncidenciaRepository estadosIncidenciasRepository;
 
     public List<EstadoIncidencia> obtenerTodosLosEstadosIncidencias() {
         return (List<EstadoIncidencia>) estadosIncidenciasRepository.findAll();

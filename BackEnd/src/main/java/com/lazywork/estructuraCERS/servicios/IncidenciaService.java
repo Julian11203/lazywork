@@ -1,10 +1,10 @@
 package com.lazywork.estructuraCERS.servicios;
 
 import com.lazywork.estructuraCERS.entidad.Incidencia;
-import com.lazywork.estructuraCERS.repositorio.EstadosIncidenciasCrudRepository;
-import com.lazywork.estructuraCERS.repositorio.IncidenciaCrudRepository;
-import com.lazywork.estructuraCERS.repositorio.PrioridadesIncidenciasCrudRepository;
-import com.lazywork.estructuraCERS.repositorio.UsuarioCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.EstadoIncidenciaRepository;
+import com.lazywork.estructuraCERS.repositorio.IncidenciaRepository;
+import com.lazywork.estructuraCERS.repositorio.PrioridadIncidenciaRepository;
+import com.lazywork.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,13 @@ import java.util.Optional;
 public class
 IncidenciaService {
 
-    private IncidenciaCrudRepository incidenciaRepository;
+    private IncidenciaRepository incidenciaRepository;
 
-    private EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository;
-     private PrioridadesIncidenciasCrudRepository prioridadesIncidenciasCrudRepository;
-     private UsuarioCrudRepository usuarioCrudRepository;
+    private EstadoIncidenciaRepository estadosIncidenciasCrudRepository;
+     private PrioridadIncidenciaRepository prioridadesIncidenciasCrudRepository;
+     private UserRepository usuarioCrudRepository;
     @Autowired
-    public IncidenciaService(IncidenciaCrudRepository incidenciaRepository, EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository, PrioridadesIncidenciasCrudRepository prioridadesIncidenciasCrudRepository, UsuarioCrudRepository usuarioCrudRepository) {
+    public IncidenciaService(IncidenciaRepository incidenciaRepository, EstadoIncidenciaRepository estadosIncidenciasCrudRepository, PrioridadIncidenciaRepository prioridadesIncidenciasCrudRepository, UserRepository usuarioCrudRepository) {
         this.incidenciaRepository = incidenciaRepository;
         this.estadosIncidenciasCrudRepository = estadosIncidenciasCrudRepository;
         this.prioridadesIncidenciasCrudRepository = prioridadesIncidenciasCrudRepository;

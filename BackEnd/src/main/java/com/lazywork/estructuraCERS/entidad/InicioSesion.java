@@ -1,4 +1,5 @@
 package com.lazywork.estructuraCERS.entidad;
+import com.lazywork.User.User;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,7 +14,7 @@ public class InicioSesion {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UsuarioID", referencedColumnName = "UsuarioID", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
 
     @Column(nullable = false)
@@ -30,7 +31,7 @@ public class InicioSesion {
     }
 
     // Constructor con parámetros
-    public InicioSesion(Usuario usuario, LocalDateTime fechaHoraInicio) {
+    public InicioSesion(User usuario, LocalDateTime fechaHoraInicio) {
         this.usuario = usuario;
         this.fechaHoraInicio = fechaHoraInicio;
     }
@@ -45,11 +46,11 @@ public class InicioSesion {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 

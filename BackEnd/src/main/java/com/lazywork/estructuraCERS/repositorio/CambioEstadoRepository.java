@@ -1,9 +1,10 @@
 package com.lazywork.estructuraCERS.repositorio;
 
-import com.lazywork.estructuraCERS.entidad.EstadoIncidencia;
+import com.lazywork.estructuraCERS.entidad.CambioEstado;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EstadosIncidenciasCrudRepository extends CrudRepository<EstadoIncidencia, Long> {
+public interface CambioEstadoRepository extends CrudRepository<CambioEstado, Long> {
 }
+

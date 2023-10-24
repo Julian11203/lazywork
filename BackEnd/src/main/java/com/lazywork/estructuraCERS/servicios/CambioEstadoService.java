@@ -1,9 +1,9 @@
 package com.lazywork.estructuraCERS.servicios;
 
 import com.lazywork.estructuraCERS.entidad.CambioEstado;
-import com.lazywork.estructuraCERS.repositorio.CambioEstadoCrudRepository;
-import com.lazywork.estructuraCERS.repositorio.EstadosIncidenciasCrudRepository;
-import com.lazywork.estructuraCERS.repositorio.IncidenciaCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.CambioEstadoRepository;
+import com.lazywork.estructuraCERS.repositorio.EstadoIncidenciaRepository;
+import com.lazywork.estructuraCERS.repositorio.IncidenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,13 @@ import java.util.Optional;
 @Service
 public class CambioEstadoService {
 
-    private  CambioEstadoCrudRepository cambioEstadoRepository;
-    private  IncidenciaCrudRepository incidenciaCrudRepository;
-    private  EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository;
+    private CambioEstadoRepository cambioEstadoRepository;
+    private IncidenciaRepository incidenciaCrudRepository;
+    private EstadoIncidenciaRepository estadosIncidenciasCrudRepository;
 
     @Autowired
 
-    public CambioEstadoService(CambioEstadoCrudRepository cambioEstadoCrudRepository, IncidenciaCrudRepository incidenciaCrudRepository, EstadosIncidenciasCrudRepository estadosIncidenciasCrudRepository) {
+    public CambioEstadoService(CambioEstadoRepository cambioEstadoCrudRepository, IncidenciaRepository incidenciaCrudRepository, EstadoIncidenciaRepository estadosIncidenciasCrudRepository) {
         this.cambioEstadoRepository = cambioEstadoCrudRepository;
         this.incidenciaCrudRepository = incidenciaCrudRepository;
         this.estadosIncidenciasCrudRepository = estadosIncidenciasCrudRepository;

@@ -1,6 +1,6 @@
 package com.lazywork.estructuraCERS.servicios;
 import com.lazywork.estructuraCERS.entidad.InicioSesion;
-import com.lazywork.estructuraCERS.repositorio.InicioSesionCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.InicioSesionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import java.util.Optional;
 @Service
 public class InicioSesionServicios {
 
-    private final InicioSesionCrudRepository inicioSesionRepository;
+    private final InicioSesionRepository inicioSesionRepository;
 
     @Autowired
-    public InicioSesionServicios(InicioSesionCrudRepository inicioSesionRepository) {
+    public InicioSesionServicios(InicioSesionRepository inicioSesionRepository) {
         this.inicioSesionRepository = inicioSesionRepository;
     }
 

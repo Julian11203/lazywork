@@ -2,7 +2,7 @@ package com.lazywork.estructuraCERS.servicios;
 
 import com.lazywork.estructuraCERS.entidad.PrioridadIncidencia;
 
-import com.lazywork.estructuraCERS.repositorio.PrioridadesIncidenciasCrudRepository;
+import com.lazywork.estructuraCERS.repositorio.PrioridadIncidenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class PrioridadesIncidenciasService {
 
     @Autowired
-    private PrioridadesIncidenciasCrudRepository prioridadesIncidenciasCrudRepository;
+    private PrioridadIncidenciaRepository prioridadesIncidenciasCrudRepository;
 
     public List<PrioridadIncidencia> obtenerTodasLasPrioridadesIncidencias() {
         return (List<PrioridadIncidencia>) prioridadesIncidenciasCrudRepository.findAll();

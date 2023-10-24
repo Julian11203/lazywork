@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InicioSesionCrudRepository extends CrudRepository<InicioSesion, String> {
+public interface InicioSesionRepository extends CrudRepository<InicioSesion, String> {
 }
 
