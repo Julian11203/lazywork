@@ -18,9 +18,11 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
         User user = User.builder()
-                .nombre(request.getFirstname())
-                .apellido(request.getLastname())
-                .contraseña(request.getPassword())
+                .nombre(request.getNombre())
+                .apellido(request.getApellido())
+                .documento(request.getDocumento())
+                .nivelSoporte(request.getNivelSoporte())
+                .contraseña(request.getContraseña())
                 .rol(Role.USER)
                 .build();
         userRepository.save(user);

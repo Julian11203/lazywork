@@ -1,5 +1,6 @@
 package com.lazywork.auth;
 
+import com.lazywork.User.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-    String username;
-    String password;
-    String firstname;
-    String lastname;
+    String nombre;
+    String apellido;
+    String documento;
+    String nivelSoporte;
+    String contraseña;
+    Role rol;
+
 }
