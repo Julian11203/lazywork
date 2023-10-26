@@ -18,6 +18,7 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
         User user = User.builder()
+                .username(request.getUsername())
                 .nombre(request.getNombre())
                 .apellido(request.getApellido())
                 .documento(request.getDocumento())
