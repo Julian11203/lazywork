@@ -25,10 +25,11 @@ public class User implements UserDetails {
     @Column(name = "UsuarioID")
     private Long id;
     @Column(nullable = false)
+    private String username;
     private String nombre;
     private String apellido;
-    private String documento;
     private String nivelSoporte;
+    private String documento;
     private String contraseña;
     @Enumerated(EnumType.STRING)
     Role rol;
