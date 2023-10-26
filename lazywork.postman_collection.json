@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d3c0316c-8e93-46fb-a423-ecbbc387ba04",
+		"_postman_id": "36e1dd1c-7149-45b9-8bf8-60b8f570c697",
 		"name": "lazywork",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26127259"
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"idUser\": \"12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"Pérez\",\r\n  \"documento\": \"1234567890\"\r\n}",
+							"raw": "{\r\n  \"username\": \"Juan\",\r\n  \"documento\": \"99999999\",\r\n  \"nivelSoporte\": \"Nivel 3\",\r\n  \"correo\": \"prueba@gmail.com\",\r\n  \"contraseña\": \"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,15 +24,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/usuario/insertar",
+							"raw": "localhost:8080/auth/register",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
-								"usuario",
-								"insertar"
+								"auth",
+								"register"
 							]
 						}
 					},
@@ -45,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"idUser\": \"u12345\",\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"David\",\r\n  \"documento\": \"1234567890\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Andrea\",\r\n  \"apellido\": \"Guzman\",\r\n  \"documento\": \"97531548\",\r\n  \"nivelSoporte\": \"Nivel 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,7 +52,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/usuario/actualizar/u12345",
+							"raw": "localhost:8080/api/usuario/actualizar/20",
 							"host": [
 								"localhost"
 							],
@@ -62,7 +61,7 @@
 								"api",
 								"usuario",
 								"actualizar",
-								"u12345"
+								"20"
 							]
 						}
 					},
@@ -74,7 +73,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/usuario/u12345",
+							"raw": "localhost:8080/api/usuario/buscarporid/3",
 							"host": [
 								"localhost"
 							],
@@ -82,7 +81,8 @@
 							"path": [
 								"api",
 								"usuario",
-								"u12345"
+								"buscarporid",
+								"3"
 							]
 						}
 					},
@@ -132,7 +132,7 @@
 			]
 		},
 		{
-			"name": "Inicio",
+			"name": "Inicio sesion",
 			"item": [
 				{
 					"name": "Consultar Lista",
@@ -140,14 +140,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/inicio/listar",
+							"raw": "localhost:8080/api/iniciosesion/listar",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"inicio",
+								"iniciosesion",
 								"listar"
 							]
 						}
@@ -160,22 +160,23 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/inicio/01",
+							"raw": "localhost:8080/api/iniciosesion/buscarporid/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"inicio",
-								"01"
+								"iniciosesion",
+								"buscarporid",
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Insertar Inicio",
+					"name": "Eliminar inicio",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -189,29 +190,29 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/inicio/eliminar/02",
+							"raw": "localhost:8080/api/iniciosesion/eliminar/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"inicio",
+								"iniciosesion",
 								"eliminar",
-								"02"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Insertar Iniicio",
+					"name": "Insertar Inicio",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"idInicio\": \"01\",\r\n        \"hora\": \"08:00:00\",\r\n        \"fecha\": \"2020-03-25\",\r\n        \"usuario\": \"u12345\"\r\n    }",
+							"raw": "    {\r\n        \"InicioID\": \"01\",\r\n        \"usuario\": {\r\n            \"id\": \"3\"\r\n        },\r\n        \"tiempodesesion\": \"\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,14 +220,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/inicio/insertar",
+							"raw": "localhost:8080/api/iniciosesion/insertar",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"inicio",
+								"iniciosesion",
 								"insertar"
 							]
 						}
@@ -978,7 +979,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rolID\": \"1\",\r\n    \"nombreRol\": \"Administrador\"\r\n}",
+							"raw": "{\r\n    \"rolID\": \"2\",\r\n    \"nombreRol\": \"Tecnico\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1006,7 +1007,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rolID\": \"1\",\r\n    \"nombreRol\": \"Admin\"\r\n}",
+							"raw": "{\r\n    \"rolID\": \"1\",\r\n    \"nombreRol\": \"Administrador\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1047,62 +1048,7 @@
 					},
 					"response": []
 				}
-			],
-			"auth": {
-				"type": "basic",
-				"basic": [
-					{
-						"key": "password",
-						"value": "lazy250217300",
-						"type": "string"
-					},
-					{
-						"key": "username",
-						"value": "postgres",
-						"type": "string"
-					}
-				]
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
 			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
 		}
 	]
 }
