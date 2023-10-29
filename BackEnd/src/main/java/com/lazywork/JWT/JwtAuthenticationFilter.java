@@ -3,6 +3,8 @@ package com.lazywork.JWT;
 import java.io.IOException;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -14,11 +16,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    private String username;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         final String token = getTokenFromRequest(request);
-        if(token == null){
+        final String username;
+        if(token == null) {
             filterChain.doFilter(request, response);
             return;
         }

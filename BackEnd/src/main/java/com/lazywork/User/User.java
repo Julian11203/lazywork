@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"documento"})})
+@Table(name = "Usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
 
     @Id
