@@ -1,689 +1,392 @@
 {
 	"info": {
-		"_postman_id": "83f4e065-304d-49dd-8729-0c6f82ae0fb1",
+		"_postman_id": "67c0d601-5e00-4d22-955e-b9c0e0b921d5",
 		"name": "lazywork",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26127259"
 	},
 	"item": [
 		{
-			"name": "User",
+			"name": "AUTH",
 			"item": [
 				{
-					"name": "Register",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"James\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"111\",\r\n  \"username\": \"JamesAA\",\r\n  \"contraseña\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/auth/register",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"JamesAA\",\r\n  \"contraseña\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/auth/login",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar Usuario",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"AndreaTEC\",\r\n  \"nombre\": \"Andrea\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"33333\",\r\n  \"contraseña\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/usuario/actualizar/33",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"actualizar",
-								"33"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Consulta ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/buscarporid/3",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"buscarporid",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Consultar lista",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"listar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Usuario",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/usuario/eliminar/10",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"usuario",
-								"eliminar",
-								"10"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login protected",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
+					"name": "ADMIN",
+					"item": [
+						{
+							"name": "Prioridades",
+							"item": [
 								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYW1lc0FBIiwiaWF0IjoxNjk4NjMwMDIwLCJleHAiOjE2OTg2MzE0NjB9.LXgKD_5009ewoQiVKV3l966ZoDexME7f1Kulowxo6as",
-									"type": "string"
+									"name": "findAll",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/prioridades/listar",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"prioridades",
+												"listar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tipoPrioridad\": \"Baja\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/admin/prioridades/crear",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"admin",
+												"prioridades",
+												"crear"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteById",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/admin/prioridades/eliminar/2",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"admin",
+												"prioridades",
+												"eliminar",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
 								}
 							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						},
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/v1/demo",
-							"host": [
-								"localhost"
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "TECNICO",
+					"item": [
+						{
+							"name": "Prioridades",
+							"item": [
+								{
+									"name": "findAll",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/user/prioridades/listar",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"user",
+												"prioridades",
+												"listar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tipoPrioridad\": \"Baja\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/prioridades/crear",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"prioridades",
+												"crear"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteById",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/prioridades/eliminar/2",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"prioridades",
+												"eliminar",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
 							],
-							"port": "8080",
-							"path": [
-								"api",
-								"v1",
-								"demo"
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
 							]
 						}
-					},
-					"response": []
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
 		{
-			"name": "Prioridad Incidencia",
-			"item": [
-				{
-					"name": "Listar Prioridad",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/prioridad/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"prioridad",
-								"listar"
-							]
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Julian\",\r\n    \"apellido\": \"Guzman\",\r\n    \"nivelSoporte\": \"Nivel 3\",\r\n    \"documento\": \"1030536034\",\r\n    \"username\": \"JulianADM\",\r\n    \"contraseña\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					},
-					"response": []
+					}
 				},
-				{
-					"name": "Prioridad por ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/prioridad/P4",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"prioridad",
-								"P4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Insertar Prioridad",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"idPrioridad\": \"P4\",\r\n        \"tipoPrioridad\": \"DUMB\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/prioridad/insertar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"prioridad",
-								"insertar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Prioridad",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/prioridad/eliminar/P4",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"prioridad",
-								"eliminar",
-								"P4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar Prioridad",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"idPrioridad\": \"P4\",\r\n        \"tipoPrioridad\": \"DAVD\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/prioridad/actualizar/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"prioridad",
-								"actualizar",
-								"1"
-							]
-						}
-					},
-					"response": []
+				"url": {
+					"raw": "localhost:8080/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"name": "Inicio sesion",
-			"item": [
-				{
-					"name": "Consultar Lista",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/iniciosesion/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"iniciosesion",
-								"listar"
-							]
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"JulianADM\",\r\n    \"contraseña\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					},
-					"response": []
+					}
 				},
-				{
-					"name": "Inicio por ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/iniciosesion/buscarporid/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"iniciosesion",
-								"buscarporid",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar inicio",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"idInicio\": \"02\",\r\n        \"hora\": \"08:00:00\",\r\n        \"fecha\": \"2020-03-25\",\r\n        \"usuario\": \"u12345\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/iniciosesion/eliminar/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"iniciosesion",
-								"eliminar",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Insertar Inicio",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"InicioID\": \"01\",\r\n        \"usuario\": {\r\n            \"id\": \"3\"\r\n        },\r\n        \"tiempodesesion\": \"\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/iniciosesion/insertar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"iniciosesion",
-								"insertar"
-							]
-						}
-					},
-					"response": []
+				"url": {
+					"raw": "localhost:8080/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
-			"name": "Incidencia",
-			"item": [
-				{
-					"name": "Lista incidencias",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/incidencia/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"listar"
-							]
+			"name": "Login protected",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKdWxpYW5BRE0iLCJpYXQiOjE2OTg2ODg3MjYsImV4cCI6MTY5ODY5MDE2Nn0.9O3W2lDi1w5ONfTRNv4qwQnvw4m2MygPvXuLqCDbVcI",
+							"type": "string"
 						}
-					},
-					"response": []
+					]
 				},
-				{
-					"name": "Incidencia por ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/incidencia/INC001",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"INC001"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Insertar Incidencia",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "      {  \r\n        \"noIncidencia\": \"INC002\",\r\n        \"nombre\": \"Problema eléctrico\",\r\n        \"ubicacion\": \"Oficina A\",\r\n        \"usuario\": \"u12345\"\r\n      }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/incidencia/insertar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"insertar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Incidencia",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/incidencia/eliminar/INC002",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"eliminar",
-								"INC002"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar incidencia",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"noIncidencia\": \"INC001\",\r\n    \"nombre\": \"Problema X\",\r\n    \"ubicacion\": \"Oficina A\",\r\n    \"usuario\": \"u12345\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/incidencia/actualizar/INC001",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"incidencia",
-								"actualizar",
-								"INC001"
-							]
-						}
-					},
-					"response": []
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/demo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"demo"
+					]
 				}
-			]
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "Estado Incidencia",
-			"item": [
-				{
-					"name": "Insertar Estado",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"idEstado\": \"E5\",\r\n  \"tipoEstado\": \"DUMB\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/estado/insertar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"estado",
-								"insertar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listar Estado",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/estado/listar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"estado",
-								"listar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Estado por ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/estado/E5",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"estado",
-								"E5"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar Estado",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"idEstado\": \"E5\",\r\n  \"tipoEstado\": \"DOMB\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/estado/actualizar",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"estado",
-								"actualizar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Eliminar Estado",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/estado/eliminar/E5",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"estado",
-								"eliminar",
-								"E5"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Cambio Prioridad",
-			"item": []
-		},
-		{
-			"name": "Cambio Estado",
-			"item": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
