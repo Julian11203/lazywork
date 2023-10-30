@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("prioridades")
+@RequestMapping("/api/prioridades")
 @CrossOrigin("*")
 public class PrioridadesIncidenciasController {
 

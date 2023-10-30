@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 import com.lazywork.estructuraCERS.entidad.InicioSesion;
 import com.lazywork.estructuraCERS.servicios.InicioSesionServicios;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/iniciosesion")
+@RequestMapping("/api/admin/iniciosesion")
 @CrossOrigin("*")
 
 public class InicioSesionControlador {

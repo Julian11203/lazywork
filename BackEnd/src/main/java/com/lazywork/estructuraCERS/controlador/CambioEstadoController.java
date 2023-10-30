@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 import com.lazywork.estructuraCERS.entidad.CambioEstado;
 import com.lazywork.estructuraCERS.servicios.CambioEstadoService;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/cambioestado")
+@RequestMapping("/api/admin/cambioestado")
 public class CambioEstadoController {
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 
 import com.lazywork.estructuraCERS.entidad.CambioPrioridad;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cambio-prioridad")
+@RequestMapping("/api/admin/cambio-prioridad")
 @CrossOrigin("*")
 public class CambioPrioridadController {
 

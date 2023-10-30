@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 import com.lazywork.estructuraCERS.entidad.EstadoIncidencia;
 import com.lazywork.estructuraCERS.servicios.EstadosIncidenciasService;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/estados")
+@RequestMapping("/api/admin/estados")
 
 public class EstadoIncidenciaController {
 

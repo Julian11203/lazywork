@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 import com.lazywork.estructuraCERS.entidad.Incidencia;
 import com.lazywork.estructuraCERS.servicios.IncidenciaService;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/incidencia")
+@RequestMapping("/api/admin/incidencia")
 @CrossOrigin("*")
 public class IncidenciaController {
 

@@ -1,4 +1,4 @@
-package com.lazywork.estructuraCERS.controlador;
+package com.lazywork.estructuraCERS.controlador.ADMIN;
 
 import com.lazywork.User.User;
 import com.lazywork.estructuraCERS.servicios.UsuarioServicio;
@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("/api/admin/usuario")
 @CrossOrigin("*")
 // Cambia esto al origen de tu sitio web
 public class UsuarioController {
