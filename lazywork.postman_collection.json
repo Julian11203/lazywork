@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"James\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"111\",\r\n  \"username\": \"JamesAA\",\r\n  \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"James\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"111\",\r\n  \"username\": \"JamesAA\",\r\n  \"contraseña\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"JamesAA\",\r\n  \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"username\": \"JamesAA\",\r\n  \"contraseña\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
