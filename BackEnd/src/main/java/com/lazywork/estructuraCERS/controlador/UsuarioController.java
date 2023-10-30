@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("/api/admin/usuario")
 @CrossOrigin("*")
 // Cambia esto al origen de tu sitio web
 public class UsuarioController {

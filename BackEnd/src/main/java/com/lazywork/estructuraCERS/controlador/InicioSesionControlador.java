@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/iniciosesion")
+@RequestMapping("/api/admin/iniciosesion")
 @CrossOrigin("*")
 
 public class InicioSesionControlador {
