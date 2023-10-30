@@ -7,16 +7,16 @@
 	},
 	"item": [
 		{
-			"name": "Usuario",
+			"name": "User",
 			"item": [
 				{
-					"name": "Insertar Usuario",
+					"name": "Register",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"AndresTEC\",\r\n  \"nombre\": \"Andres\",\r\n  \"apellido\": \"Zapata\",\r\n  \"nivelSoporte\": \"Nivel 2\",\r\n  \"documento\": \"22222\",\r\n  \"contraseña\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"James\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"111\",\r\n  \"username\": \"JamesAA\",\r\n  \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -38,13 +38,13 @@
 					"response": []
 				},
 				{
-					"name": "Actualizar Usuario",
+					"name": "Login",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Andrea\",\r\n  \"apellido\": \"Guzman\",\r\n  \"documento\": \"97531548\",\r\n  \"nivelSoporte\": \"Nivel 2\"\r\n}",
+							"raw": "{\r\n  \"username\": \"JamesAA\",\r\n  \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,35 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/usuario/actualizar/20",
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"AndreaTEC\",\r\n  \"nombre\": \"Andrea\",\r\n  \"apellido\": \"Guzman\",\r\n  \"nivelSoporte\": \"Nivel 1\",\r\n  \"documento\": \"33333\",\r\n  \"contraseña\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/usuario/actualizar/33",
 							"host": [
 								"localhost"
 							],
@@ -61,7 +89,7 @@
 								"api",
 								"usuario",
 								"actualizar",
-								"20"
+								"33"
 							]
 						}
 					},
@@ -124,6 +152,36 @@
 								"usuario",
 								"eliminar",
 								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login protected",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2OTg1OTg1MDgsImV4cCI6MTY5ODU5OTk0OH0.bsHSzn5ITgldweFeJaUBJ487R82G7EpumiNfQ4XqTM4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/demo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"demo"
 							]
 						}
 					},
