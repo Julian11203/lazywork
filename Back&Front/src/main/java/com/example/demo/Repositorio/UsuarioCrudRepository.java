@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UsuarioCrudRepository extends JpaRepository<Usuarioback, String> {
+public interface UsuarioCrudRepository extends JpaRepository<Usuarioback, Long> {
 
     Usuarioback findByCorreo(String email);
 }

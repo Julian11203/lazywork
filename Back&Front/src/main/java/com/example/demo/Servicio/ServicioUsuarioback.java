@@ -21,7 +21,7 @@ public class ServicioUsuarioback {
 
     public boolean existeUsuario(int usuarioId) {
         // Utiliza el repositorio de usuarios para buscar el usuario por su ID.
-        Optional<Usuarioback> usuarioOptional = usuarioRepository.findById(String.valueOf(Long.valueOf(usuarioId)));
+        Optional<Usuarioback> usuarioOptional = usuarioRepository.findById(Long.valueOf(String.valueOf(Long.valueOf(usuarioId))));
 
         // Verificar si se encontró el usuario
         return usuarioOptional.isPresent();
@@ -31,7 +31,7 @@ public class ServicioUsuarioback {
         return usuarioRepository.findAll();
     }
     public Optional<Usuarioback> findById(Long usuarioid) {
-        return usuarioRepository.findById(String.valueOf(usuarioid));
+        return usuarioRepository.findById(Long.valueOf(String.valueOf(usuarioid)));
     }
 
 
@@ -40,11 +40,11 @@ public class ServicioUsuarioback {
     }
 
     public void delete(int id) {
-        usuarioRepository.deleteById(String.valueOf(id));
+        usuarioRepository.deleteById(Long.valueOf(String.valueOf(id)));
     }
 
     public Usuarioback actualizarUsuario(int id, Usuarioback usuariobackActualizado) {
-        Optional<Usuarioback> usuarioExistente = usuarioRepository.findById(String.valueOf(Long.valueOf(id)));
+        Optional<Usuarioback> usuarioExistente = usuarioRepository.findById(Long.valueOf(String.valueOf(Long.valueOf(id))));
 
         if (usuarioExistente.isPresent()) {
             Usuarioback usuarioBack = usuarioExistente.get();
@@ -64,7 +64,7 @@ public class ServicioUsuarioback {
 
     public boolean existsById(int id) {
         // Lógica para verificar si un usuario existe por su ID
-        return usuarioRepository.existsById(String.valueOf(id));
+        return usuarioRepository.existsById(Long.valueOf(String.valueOf(id)));
     }
 
     // Puedes agregar más métodos según tus necesidades, como actualización, búsqueda por otros campos, etc.
