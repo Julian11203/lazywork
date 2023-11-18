@@ -62,8 +62,8 @@ header{
     overflow: hidden;
     margin: auto;
     padding: 60px 0;
-    
- 
+
+
 
 
 
@@ -127,7 +127,7 @@ header{
 }
 
 
-  
+
 
 
 
@@ -142,7 +142,7 @@ header{
     color: red;
   }
   main {
-    height: 100vh !important; 
+    height: 100vh !important;
   }
   .eliminar-link {
     color: red;
@@ -167,13 +167,13 @@ header{
     box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.7);
   }
   #tableid thead tr th {
-    background-color: #185BEA; 
+    background-color: #185BEA;
   }
-  
+
   #tableid tbody tr td{
-    background-color: #ABBBDE; 
+    background-color: #ABBBDE;
   }
-  
+
   html{
     background-color: #E5E5E5;
   }
@@ -196,7 +196,7 @@ header{
     font-size: 23px;
     font-weight: bold;
   }
-  
+
   #actualizarModal .modal-title{
     color: black;
     font-size: 23px;
@@ -205,7 +205,7 @@ header{
   #actualizarModal .modal-header{
     background-color: gray;
     }
-  
+
   #actualizarModal{
     background-color: rgba(0, 0, 0, 0.7);
   }
@@ -218,7 +218,7 @@ header{
     font-size: 17px;
     font-weight: bold;
   }
-  
+
 
 
 
@@ -232,7 +232,7 @@ header{
     color: red;
   }
   main {
-    height: 100vh !important; 
+    height: 100vh !important;
   }
   .eliminar-link {
     color: red;
@@ -257,13 +257,13 @@ header{
     box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.7);
   }
   #tableid1 thead tr th {
-    background-color: #185BEA; 
+    background-color: #185BEA;
   }
-  
+
   #tableid1 tbody tr td{
-    background-color: #ABBBDE; 
+    background-color: #ABBBDE;
   }
-  
+
   html{
     background-color: #E5E5E5;
   }
@@ -286,7 +286,7 @@ header{
     font-size: 23px;
     font-weight: bold;
   }
-  
+
   #actualizarModal1 .modal-title{
     color: black;
     font-size: 23px;
@@ -295,7 +295,7 @@ header{
   #actualizarModal1 .modal-header{
     background-color: gray;
     }
-  
+
   #actualizarModal1{
     background-color: rgba(0, 0, 0, 0.7);
   }
@@ -310,7 +310,7 @@ header{
   }
 
 
-  
+
 
 
 
@@ -324,7 +324,7 @@ header{
     color: red;
   }
   main {
-    height: 100vh !important; 
+    height: 100vh !important;
   }
   .eliminar-link {
     color: red;
@@ -349,13 +349,13 @@ header{
     box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.7);
   }
   #tableid2 thead tr th {
-    background-color: #185BEA; 
+    background-color: #185BEA;
   }
-  
+
   #tableid2 tbody tr td{
-    background-color: #ABBBDE; 
+    background-color: #ABBBDE;
   }
-  
+
   html{
     background-color: #E5E5E5;
   }
@@ -378,7 +378,7 @@ header{
     font-size: 23px;
     font-weight: bold;
   }
-  
+
   #actualizarModal2 .modal-title{
     color: black;
     font-size: 23px;
@@ -387,7 +387,7 @@ header{
   #actualizarModal2 .modal-header{
     background-color: gray;
     }
-  
+
   #actualizarModal2{
     background-color: rgba(0, 0, 0, 0.7);
   }
@@ -503,91 +503,4 @@ footer {
 
 footer a:hover {
   text-decoration: underline;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
-input[type=number] { -moz-appearance:textfield; }
-.required{
-  color: red;
-}
-main {
-  height: 100vh !important;
-}
-.eliminar-link {
-  color: red;
-}
-.editar-link {
-  color: yellow;
-}
-.agregar-link{
-  color: white;
-}
-#check{
-  fill: green;
-}
-#byid{
-  border-color: #185BEA;
-}
-table, th, td {
-  border: 3px solid black;
-  border-color: black !important;
-}
-#tableid {
-  box-shadow: 7px 6px 9px rgba(0, 0, 0, 0.7);
-}
-#tableid thead tr th {
-  background-color: #185BEA;
-}
-
-#tableid tbody tr td{
-  background-color: #ABBBDE;
-}
-
-html{
-  background-color: #E5E5E5;
-}
-#registrarModal{
-  background-color: rgba(0, 0, 0, 0.7);
-}
-#registrarModal .modal-content{
-  background-color: #E5E5E5;
-  box-shadow: 9px 7px 11px rgba(0, 0, 0, 0.9);
-}
-#registrarModal .modal-body label{
-  color: black;
-  font-size: 17px;
-  font-weight: bold;
-}
-#registrarModal .modal-header{
-background-color: gray;
-}
-#registrarModal .modal-title{
-  font-size: 23px;
-  font-weight: bold;
-}
-
-#actualizarModal .modal-title{
-  color: black;
-  font-size: 23px;
-  font-weight: bold;
-}
-#actualizarModal .modal-header{
-  background-color: gray;
-  }
-
-#actualizarModal{
-  background-color: rgba(0, 0, 0, 0.7);
-}
-#actualizarModal .modal-content{
-  background-color: #E5E5E5;
-  box-shadow: 9px 7px 11px rgba(0, 0, 0, 0.9);
-}
-#actualizarModal .modal-body label{
-  color: black;
-  font-size: 17px;
-  font-weight: bold;
 }

@@ -5,86 +5,80 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "IniciosSesion")
 public class InicioSesion{
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "InicioID")
-        private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "InicioID")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuarioid", referencedColumnName = "usuarioid", nullable = false)
-    private Usuarioback Usuarioback;
-
+    @JoinColumn(name = "UsuarioID", referencedColumnName = "UsuarioID", nullable = false)
+    private Usuarioback usuarioback;
 
 
     @Column(nullable = false)
-        private LocalDateTime tiempodesesion;
+    private LocalDateTime tiempodesesion;
 
-        @Column(name = "FechaHoraInicio", nullable = false)
-        private LocalDateTime fechaHoraInicio;
+    @Column(name = "FechaHoraInicio", nullable = false)
+    private LocalDateTime fechaHoraInicio;
 
 
-        @Column(nullable = true)
-        private LocalDateTime FechaHoraFin;
-        // Constructor por defecto
-        public InicioSesion() {
-        }
+    @Column(nullable = true)
+    private LocalDateTime FechaHoraFin;
+    // Constructor por defecto
+    public InicioSesion() {
+    }
 
-        public InicioSesion(Long id, com.example.demo.Entidad.Usuarioback usuarioback, LocalDateTime tiempodesesion, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
-            this.id = id;
-            Usuarioback = usuarioback;
-            this.tiempodesesion = tiempodesesion;
-            this.fechaHoraInicio = fechaHoraInicio;
-            FechaHoraFin = fechaHoraFin;
-        }
+    // Constructor con parámetros
+    public InicioSesion(Usuarioback usuarioback, LocalDateTime fechaHoraInicio) {
+        this.usuarioback = usuarioback;
+        this.fechaHoraInicio = fechaHoraInicio;
+    }
 
-        public Long getId() {
-            return id;
-        }
+    // Getters y setters
 
-        public void setId(Long id) {
-            this.id = id;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public Usuarioback getUsuarioback() {
-            return Usuarioback;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public void setUsuarioback(Usuarioback usuarioback) {
-            Usuarioback = usuarioback;
-        }
+    public Usuarioback getUsuarioback() {
+        return usuarioback;
+    }
 
-        public LocalDateTime getTiempodesesion() {
-            return tiempodesesion;
-        }
+    public void setUsuarioback(Usuarioback usuarioback) {
+        this.usuarioback = usuarioback;
+    }
 
-        public void setTiempodesesion(LocalDateTime tiempodesesion) {
-            this.tiempodesesion = tiempodesesion;
-        }
+    public LocalDateTime getFechaHoraInicio() {
+        return fechaHoraInicio;
+    }
 
-        public LocalDateTime getFechaHoraInicio() {
-            return fechaHoraInicio;
-        }
+    public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
+        this.fechaHoraInicio = fechaHoraInicio;
+    }
 
-        public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
-            this.fechaHoraInicio = fechaHoraInicio;
-        }
+    public void setTiempodesesion(LocalDateTime tiempodesesion) {
+        this.tiempodesesion = tiempodesesion;
+    }
 
-        public LocalDateTime getFechaHoraFin() {
-            return FechaHoraFin;
-        }
+    public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
+        FechaHoraFin = fechaHoraFin;
+    }
+// Puedes agregar otros métodos y personalizar la entidad según tus necesidades
 
-        public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
-            FechaHoraFin = fechaHoraFin;
-        }
 
-        @Override
-        public String toString() {
-            return "InicioSesion{" +
-                    "id=" + id +
-                    ", Usuarioback=" + Usuarioback +
-                    ", tiempodesesion=" + tiempodesesion +
-                    ", fechaHoraInicio=" + fechaHoraInicio +
-                    ", FechaHoraFin=" + FechaHoraFin +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "InicioSesion{" +
+                "id=" + id +
+                ", usuarioback=" + usuarioback +
+                ", Tiempodesesion=" + tiempodesesion +
+                ", fechaHoraInicio=" + fechaHoraInicio +
+                ", FechaHoraFin=" + FechaHoraFin +
+                '}';
+    }
 }

@@ -46,7 +46,7 @@ public class InicioSesionControlador {
             return new ResponseEntity<>("El usuario no puede ser nulo", HttpStatus.BAD_REQUEST);
         }
 
-        Class<? extends Usuarioback> usuarioId = inicioSesion.getUsuarioback().getClass();
+        Class<? extends Long> usuarioId = inicioSesion.getId().getClass();
         System.out.println(usuarioId);
         if (usuarioId != null && usuarioServicio.existeUsuario(Math.toIntExact(usuarioId.getModifiers()))) {
             inicioSesion.setTiempodesesion(LocalDateTime.now()); // Establece el valor del tiempo de sesión

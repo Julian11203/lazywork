@@ -1,12 +1,14 @@
 package com.example.demo.Servicio;
 
 import com.example.demo.Entidad.Incidencia;
+import com.example.demo.Entidad.Usuarioback;
 import com.example.demo.Repositorio.EstadosIncidenciasCrudRepository;
 import com.example.demo.Repositorio.IncidenciaCrudRepository;
 import com.example.demo.Repositorio.PrioridadesIncidenciasCrudRepository;
 import com.example.demo.Repositorio.UsuarioCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,7 +46,7 @@ IncidenciaService {
 
         incidencia.setEstado(estadosIncidenciasCrudRepository.findById(incidencia.getEstado().getEstadoID()).get());
         incidencia.setPrioridad(prioridadesIncidenciasCrudRepository.findById(incidencia.getPrioridad().getPrioridadID()).get());
-        incidencia.setUsuario(usuarioCrudRepository.findById(incidencia.getUsuario().getUsuarioid()).get());
+        incidencia.setUsuarioback(usuarioCrudRepository.findById(incidencia.getUsuarioback().getId()).get());
         incidencia.setFechaRegistro(LocalDate.now());
 
         return incidenciaRepository.save(incidencia);
@@ -55,10 +57,45 @@ IncidenciaService {
         incidencia.setFechaRegistro(LocalDate.now());
         return incidenciaRepository.save(incidencia);
     }
-
     public void eliminarIncidencia(Long id) {
         incidenciaRepository.deleteById(id);
     }
+
+
+    @Transactional
+    public void actualizarIncidenciasNivel2Prioridad2() {
+        String sql = "UPDATE incidencias " +
+                "SET usuarioid = ( " +
+                "    SELECT usuarioid " +
+                "    FROM usuariosback " +
+                "    WHERE nivel_soporte = 'nivel 2' " +
+                ") " +
+                "WHERE prioridadid = ( " +
+                "    SELECT prioridadid " +
+                "    FROM prioridades_incidencia " +
+                "    WHERE tipo_prioridad = 'media' " +
+                ")";
+
+        entityManager.createNativeQuery(sql).executeUpdate();
+    }
+
+    @Transactional
+    public void actualizarIncidenciasNivel3Prioridad3() {
+        String sql = "UPDATE incidencias " +
+                "SET usuarioid = ( " +
+                "    SELECT usuarioid " +
+                "    FROM usuariosback " +
+                "    WHERE nivel_soporte = 'nivel 3' " +
+                ") " +
+                "WHERE prioridadid = ( " +
+                "    SELECT prioridadid " +
+                "    FROM prioridades_incidencia " +
+                "    WHERE tipo_prioridad = 'alta' " +
+                ")";
+
+        entityManager.createNativeQuery(sql).executeUpdate();
+    }
+
 
     public List<Incidencia> obtenerIncidenciasEstado4() {
         // Utiliza el método de tu repositorio para obtener las incidencias con estado 4
@@ -73,4 +110,5 @@ IncidenciaService {
         // Utiliza el método de tu repositorio para obtener las incidencias con estado 4
         return incidenciaRepository.findByEstado_EstadoID(1L);
     }
+
 }

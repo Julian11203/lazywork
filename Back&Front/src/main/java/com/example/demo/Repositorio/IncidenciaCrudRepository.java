@@ -14,6 +14,9 @@ public interface IncidenciaCrudRepository extends CrudRepository<Incidencia, Lon
 
 
 
+
+
+
         List<Incidencia> findByEstado_EstadoID(Long estadoID);
 
 }

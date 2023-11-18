@@ -15,7 +15,7 @@ public class Incidencia {
     private Long incidenciaID;
 
     @ManyToOne
-    @JoinColumn(name = "usuarioid", nullable = false)
+    @JoinColumn(name = "UsuarioID", nullable = false)
     private Usuarioback usuarioback;
 
     @Column(name = "Ubicacion", nullable = false)
@@ -50,11 +50,11 @@ public class Incidencia {
         this.incidenciaID = incidenciaID;
     }
 
-    public Usuarioback getUsuario() {
+    public Usuarioback getUsuarioback() {
         return usuarioback;
     }
 
-    public void setUsuario(Usuarioback usuarioback) {
+    public void setUsuarioback(Usuarioback usuarioback) {
         this.usuarioback = usuarioback;
     }
 
@@ -93,7 +93,6 @@ public class Incidencia {
     public PrioridadIncidencia getPrioridad() {
         return prioridad;
     }
-
     public void setPrioridad(PrioridadIncidencia prioridad) {
         this.prioridad = prioridad;
     }
@@ -118,7 +117,7 @@ public class Incidencia {
     public String toString() {
         return "Incidencia{" +
                 "incidenciaID=" + incidenciaID +
-                ", usuario=" + usuarioback +
+                ", usuarioback=" + usuarioback   +
                 ", ubicacion='" + ubicacion + '\'' +
                 ", nombreIncidencia='" + nombreIncidencia + '\'' +
                 ", descripcion='" + descripcion + '\'' +

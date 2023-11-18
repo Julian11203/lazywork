@@ -59,6 +59,20 @@ public class IncidenciaController {
         return ResponseEntity.noContent().build();
     }
 
+
+    @PostMapping("actualizarIncidenciasNivel2Prioridad2")
+    public ResponseEntity<String> actualizarNivel2Prioridad2() {
+        incidenciaService.actualizarIncidenciasNivel2Prioridad2();
+        return ResponseEntity.ok("Actualización completa");
+    }
+
+    @PostMapping("actualizarIncidenciasNivel3Prioridad3")
+    public ResponseEntity<String> actualizarNivel3Prioridad3() {
+        incidenciaService.actualizarIncidenciasNivel3Prioridad3();
+        return ResponseEntity.ok("Actualización completa");
+    }
+
+
     @GetMapping("/estado4")
     public ResponseEntity<List<Incidencia>> obtenerIncidenciasEstado4() {
         List<Incidencia> incidenciasEstado4 = incidenciaService.obtenerIncidenciasEstado4();
@@ -76,4 +90,6 @@ public class IncidenciaController {
         List<Incidencia> incidenciasEstado1 = incidenciaService.obtenerIncidenciasEstado1();
         return ResponseEntity.ok(incidenciasEstado1);
     }
+
+
 }

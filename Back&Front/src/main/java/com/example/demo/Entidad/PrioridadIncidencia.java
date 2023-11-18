@@ -33,6 +33,8 @@ public class PrioridadIncidencia {
         this.tipoPrioridad = tipoPrioridad;
     }
     private String nivelSoporte;
+
+
     @Override
     public String toString() {
         return "PrioridadIncidencia{" +
