@@ -40,8 +40,7 @@
     <nav class="menu-navegacion">
 
         <a href="#inicio">inicio</a>
-        <a href="#Panel Incidencias">servicio</a>
-        <a href="#Panel Usuarios">portafolio</a>
+        <a href="#Panel Usuarios">Panel Usuarios</a>
         <a href="#Panel Inicio de sesion">expertos</a>
         <a href="">contacto</a>
 
@@ -58,23 +57,19 @@
 
 <main>
 
-    <section class="contenedor" id="Panel Usuarios">
-        <h2 class="subtitulo">PANEL DE USUARIOS</h2>
-        <div class="contenedor-servicio" >
-            <img src="iconos/Checklist_Isometric.svg" >
 
+    <section class="contenedor" id="Panel Inicio de sesion">
+        <h2 class="subtitulo">PANEL DE INICIO DE SESION</h2>
+        <div class="contenedor-servicio" >
             <div class="container mt-4 mb-2">
                 <div class="row">
                     <div class="col">
                         <div class="input-group">
-                            <input type="number" class="form-control" id="byid" placeholder="Buscar por ID" aria-label="Buscar por ID" aria-describedby="button-addon2">
-                            <button class="btn buscar-link col-md-1 btn-outline-primary" onclick="buscarInicioPorId()"><i class='material-icons'>search</i></button>
                             <button class="btn agregar-link col-md-1 btn-outline-success" data-bs-toggle="modal" data-bs-target="#registrarModal"><i class='material-icons'>add_box</i></button>
                             <button class="btn listar-link col-md-1 btn-outline-secondary" onclick="listarInicios()">Listar Todos</button>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row mt-2">
                     <div class="col-auto">
@@ -87,8 +82,10 @@
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Fecha & Hora</th>
-                                <th scope="col">Usuario</th>
+                                <th scope="col">Fecha & Hora Inicio</th>
+                                <th scope="col">Fecha & Hora Fin</th>
+                                <th scope="col">Tiempo de Sesión</th>
+                                <th scope="col">ID de Usuario</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                             </thead>
@@ -97,9 +94,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Modal -->
-            <div class="modal fade modal-sm" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade modal-sm" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -111,7 +107,8 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- Modal REGISTRAR INICIO -->
+            </div>
+            <!-- Modal REGISTRAR INICIO -->
             <div class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
@@ -128,8 +125,17 @@
                                     <button class="btn btn-primary mt-2" onclick="buscarUsuarioPorId()">Buscar Usuario</button>
                                 </div>
                                 <div class="col-md-8">
-                                    <label class="form-label">Fecha & Hora<span class="required"> *</span></label>
-                                    <input type="datetime-local" class="form-control border-dark" id="fecha" name="fecha" required>
+                                    <label class="form-label">Fecha & Hora Fin<span class="required"> *</span></label>
+                                    <input type="datetime-local" class="form-control border-dark" id="fecha_hora_fin" name="fecha_hora_fin" required>
+                                </div>
+                                <!-- Nuevos campos para fecha de fin y tiempo de sesión -->
+                                <div class="col-md-8">
+                                    <label class="form-label">Fecha & Hora <span class="required"> *</span></label>
+                                    <input type="datetime-local" class="form-control border-dark" id="fecha_hora_inicio" name="fecha_hora_inicio" required>
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label">Tiempo de Sesión<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="tiempodesesion" name="tiempodesesion" required>
                                 </div>
                                 <div class="col-auto">
                                     <div class="alert alert-dismissible" role="alert" id="errormodal"></div>
@@ -143,7 +149,6 @@
                     </div>
                 </div>
             </div>
-
 
 
 
@@ -164,8 +169,11 @@
                 </div>
             </div>
 
-
-
+        </div>
+    </section>
+    <section class="contenedor" id="PanelUsuarios">
+        <h2 class="subtitulo">PANEL DE USUARIOS</h2>
+        <div class="contenedor-servicio">
 
 
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -190,8 +198,6 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="byid" placeholder="Buscar por Nº usuario..." aria-label="Buscar por Nº usuario" aria-describedby="button-addon2">
-                            <a href='#' class='btn buscar-link col-md-1 btn-outline-primary' onclick="findById1()"><i class='material-icons'>search</i></a>
                             <a href='#' class='btn agregar-link col-md-1 btn-outline-success' data-bs-toggle="modal" data-bs-target="#registrarModal1"><i class='material-icons'>add_box</i></a>
                             <a href='#' class='btn listar-link col-md-1 btn-outline-secondary' onclick="findAll1()"><i class='material-icons'>list</i></a>
                         </div>
@@ -200,9 +206,10 @@
                 </div>
             </div>
 
-
-
-            <div class="container mt-4 mb-2">
+            <div class="row mt-2">
+                <div class="col-auto">
+                    <div class="alert alert-dismissible" role="alert" id="errormsg"></div>
+                </div>
                 <div class="row">
                     <div class="col">
 
@@ -346,58 +353,51 @@
                 </div>
             </div>
         </div>
-
-    </section>
-
-
-    <section class="contenedor" id="Panel Incidencias">
-        <h2 class="subtitulo">PANEL DE INCIDENCIA</h2>
-        <div class="contenedor-servicio" >
-            <img src="iconos/Checklist_Isometric.svg" >
-
+        <img src="iconos/Pie Chart_Isometric.svg.svg">
 
     </section>
     <section class="contenedor" id="comentarios">
-    <h2 class="subtitulo">COMENTARIOS DE INCIDENCIAS</h2>
-    <div class="contenedor-servicio">
-        <div id="comments">
-            <h2>Deja un comentario</h2>
-            <input type="text" id="commentName" placeholder="Nombre">
-            <input type="text" id="commentIncidences" placeholder="Número de Incidencias">
-            <textarea id="commentText" rows="4" cols="50" placeholder="Escribe tu comentario"></textarea>
-            <br>
-            <button onclick="addComment()">Agregar Comentario</button>
-            <button onclick="clearComments()">Limpiar Comentarios</button>
-        </div>
+        <h2 class="subtitulo">COMENTARIOS DE INCIDENCIAS</h2>
+        <div class="contenedor-servicio">
+            <div id="comments">
+                <h2>Deja un comentario</h2>
+                <input type="text" id="commentName" placeholder="Nombre">
+                <input type="text" id="commentIncidences" placeholder="Número de Incidencias">
+                <textarea id="commentText" rows="4" cols="50" placeholder="Escribe tu comentario"></textarea>
+                <input type="file" accept="image/*" id="commentImage" onchange="addImage()" />
+                <button onclick="addComment()">Agregar Comentario</button>
+                <button onclick="clearComments()">Limpiar Comentarios</button>
+                <button onclick="exportToExcel()">Exportar a Excel</button>
 
-        <div id="commentList">
-            <h2>Comentarios anteriores</h2>
+                <!-- Agrega un contenedor para la imagen cargada -->
+                <div id="uploadedImageContainer"></div>
+            </div>
+
+            <div id="commentList">
+                <h2>Comentarios anteriores</h2>
+                <div id="chatContainer"></div>
+            </div>
         </div>
-    </div>
-</section>
     </section>
+
 
 </main>
 
-
-
-
-
-</form></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="/style.css">
-<script src="js/insertaUsuario.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="js/cargar.js"></script>
-<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="javaScript/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.0/html2pdf.bundle.js"></script>
+
 
 <!-- Agrega estos enlaces en el encabezado de tu HTML -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
+<script src="js/insertaUsuario.js"></script>
+<script src="js/cargar.js"></script>
+<script src="javaScript/menu.js"></script>
 
 
 </body>

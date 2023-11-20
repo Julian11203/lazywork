@@ -71,6 +71,18 @@ public class IncidenciaController {
         incidenciaService.actualizarIncidenciasNivel3Prioridad3();
         return ResponseEntity.ok("Actualización completa");
     }
+    @PostMapping("actualizarIncidenciasNivel1Prioridad1")
+    public ResponseEntity<String> actualizarNivel1Prioridad1() {
+        incidenciaService.actualizarIncidenciasNivel1Prioridad1();
+        return ResponseEntity.ok("Actualización completa");
+    }
+
+    @PostMapping("/actualizarIncidenciasNivel4Prioridad4")
+    public ResponseEntity<String> actualizarNivel4Prioridad4() {
+        incidenciaService.actualizarIncidenciasNivel4Prioridad4();
+        return ResponseEntity.ok("Actualización completa");
+    }
+
 
 
     @GetMapping("/estado4")

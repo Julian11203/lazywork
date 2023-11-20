@@ -1,14 +1,17 @@
 package com.example.demo.Entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 @Table(name = "IniciosSesion")
+@JsonIgnoreProperties({"usuarioback"})
+
 public class InicioSesion{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "InicioID")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -17,7 +20,7 @@ public class InicioSesion{
 
 
     @Column(nullable = false)
-    private LocalDateTime tiempodesesion;
+    private String tiempodesesion;
 
     @Column(name = "FechaHoraInicio", nullable = false)
     private LocalDateTime fechaHoraInicio;
@@ -29,13 +32,20 @@ public class InicioSesion{
     public InicioSesion() {
     }
 
-    // Constructor con parámetros
-    public InicioSesion(Usuarioback usuarioback, LocalDateTime fechaHoraInicio) {
+    public InicioSesion(Long id, Usuarioback usuarioback, String tiempodesesion, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
+        this.id = id;
         this.usuarioback = usuarioback;
+        this.tiempodesesion = tiempodesesion;
         this.fechaHoraInicio = fechaHoraInicio;
+        FechaHoraFin = fechaHoraFin;
     }
 
-    // Getters y setters
+    public InicioSesion(Usuarioback usuarioback, String tiempodesesion, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
+        this.usuarioback = usuarioback;
+        this.tiempodesesion = tiempodesesion;
+        this.fechaHoraInicio = fechaHoraInicio;
+        FechaHoraFin = fechaHoraFin;
+    }
 
     public Long getId() {
         return id;
@@ -53,6 +63,14 @@ public class InicioSesion{
         this.usuarioback = usuarioback;
     }
 
+    public String getTiempodesesion() {
+        return tiempodesesion;
+    }
+
+    public void setTiempodesesion(String tiempodesesion) {
+        this.tiempodesesion = tiempodesesion;
+    }
+
     public LocalDateTime getFechaHoraInicio() {
         return fechaHoraInicio;
     }
@@ -61,24 +79,11 @@ public class InicioSesion{
         this.fechaHoraInicio = fechaHoraInicio;
     }
 
-    public void setTiempodesesion(LocalDateTime tiempodesesion) {
-        this.tiempodesesion = tiempodesesion;
+    public LocalDateTime getFechaHoraFin() {
+        return FechaHoraFin;
     }
 
     public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
         FechaHoraFin = fechaHoraFin;
-    }
-// Puedes agregar otros métodos y personalizar la entidad según tus necesidades
-
-
-    @Override
-    public String toString() {
-        return "InicioSesion{" +
-                "id=" + id +
-                ", usuarioback=" + usuarioback +
-                ", Tiempodesesion=" + tiempodesesion +
-                ", fechaHoraInicio=" + fechaHoraInicio +
-                ", FechaHoraFin=" + FechaHoraFin +
-                '}';
     }
 }

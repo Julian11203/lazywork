@@ -19,6 +19,7 @@ header{
     background-attachment: fixed;
     background-position: center;
 
+
 }
 
 .hamburguer{
@@ -86,6 +87,8 @@ header{
     margin-bottom: 15px;
 
 }
+
+
 .copy{
 
     font-weight: 300;
@@ -504,3 +507,11 @@ footer {
 footer a:hover {
   text-decoration: underline;
 }
+ #commentList {
+            width: 100%;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+

@@ -44,7 +44,6 @@ function obtenerTodasLasIncidencias() {
     let errorMensaje = document.querySelector('#errormsg');
     errorMensaje.innerHTML = '';
     errorMensaje.classList.remove('alert-danger');
-    let tabla = document.querySelector("#tableid");
 
     $.ajax({
         url: "http://localhost:8080/incidencia/listar",
@@ -52,20 +51,35 @@ function obtenerTodasLasIncidencias() {
         dataType: "json",
         success: function (respuesta) {
             console.log(respuesta);
-            $("#tableid tbody").remove();
 
-            for (let i = 0; i < respuesta.length; i++) {
-                tabla.innerHTML += '<tr><td>' + respuesta[i].incidenciaID +
-                    '</td><td>' + respuesta[i].nombreIncidencia +
-                    '</td><td>' + respuesta[i].ubicacion +
-                    '</td><td>' + respuesta[i].descripcion +
-                    '</td><td>' + respuesta[i].fechaRegistro +
-                    '</td><td>' + respuesta[i].usuarioback.id +
-                    '</td><td>' + respuesta[i].estado.estadoID +
-                    '</td><td>' + respuesta[i].prioridad.prioridadID +
-                    '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarIncidencia(\"" + respuesta[i].incidenciaID + "\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\"" + respuesta[i].incidenciaID + "\")'> <i class='material-icons'>edit</i></a>" +
-                    '</td></tr>';
-            }
+            // Limpia la tabla antes de agregar nuevos datos
+            $('#tableid').DataTable().clear().destroy();
+
+            // Vuelve a agregar la estructura de la tabla
+            $("#tableid tbody").remove();
+            $("#tableid").append('<tbody></tbody>');
+
+            // Agrega los datos a la tabla utilizando DataTable
+            $('#tableid').DataTable({
+                data: respuesta,
+                columns: [
+                    { data: 'incidenciaID' },
+                    { data: 'nombreIncidencia' },
+                    { data: 'ubicacion' },
+                    { data: 'descripcion' },
+                    { data: 'fechaRegistro' },
+                    { data: 'usuarioback.id' },
+                    { data: 'estado.estadoID' },
+                    { data: 'prioridad.prioridadID' },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarIncidencia(\"" + row.incidenciaID + "\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\"" + row.incidenciaID + "\")'> <i class='material-icons'>edit</i></a>";
+                        }
+                    }
+                ],
+                pageLength: 5 // Establece la cantidad de registros por página
+            });
         }
     });
 }
@@ -168,8 +182,6 @@ function obtenerIncidenciasEstado3() {
         }
     });
 }
-
-
 function obtenerIncidenciasEstado1(){
     let errorMensaje = document.querySelector('#errormsg')
     errorMensaje.innerHTML='';
@@ -197,7 +209,36 @@ function obtenerIncidenciasEstado1(){
         }
     })
 }
-
+function obtenerIncidenciasEstado4() {
+   let errorMensaje = document.querySelector('#errormsg');
+      errorMensaje.innerHTML = '';
+      errorMensaje.classList.remove('alert-danger');
+      let tabla = document.querySelector("#tableid2");
+      $.ajax({
+          url: "http://localhost:8080/incidencia/estado4",
+          type: "GET",
+          dataType: "json",
+          success: function (respuesta) {
+              console.log(respuesta);
+              $("#tableid2 tbody").empty(); // Use .empty() to remove all child elements
+              for (let i = 0; i < respuesta.length; i++) {
+                  tabla.innerHTML += `<tr>
+                      <td>${respuesta[i].incidenciaID}</td>
+                      <td>${respuesta[i].nombreIncidencia}</td>
+                      <td>${respuesta[i].ubicacion}</td>
+                      <td>${respuesta[i].descripcion}</td>
+                      <td>${respuesta[i].fechaRegistro}</td>
+                      <td>${respuesta[i].usuarioback.nombre}</td>
+                      <td>${respuesta[i].estado.estadoID}</td>
+                      <td>${respuesta[i].prioridad.prioridadID}</td>
+                  </tr>`;
+              }
+          },
+          error: function (error) {
+              console.error("Error fetching incidencias:", error);
+          }
+      });
+  }
 
 function actualizarNivel2Prioridad2() {
     // Llama a la función correspondiente en tu controlador de Spring
@@ -214,13 +255,42 @@ function actualizarNivel2Prioridad2() {
         }
     });
 }
-
 function actualizarNivel3Prioridad3() {
     // Llama a la función correspondiente en tu controlador de Spring
     // Puedes utilizar AJAX para hacer la llamada.
     // Aquí hay un ejemplo de cómo hacerlo con jQuery:
     $.ajax({
         url: 'http://localhost:8080/incidencia/actualizarIncidenciasNivel3Prioridad3',
+        type: 'POST',
+        success: function(response) {
+            alert(response);
+        },
+        error: function(error) {
+            alert('Error al actualizar las incidencias.');
+        }
+    });
+}
+function actualizarNivel1Prioridad1() {
+    // Llama a la función correspondiente en tu controlador de Spring
+    // Puedes utilizar AJAX para hacer la llamada.
+    // Aquí hay un ejemplo de cómo hacerlo con jQuery:
+    $.ajax({
+        url: 'http://localhost:8080/incidencia/actualizarIncidenciasNivel1Prioridad1',
+        type: 'POST',
+        success: function(response) {
+            alert(response);
+        },
+        error: function(error) {
+            alert('Error al actualizar las incidencias.');
+        }
+    });
+}
+function actualizarNivel4Prioridad4() {
+    // Llama a la función correspondiente en tu controlador de Spring
+    // Puedes utilizar AJAX para hacer la llamada.
+    // Aquí hay un ejemplo de cómo hacerlo con jQuery:
+    $.ajax({
+        url: 'http://localhost:8080/incidencia/actualizarIncidenciasNivel4Prioridad4',
         type: 'POST',
         success: function(response) {
             alert(response);

@@ -1,122 +1,3 @@
-function buscarInicioPorId() {
-    let errorMensaje = document.querySelector('#errormsg');
-    errorMensaje.innerHTML = '';
-    errorMensaje.classList.remove('alert-danger');
-    let idAConsultar = $("#byid").val();
-    let tabla = document.querySelector("#tableid");
-    if (idAConsultar === '') {
-        errorMensaje.classList.add('alert-danger');
-        $("#errormsg").text("❌ Ingrese un ID para realizar la consulta");
-        return;
-    }
-    $.ajax({
-        url: "http://localhost:8080/api/iniciosesion/buscarporid/" + idAConsultar,
-        type: "GET",
-        dataType: "json",
-        success: function (respuesta) {
-            $("#byid").val("");
-            $("#tableid tbody").empty();
-            tabla.innerHTML += '<tr><td>' + respuesta.id +
-            '</td><td>' + respuesta.fechaHoraInicio +
-            '</td><td>' + respuesta.usuario.nombre + ' ' + respuesta.usuario.apellido +
-            '</td><td>' + `<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarInicio("${respuesta.id}")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatosInicio("${respuesta.id}")'> <i class='material-icons'>edit</i></a>` +
-            '</td></tr>';
-        },
-        error: function (xhr) {
-            if (xhr.status === 404) {
-                errorMensaje.classList.add('alert-danger');
-                $("#errormsg").text("❌ El ID " + idAConsultar + " no se encontró...");
-                return;
-            }
-        }
-    });
-}
-
-function listarInicios() {
-    let errorMensaje = document.querySelector('#errormsg');
-    errorMensaje.innerHTML = '';
-    errorMensaje.classList.remove('alert-danger');
-    let tabla = document.querySelector("#tableid");
-    $.ajax({
-        url: "http://localhost:8080/api/iniciosesion/listar",
-        type: "GET",
-        dataType: "json",
-        success: function (respuesta) {
-            $("#tableid tbody").empty();
-            for (let i = 0; i < respuesta.length; i++) {
-                tabla.innerHTML += '<tr><td>' + respuesta[i].id +
-                    '</td><td>' + respuesta[i].fechaHoraInicio +
-                    '</td><td>' + respuesta[i].usuario.nombre + ' ' + respuesta[i].usuario.apellido +
-                    '</td><td>' + `<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarInicio("${respuesta[i].id}")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatosInicio("${respuesta[i].id}")'> <i class='material-icons'>edit</i></a>` +
-                    '</td></tr>';
-            }
-        },
-        error: function(xhr) {
-            // Handle errors if needed
-        }
-    });
-}
-
-function insertarInicio() {
-    let errorModal = document.querySelector('#errormodal');
-    errorModal.innerHTML = '';
-    errorModal.classList.remove('alert-danger');
-
-    // Obtener los datos del formulario
-    let id = $("#usuarioId").val();
-    let fecha = $("#fecha").val();
-
-    // Crear un objeto con los datos
-    let data = {
-        usuario:{
-            id: id,
-        },
-        fechaHoraInicio: fecha
-    };
-
-    $.ajax({
-        url: "http://localhost:8080/api/iniciosesion/insertar",
-        type: "POST",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function () {
-            // Limpiar los campos del formulario
-            $("#usuarioId").val('');
-            $("#fecha").val('');
-            $('#registrarModal').modal('hide');
-            listarInicios()
-
-            // Puedes mostrar un mensaje de éxito si lo deseas
-        },
-        error: function (xhr) {
-            // Mostrar un mensaje de error en caso de fallo
-            errorModal.classList.add('alert-danger');
-            errorModal.textContent = "❌ Error al insertar el inicio.";
-        }
-    });
-}
-
-
-
-
-function eliminarInicio(id) {
-    let errorModal = document.querySelector('#errormodal');
-    errorModal.innerHTML = '';
-    errorModal.classList.remove('alert-danger');
-    $.ajax({
-        url: "http://localhost:8080/api/iniciosesion/eliminar/" + id,
-        type: "DELETE",
-        success: function () {
-            // Aquí puedes realizar alguna acción después de eliminar el inicio, como recargar la lista de inicios.
-            listarInicios();
-        },
-        error: function (xhr) {
-            // Manejar errores si es necesario.
-            errorModal.classList.add('alert-danger');
-            errorModal.textContent = "❌ Error al eliminar el inicio.";
-        }
-    });
-}
 
 function findById1() {
     let errorMensaje = document.querySelector('#errormsg');
@@ -165,7 +46,10 @@ function findAll1() {
     let errorMensaje = document.querySelector('#errormsg');
     errorMensaje.innerHTML = '';
     errorMensaje.classList.remove('alert-danger');
-    let tabla = $("#tableid1").DataTable(); // Utiliza DataTable para la tabla
+    let tabla = $("#tableid1").DataTable({
+        "pageLength": 5, // Establece la cantidad de registros por página
+        "pagingType": "simple_numbers", // Tipo de paginación (puedes ajustar según tu preferencia)
+    });
 
     $.ajax({
         url: "http://localhost:8080/api/usuario/listar",
@@ -190,7 +74,6 @@ function findAll1() {
         }
     });
 }
-
 
 function crear() {
     let errorModal = document.querySelector('#errormodal');
@@ -243,8 +126,6 @@ function crear() {
         }
     });
 }
-
-
 
 function actualizarUsuario() {
     let errorModal = document.querySelector('#errorAc');
@@ -547,69 +428,260 @@ document.getElementById("byid").addEventListener("keydown", function(event) {
         findById();
     }
 })
-
-
-function findById(){
-    let errorMensaje = document.querySelector('#errormsg')
-    errorMensaje.innerHTML='';
-    errorMensaje.classList.remove('alert-danger')
-    let idAConsultar=$("#byid").val();
-    let tabla=document.querySelector("#tableid5");
+function buscarInicioPorId() {
+    let errorMensaje = document.querySelector('#errormsg');
+    errorMensaje.innerHTML = '';
+    errorMensaje.classList.remove('alert-danger');
+    let idAConsultar = $("#byid").val();
+    let tabla = document.querySelector("#tableid");
     if (idAConsultar === '') {
         errorMensaje.classList.add('alert-danger');
-        $("#errormsg").text("❌ Ingrese un id para realizar la consulta");
+        $("#errormsg").text("❌ Ingrese un ID para realizar la consulta");
         return;
     }
     $.ajax({
-        url: "http://localhost:8080/incidencia/"+ idAConsultar,
+        url: "http://localhost:8080/api/iniciosesion/buscarporid/" + idAConsultar,
         type: "GET",
         dataType: "json",
-        success: function(respuesta){
+        success: function (respuesta) {
             $("#byid").val("");
-            $("#tableid5 tbody").remove();
-            tabla.innerHTML += '<tr><td>' + respuesta.incidenciaID +
-            '</td><td>' + respuesta.nombreIncidencia +
-            '</td><td>' + respuesta.ubicacion +
-            '</td><td>' + respuesta.descripcion +
-            '</td><td>' + respuesta.fechaRegistro +
-            '</td><td>' + respuesta.usuario.id+
-            '</td><td>' + respuesta.estado.estadoID+
-            '</td><td>' + respuesta.prioridad.prioridadID+
-            '</td><td>' + "<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarIncidencia(\""+respuesta.incidenciaID+"\")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatos(\""+respuesta.incidenciaID+"\")'> <i class='material-icons'>edit</i></a>" +
+            $("#tableid tbody").empty();
+            tabla.innerHTML += '<tr><td>' + respuesta.id +
+            '</td><td>' + respuesta.fechaHoraInicio +
+            '</td><td>' + respuesta.usuario.nombre + ' ' + respuesta.usuario.apellido +
+            '</td><td>' + `<a href='#' class='eliminar-link' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='eliminarInicio("${respuesta.id}")'> <i class='material-icons'>delete</i></a> <a href='#' class='editar-link' data-bs-toggle='modal' data-bs-target='#actualizarModal' onclick='cargarDatosInicio("${respuesta.id}")'> <i class='material-icons'>edit</i></a>` +
             '</td></tr>';
         },
-        error: function(xhr) {
-            if(xhr.status===404){
+        error: function (xhr) {
+            if (xhr.status === 404) {
                 errorMensaje.classList.add('alert-danger');
-                $("#errormsg").text("❌ El id "+ idAConsultar +" no se encontro...");
+                $("#errormsg").text("❌ El ID " + idAConsultar + " no se encontró...");
                 return;
             }
         }
-    })
-}
-function buscarIncidenciaIdParametro(noIncidencia){
-    let idAConsultar=$("#byid").val(noIncidencia);
-    buscarIncidenciaId()
-}
-
-
-document.getElementById("byid").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        buscarIncidenciaId();
-    }
-});
-$(document).ready(function() {
-    $("#asignarRolesAutomaticamenteBtn").on("click", function() {
-        $.ajax({
-            url: "http://localhost:8080/asignar-roles/automatica",
-            type: "POST",
-            success: function() {
-                alert("Roles asignados automáticamente con éxito.");
-            },
-            error: function(xhr) {
-                alert("Error al asignar roles automáticamente.");
-            }
-        });
     });
-});
+}
+
+function insertarInicio() {
+    let errorModal = document.querySelector('#errormodal');
+    errorModal.innerHTML = '';
+    errorModal.classList.remove('alert-danger');
+
+    // Obtener los datos del formulario
+    let id = $("#usuarioId").val();
+    let fecha_hora_fin = $("#fecha_hora_fin").val();
+    let fecha_hora_inicio = $("#fecha_hora_inicio").val(); // Asegúrate de tener un campo de fechaFin en tu formulario
+    let tiempodesesion = $("#tiempodesesion").val(); // Asegúrate de tener un campo de tiempoSesion en tu formulario
+
+    // Crear un objeto con los datos
+    let data = {
+        usuario: {
+            id: id,
+            // Agregar más campos del usuario si es necesario
+        },
+        fecha_hora_fin: fecha_hora_fin,
+        fecha_hora_inicio: fecha_hora_inicio,
+        tiempodesesion: tiempodesesion,
+        // Agregar más campos según la estructura de tu tabla
+    };
+
+    $.ajax({
+        url: "http://localhost:8080/api/iniciosesion/insertar",
+        type: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function () {
+            // Limpiar los campos del formulario
+            $("#usuarioId").val('');
+            $("#fecha_hora_fin").val('');
+            $("#fecha_hora_inicio").val('');
+            $("#tiempodesesion").val('');
+            $('#registrarModal').modal('hide');
+
+            // Actualizar la tabla después de la inserción
+            listarInicios();
+        },
+        error: function (xhr) {
+            // Mostrar un mensaje de error en caso de fallo
+            errorModal.classList.add('alert-danger');
+            errorModal.textContent = "❌ Error al insertar el inicio.";
+        },
+    });
+}
+
+
+function eliminarInicio(id) {
+    let errorModal = document.querySelector('#errormodal');
+    errorModal.innerHTML = '';
+    errorModal.classList.remove('alert-danger');
+    $.ajax({
+        url: "http://localhost:8080/api/iniciosesion/eliminar/" + id,
+        type: "DELETE",
+        success: function () {
+            // Aquí puedes realizar alguna acción después de eliminar el inicio, como recargar la lista de inicios.
+            listarInicios();
+        },
+        error: function (xhr) {
+            // Manejar errores si es necesario.
+            errorModal.classList.add('alert-danger');
+            errorModal.textContent = "❌ Error al eliminar el inicio.";
+        }
+    });
+}
+function listarInicios() {
+    // Obtener el elemento para mostrar mensajes de error
+    let errorMensaje = document.querySelector('#errormsg');
+    errorMensaje.innerHTML = '';
+    errorMensaje.classList.remove('alert-danger');
+
+    // Obtener elementos de la tabla
+    let tableBody = document.querySelector("#listaIniciosSesion");
+
+    // Realizar la solicitud AJAX utilizando la API fetch
+    fetch("http://localhost:8080/api/iniciosesion/listar")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Registrar los datos en la consola para inspección
+
+            // Limpiar el cuerpo de la tabla antes de llenarla con nuevos datos
+            tableBody.innerHTML = '';
+
+            // Iterar sobre los datos y construir las filas de la tabla
+            data.forEach(inicioSesion => {
+                // Ajustar las propiedades según la estructura real de tus datos
+                let row = `<tr>
+                                <td>${inicioSesion.id}</td>
+                                <td>${inicioSesion.fecha_hora_inicio}</td>
+                                <td>${inicioSesion.fecha_hora_fin}</td>
+                                <td>${inicioSesion.tiempodesesion}</td>
+                                <td>${inicioSesion.usuarioid}</td>
+                                <td>
+                                    <button class="btn btn-danger" onclick="confirmarEliminar(${inicioSesion.id})">Eliminar</button>
+                                </td>
+                            </tr>`;
+
+                // Agregar la fila a la tabla
+                tableBody.innerHTML += row;
+            });
+
+            // Inicializar DataTables y agregar opciones, como el buscador
+            $("#tableid").DataTable({
+                "pageLength": 5,
+                "pagingType": "simple_numbers",
+                "searching": true, // Habilitar el buscador
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener datos:', error);
+            // Manejar errores si es necesario
+        });
+}
+
+
+function addComment() {
+    const commentName = document.getElementById("commentName").value;
+    const commentIncidences = document.getElementById("commentIncidences").value;
+    const commentText = document.getElementById("commentText").value;
+    const commentImage = document.getElementById("uploadedImageContainer").querySelector("img");
+
+    if (commentText.trim() !== "" || (commentImage && commentImage.src.trim() !== "")) {
+        const commentList = document.getElementById("commentList");
+        const newComment = document.createElement("div");
+        newComment.classList.add("comment");
+
+        // Construye la estructura del comentario, incluyendo la imagen si está presente
+        newComment.innerHTML = `
+            <strong>Nombre:</strong> ${commentName}<br>
+            <strong>Número de Incidencias:</strong> ${commentIncidences}<br>
+            <strong>Comentario:</strong> ${commentText}<br>
+            ${commentImage ? `<img src="${commentImage.src}" alt="Imagen adjunta">` : ''}
+        `;
+        commentList.appendChild(newComment);
+
+        // Guardar el comentario en el localStorage
+        saveComment({ name: commentName, incidences: commentIncidences, text: commentText, image: commentImage ? commentImage.src : '' });
+        clearFields();
+    }
+}
+    function saveComment(comment) {
+        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+        comments.push(comment);
+        localStorage.setItem("comments", JSON.stringify(comments));
+    }
+
+    function loadComments() {
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
+        const commentList = document.getElementById("commentList");
+
+        comments.forEach((comment) => {
+            const newComment = document.createElement("div");
+            newComment.innerHTML = `
+                <strong>Nombre:</strong> ${comment.name}<br>
+                <strong>Número de Incidencias:</strong> ${comment.incidences}<br>
+                <strong>Comentario:</strong> ${comment.text}
+            `;
+            commentList.appendChild(newComment);
+        });
+    }
+
+    function clearFields() {
+        document.getElementById("commentName").value = "";
+        document.getElementById("commentIncidences").value = "";
+        document.getElementById("commentText").value = "";
+    }
+
+    function clearComments() {
+        localStorage.removeItem("comments");
+        document.getElementById("commentList").innerHTML = "";
+    }
+ function addEmoji(emoji) {
+        const commentText = document.getElementById("commentText");
+        commentText.value += emoji;
+    }
+  function addImage() {
+        const commentImage = document.getElementById("commentImage");
+        const uploadedImageContainer = document.getElementById("uploadedImageContainer");
+
+        const file = commentImage.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageUrl = e.target.result;
+                const image = document.createElement("img");
+                image.src = imageUrl;
+                uploadedImageContainer.innerHTML = ""; // Limpia el contenedor antes de agregar la nueva imagen
+                uploadedImageContainer.appendChild(image);
+
+                // Descomenta la siguiente línea si deseas agregar la imagen directamente al comentario
+                // addComment();
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+    function exportToExcel() {
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
+        const data = comments.map(comment => [comment.name, comment.incidences, comment.text]);
+
+        const ws = XLSX.utils.aoa_to_sheet([["Nombre", "Número de Incidencias", "Comentario"], ...data]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Comentarios");
+
+        XLSX.writeFile(wb, "comentarios.xlsx");
+    }
+
+    // Cargar los comentarios almacenados al cargar la página
+    loadComments();
+
+
+ var currentImageIndex = 0;
+    var images = document.querySelectorAll(".header-images img");
+
+    function cambiarImagen(index) {
+        images[currentImageIndex].style.opacity = 0;
+        currentImageIndex = index !== undefined ? index : (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].style.opacity = 1;
+    }
+
+    setInterval(cambiarImagen, 10000); // Cambiar automáticamente cada 10 segundos

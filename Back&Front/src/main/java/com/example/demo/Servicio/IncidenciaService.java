@@ -64,17 +64,40 @@ IncidenciaService {
 
     @Transactional
     public void actualizarIncidenciasNivel2Prioridad2() {
-        String sql = "UPDATE incidencias " +
-                "SET usuarioid = ( " +
-                "    SELECT usuarioid " +
-                "    FROM usuariosback " +
-                "    WHERE nivel_soporte = 'nivel 2' " +
-                ") " +
-                "WHERE prioridadid = ( " +
-                "    SELECT prioridadid " +
-                "    FROM prioridades_incidencia " +
-                "    WHERE tipo_prioridad = 'media' " +
-                ")";
+        String sql = "\n" +
+                "UPDATE incidencias\n" +
+                "SET usuarioid = (\n" +
+                "    SELECT usuarioid\n" +
+                "    FROM usuariosback\n" +
+                "    WHERE nivel_soporte = 'nivel 2'\n" +
+                "    LIMIT 1\n" +
+                ")\n" +
+                "WHERE prioridadid = (\n" +
+                "    SELECT prioridadid\n" +
+                "    FROM prioridades_incidencia\n" +
+                "    WHERE tipo_prioridad = 'media'\n" +
+                "    LIMIT 1\n" +
+                ");";
+
+        entityManager.createNativeQuery(sql).executeUpdate();
+    }
+
+    @Transactional
+    public void actualizarIncidenciasNivel1Prioridad1() {
+        String sql = "\n" +
+                "UPDATE incidencias\n" +
+                "SET usuarioid = (\n" +
+                "    SELECT usuarioid\n" +
+                "    FROM usuariosback\n" +
+                "    WHERE nivel_soporte = 'nivel 1'\n" +
+                "    LIMIT 1\n" +
+                ")\n" +
+                "WHERE prioridadid = (\n" +
+                "    SELECT prioridadid\n" +
+                "    FROM prioridades_incidencia\n" +
+                "    WHERE tipo_prioridad = 'baja'\n" +
+                "    LIMIT 1\n" +
+                ");";
 
         entityManager.createNativeQuery(sql).executeUpdate();
     }
@@ -95,7 +118,22 @@ IncidenciaService {
 
         entityManager.createNativeQuery(sql).executeUpdate();
     }
+    @Transactional
+    public void actualizarIncidenciasNivel4Prioridad4() {
+        String sql = "UPDATE incidencias " +
+                "SET usuarioid = ( " +
+                "    SELECT usuarioid " +
+                "    FROM usuariosback " +
+                "    WHERE nivel_soporte = 'nivel 4' " +
+                ") " +
+                "WHERE prioridadid = ( " +
+                "    SELECT prioridadid " +
+                "    FROM prioridades_incidencia " +
+                "    WHERE tipo_prioridad = 'critica' " +
+                ")";
 
+        entityManager.createNativeQuery(sql).executeUpdate();
+    }
 
     public List<Incidencia> obtenerIncidenciasEstado4() {
         // Utiliza el método de tu repositorio para obtener las incidencias con estado 4

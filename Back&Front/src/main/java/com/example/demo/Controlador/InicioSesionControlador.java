@@ -1,7 +1,6 @@
 package com.example.demo.Controlador;
 
 import com.example.demo.Entidad.InicioSesion;
-import com.example.demo.Entidad.Usuarioback;
 import com.example.demo.Servicio.InicioSesionServicios;
 import com.example.demo.Servicio.ServicioUsuarioback;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/iniciosesion")
 @CrossOrigin("*")
-
 public class InicioSesionControlador {
     private final InicioSesionServicios inicioSesionServicios;
+
     @Autowired
     private ServicioUsuarioback usuarioServicio;
+
     @Autowired
     public InicioSesionControlador(InicioSesionServicios inicioSesionServicios) {
         this.inicioSesionServicios = inicioSesionServicios;
@@ -38,37 +38,50 @@ public class InicioSesionControlador {
         List<InicioSesion> iniciosSesion = inicioSesionServicios.listaIniciosSesion();
         return new ResponseEntity<>(iniciosSesion, HttpStatus.OK);
     }
-
     @PostMapping("/insertar")
-
     public ResponseEntity<?> insertarInicioSesion(@RequestBody InicioSesion inicioSesion) {
-        if (inicioSesion.getId() == null) {
-            return new ResponseEntity<>("El usuario no puede ser nulo", HttpStatus.BAD_REQUEST);
+        // Verificar si se proporciona un ID de usuario válido
+        Long usuarioId = inicioSesion.getId();
+        if (usuarioId == null || usuarioId <= 0) {
+            return new ResponseEntity<>("El ID del usuario no es válido", HttpStatus.BAD_REQUEST);
         }
 
-        Class<? extends Long> usuarioId = inicioSesion.getId().getClass();
-        System.out.println(usuarioId);
-        if (usuarioId != null && usuarioServicio.existeUsuario(Math.toIntExact(usuarioId.getModifiers()))) {
-            inicioSesion.setTiempodesesion(LocalDateTime.now()); // Establece el valor del tiempo de sesión
-            InicioSesion nuevoInicioSesion = inicioSesionServicios.insertarInicioSesion(inicioSesion);
-            if (nuevoInicioSesion != null) {
-                return new ResponseEntity<>(nuevoInicioSesion, HttpStatus.CREATED);
+        try {
+            // Convertir usuarioId a int (asumiendo que tu método existeUsuario toma un parámetro int)
+            int usuarioIdInt = usuarioId.intValue();
+
+            // Verificar si el usuario existe
+            if (usuarioServicio.existeUsuario(usuarioIdInt)) {
+                // Establecer fecha_hora_inicio en la marca de tiempo actual
+                inicioSesion.setFechaHoraInicio(LocalDateTime.now());
+
+                // Establecer el tiempo de sesión (asumiendo que deseas establecerlo en la marca de tiempo actual)
+                inicioSesion.setTiempodesesion(String.valueOf(LocalDateTime.now()));
+
+                // Insertar el nuevo inicioSesion
+                InicioSesion nuevoInicioSesion = inicioSesionServicios.insertarInicioSesion(inicioSesion);
+
+                // Verificar si la inserción fue exitosa
+                if (nuevoInicioSesion != null) {
+                    return new ResponseEntity<>(nuevoInicioSesion, HttpStatus.CREATED);
+                } else {
+                    return new ResponseEntity<>("No se pudo crear el inicio de sesión", HttpStatus.INTERNAL_SERVER_ERROR);
+                }
             } else {
-                return new ResponseEntity<>("No se pudo crear el inicio de sesión", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>("El usuario no existe", HttpStatus.BAD_REQUEST);
             }
-        } else {
-            return new ResponseEntity<>("El usuario no existe", HttpStatus.BAD_REQUEST);
+        } catch (NumberFormatException e) {
+            return new ResponseEntity<>("El ID del usuario no es un número válido", HttpStatus.BAD_REQUEST);
         }
     }
+
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<?> actualizarInicioSesion(
             @PathVariable Long id,
             @RequestBody InicioSesion inicioSesionActualizado
     ) {
-        // Verificar si el inicio de sesión con el ID especificado existe
         if (inicioSesionServicios.existeInicioSesion(id)) {
-            // Realizar la actualización
             InicioSesion inicioSesion = inicioSesionServicios.actualizarInicioSesion(id, inicioSesionActualizado);
             if (inicioSesion != null) {
                 return ResponseEntity.ok(inicioSesion);
@@ -79,7 +92,6 @@ public class InicioSesionControlador {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inicio de sesión no encontrado");
         }
     }
-
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarInicioSesion(@PathVariable Long id) {
