@@ -30,9 +30,9 @@ public class ControladorInicio {
             Usuario user = this.userServicio.getCrearUsuario(principal.getClaims());
             model.addAttribute("user",user);
             if(user.getRol().equals("Usuarioback")){ //Consultar que rol es y redirige a la interfaz de ese usuario
-                return "redirect:/GestionUsuarios.html";
+                return "redirect:/GestionAdmin.html";
             }else{
-                return "redirect:/GestionIncidencias.html";
+                return "redirect:/GestionUser.html";
             }
         }
         else{

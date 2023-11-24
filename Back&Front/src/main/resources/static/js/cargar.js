@@ -1,77 +1,54 @@
 $(document).ready(function() {
-    let listaPri = document.querySelector('#prioridad')
-    listaPri.innerHTML = ''
-    let listaPriAC = document.querySelector('#prioridadAC')
-    listaPriAC.innerHTML = ''
-    $.ajax({
-        url: "http://localhost:8080/prioridades/listar",
-        type: "GET",
-        datatype: "JSON",
-        success: function(respuesta) {
-            listaPri.innerHTML += '<option selected> </option>'
-            listaPriAC.innerHTML += '<option selected> </option>'
-            for(i=0;i<respuesta.length;i++){
-                listaPri.innerHTML += '<option value="' +respuesta[i].prioridadID +'">'
-                + respuesta[i].prioridadID+'  '
-                + respuesta[i].tipoPrioridad +'</option>';
 
-                listaPriAC.innerHTML += '<option value="' +respuesta[i].prioridadID +'">'
-                + respuesta[i].prioridadID+'  '
-                + respuesta[i].tipoPrioridad +'</option>';
+//Carga Select con Estudiantes
+let listaEst = document.querySelector('#est')
+        listaEst.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarEstudiantes",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Estudiantes => {
+                    listaEst.innerHTML += '<option value="' +Estudiantes["documento"] +'">'
+                    + Estudiantes["nombre"] +' '+ Estudiantes["apellido"]+'</option>';
+                });
             }
-        }
+
+        });
+//Carga Select con Libros
+let listaLib = document.querySelector('#lib')
+        listaLib.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarLibros",
+            type: "GET",
+            success: function(respuesta) {
+                console.log(respuesta)
+               Object.values(respuesta).forEach(Libros =>  {
+                    listaLib.innerHTML += '<option value="' + Libros["isbn"] +'">'
+                    +  Libros["titulo"] +' - '+  Libros["autor"] +'</option>';
+                });
+            }
+
+        });
+
+//Insertar Prestamo
+    $('#enviar').on('click', function() {
+        let estudiante = $('#est option:selected').val();
+        alert(estudiante);
+        let libro = $('#lib option:selected').val();
+        alert(libro);
+        $.ajax({
+            url: "localhost:8080/agregarPrestamo/" +estudiante+ "/"+libro,
+            type: "POST",
+            contentType:"application/JSON",
+            datatype: JSON,
+            success: function(respuesta) {
+            alert(respuesta);
+            }
+        });
+
     });
 
 
-    let listaUsr = document.querySelector('#usuarioback')
-    listaUsr.innerHTML = ''
-    let listaUsrAC = document.querySelector('#usuariobackAC')
-    listaUsrAC.innerHTML = ''
-    $.ajax({
-        url: "http://localhost:8080/api/usuario/listar",
-        type: "GET",
-        datatype: "JSON",
-        success: function(respuesta) {
-            listaUsr.innerHTML += '<option selected> </option>'
-            listaUsrAC.innerHTML += '<option selected> </option>'
-            for(i=0;i<respuesta.length;i++){
-                listaUsr.innerHTML += '<option value="' +respuesta[i].id +'">'
-                + respuesta[i].id+'  '
-                + respuesta[i].nombre+'  '
-                + respuesta[i].apellido+'  '
-                + respuesta[i].documento +'</option>';
-
-                listaUsrAC.innerHTML += '<option value="' +respuesta[i].id +'">'
-                + respuesta[i].id+'  '
-                + respuesta[i].nombre+'  '
-                + respuesta[i].apellido+'  '
-                + respuesta[i].documento +'</option>';
-            }
-
-        }
-    });
-
-    let listaEst = document.querySelector('#estado')
-    listaEst.innerHTML = ''
-    let listaEstAC = document.querySelector('#estadoAC')
-    listaEstAC.innerHTML = ''
-    $.ajax({
-        url: "http://localhost:8080/estados/listar",
-        type: "GET",
-        datatype: "JSON",
-        success: function(respuesta) {
-            listaEst.innerHTML += '<option selected> </option>'
-            listaEstAC.innerHTML += '<option selected> </option>'
-            for(i=0;i<respuesta.length;i++){
-                listaEst.innerHTML += '<option value="' +respuesta[i].estadoID +'">'
-                + respuesta[i].estadoID+'  '
-                + respuesta[i].tipoEstado +'</option>';
-
-                listaEstAC.innerHTML += '<option value="' +respuesta[i].estadoID +'">'
-                + respuesta[i].estadoID+'  '
-                + respuesta[i].tipoEstado +'</option>';
-            }
-        }
-    });
-}
-);
+});
