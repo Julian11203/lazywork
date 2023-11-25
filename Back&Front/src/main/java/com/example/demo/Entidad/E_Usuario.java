@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="usuarios")
-public class Usuario {
+public class E_Usuario {
 
 @Id
 private String email;
@@ -22,10 +22,10 @@ private String auth_id;
 @Column(name="rol")
 private String rol;
 
-    public Usuario() {
+    public E_Usuario() {
     }
 
-    public Usuario(String email, String nick, String img, String auth_id, String rol) {
+    public E_Usuario(String email, String nick, String img, String auth_id, String rol) {
         this.email = email;
         this.nick = nick;
         this.img = img;

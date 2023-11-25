@@ -89,7 +89,7 @@ public class C_InicioSesion {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al actualizar el inicio de sesión");
             }
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inicio de sesión no encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("C_Inicio de sesión no encontrado");
         }
     }
 

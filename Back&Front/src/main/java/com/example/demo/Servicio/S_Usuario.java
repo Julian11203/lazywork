@@ -1,6 +1,6 @@
 package com.example.demo.Servicio;
 
-import com.example.demo.Entidad.Usuario;
+import com.example.demo.Entidad.E_Usuario;
 import com.example.demo.Repositorio.R_UsuarioBack;
 import com.example.demo.Repositorio.R_Usuario;
 import org.springframework.stereotype.Service;
@@ -18,11 +18,11 @@ public class S_Usuario {
         this.repoEst = repoEst;
     }
 
-    public Usuario crear(Usuario usuario) {
+    public E_Usuario crear(E_Usuario usuario) {
         return repositorio.save(usuario);
     }
 
-    public Usuario buscarEmail(String email) {
+    public E_Usuario buscarEmail(String email) {
         if (repositorio.findById(email).isPresent()) {
             return repositorio.findById(email).get();
         } else {
@@ -30,9 +30,9 @@ public class S_Usuario {
         }
     }
 
-    public Usuario getCrearUsuario(Map<String, Object> dataUser) {
+    public E_Usuario getCrearUsuario(Map<String, Object> dataUser) {
         String email = (String) dataUser.get("email");
-        Usuario user = buscarEmail(email); // Si ya existe, solo lo retorna
+        E_Usuario user = buscarEmail(email); // Si ya existe, solo lo retorna
         String rol = "";
         if (user == null) {
             String name = (String) dataUser.get("nickname");
@@ -44,7 +44,7 @@ public class S_Usuario {
             } else {
                 rol = "Otro";
             }
-            Usuario nuevo = new Usuario(email, name, imag, auth_id, rol);
+            E_Usuario nuevo = new E_Usuario(email, name, imag, auth_id, rol);
             return this.crear(nuevo);
         } else {
             return user;

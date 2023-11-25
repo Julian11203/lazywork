@@ -1,6 +1,6 @@
 package com.example.demo.Controlador;
 
-import com.example.demo.Entidad.Usuario;
+import com.example.demo.Entidad.E_Usuario;
 import com.example.demo.Servicio.S_Usuarioback;
 import com.example.demo.Servicio.S_Usuario;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class Inicio {
+public class C_Inicio {
 
     S_Usuario userServicio;
     S_Usuarioback estServicio;
 
-    public Inicio(S_Usuarioback estServicio, S_Usuario userServicio) {
+    public C_Inicio(S_Usuarioback estServicio, S_Usuario userServicio) {
         this.userServicio = userServicio;
         this.estServicio = estServicio;
     }
@@ -26,8 +26,8 @@ public class Inicio {
 
         if (principal != null) {
             System.out.println(principal.getClaims());
-            //Usuario user = this.userServicio.getCrearUsuario(principal.getClaims().get("email")); //trae el correo de auth0
-            Usuario user = this.userServicio.getCrearUsuario(principal.getClaims());
+            //E_Usuario user = this.userServicio.getCrearUsuario(principal.getClaims().get("email")); //trae el correo de auth0
+            E_Usuario user = this.userServicio.getCrearUsuario(principal.getClaims());
             model.addAttribute("user",user);
             if(user.getRol().equals("E_Usuarioback")){ //Consultar que rol es y redirige a la interfaz de ese usuario
                 return "redirect:/GestionAdmin.html";

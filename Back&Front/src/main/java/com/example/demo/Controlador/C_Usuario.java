@@ -1,76 +1,42 @@
 package com.example.demo.Controlador;
 
-import com.example.demo.Entidad.E_Usuarioback;
+import com.example.demo.Entidad.E_Usuario;
 import com.example.demo.Servicio.S_Usuarioback;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import com.example.demo.Servicio.S_Usuario;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 @RestController
-@RequestMapping("/api/usuario")
-@CrossOrigin("*")
 public class C_Usuario {
 
+    S_Usuario userServicio;
+    S_Usuarioback estServicio;
 
+    public C_Usuario(S_Usuario userServicio, S_Usuarioback estServicio) {
+        this.userServicio = userServicio;
+        this.estServicio = estServicio;
+    }
 
-    private final S_Usuarioback servicioUsuarioback;
+    @GetMapping("/user")
+    public E_Usuario usuario(@AuthenticationPrincipal OidcUser principal) {
+        System.out.println(principal.getClaims());
+        String email = (String) principal.getClaims().get("email");
+        E_Usuario user = this.userServicio.buscarEmail(email);
+        return user;
 
-    @Autowired
-    public C_Usuario(S_Usuarioback servicioUsuarioback) {
-        this.servicioUsuarioback = servicioUsuarioback;
     }
 
 
-    @PostMapping("/crear")
-    public ResponseEntity<?> save(@Validated @RequestBody E_Usuarioback nuevoUsuarioback, BindingResult result) {
-        // Verifica si hay errores de validación
-        if (result.hasErrors()) {
-            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
-        }
 
-        // Resto de la lógica para crear y guardar el usuario
-        E_Usuarioback usuariobackGuardado = servicioUsuarioback.save(nuevoUsuarioback);
-        return new ResponseEntity<>("Usuario creado exitosamente", HttpStatus.CREATED);
-    }
+  /*  @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        // Realiza la revocación del token de acceso en Auth0
+        // ...
 
-    @GetMapping("/buscarporid/{id}")
-    public ResponseEntity<E_Usuarioback> findById(@PathVariable Long usuarioid) {
-        Optional<E_Usuarioback> usuario = servicioUsuarioback.findById(usuarioid);
-        return usuario.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @GetMapping("/listar")
-    public ResponseEntity<List<E_Usuarioback>> findAll() {
-        return new ResponseEntity<>(servicioUsuarioback.findAll(), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long usuarioid) {
-        Optional<E_Usuarioback> usuario = servicioUsuarioback.findById(usuarioid);
-        if (usuario.isPresent()) {
-            servicioUsuarioback.delete(Math.toIntExact(usuarioid));
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<E_Usuarioback> actualizarUsuario(@RequestBody E_Usuarioback usuariobackActualizado, @PathVariable int id) {
-        try {
-            E_Usuarioback usuariobackGuardado = servicioUsuarioback.actualizarUsuario(id, usuariobackActualizado);
-            return new ResponseEntity<>(usuariobackGuardado, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+        // Invalida la sesión y redirige a la página de inicio o donde quieras
+        request.getSession().invalidate();
+        return "redirect:/index";
+    }*/
 }
-
-
