@@ -8,6 +8,8 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class C_Usuario {
 
@@ -22,8 +24,18 @@ public class C_Usuario {
     @GetMapping("/user")
     public E_Usuario usuario(@AuthenticationPrincipal OidcUser principal) {
         System.out.println(principal.getClaims());
-        String email = (String) principal.getClaims().get("email");
-        E_Usuario user = this.userServicio.buscarEmail(email);
+        System.out.println(principal.getUserInfo()); // Cacharrearle
+        System.out.println(principal.getIdToken()); // Cacharrearle
+        E_Usuario user = new E_Usuario(
+                (String) principal.getClaims().get("email"),
+                (String) principal.getClaims().get("nickname"),
+                (String) principal.getClaims().get("picture"),
+                (String) principal.getClaims().get("sub"),
+                (String) principal.getClaims().get("rol") // Cacharrearle
+        );
+        userServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
+
+        // E_Usuario user = this.userServicio.buscarEmail(email);
         return user;
 
     }
