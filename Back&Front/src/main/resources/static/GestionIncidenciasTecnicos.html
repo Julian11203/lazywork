@@ -1,0 +1,287 @@
+<!DO<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Gestión Administrador</title>
+</head>
+<body>
+<script type="text/javascript">
+    $.get("/user", function(data){
+    if(data!=null){
+    $("#usuario").html(data.nick);
+    $("#correo").html(data.email);
+    }
+    });
+</script>
+
+<div class="container authenticated mb-3">
+    <h1 class="bg-primary display-1 text-light mb-0">Gestion de Usuarios</h1>
+    <h5 class="bg-primary dispaly-5 mt-0">¡Bienvenido <span id="usuario"></span>!</h5>
+    <h5 class="bg-primary dispaly-5 mt-0">Correo: <span id="correo"></span></h5>
+    <a href="/logout">Cerrar Sesion</a>
+    <a href="GestionTecnicos.html">Gestion Tecnicos</a>
+    <!--
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-success">Logout</button>
+            </form>
+        </div>
+    -->
+</div>
+<header class="header" id="inicio">
+    <img src="iconos/bx-menu-alt-right.svg" class="hamburguer">
+    <nav class="menu-navegacion">
+
+        <a href="#inicio">inicio</a>
+        <a href="#Panel Usuarios">Panel Usuarios Tecnicos</a>
+        <a href="#Panel Inicio de sesion">Panel Inicio de sesion</a>
+        <a href="">contacto</a>
+
+    </nav>
+
+
+</header>
+<body>
+
+<section class="contenedor" id="Incidencias">
+    <h2 class="subtitulo">PANEL DE INCIDENCIAS TECNICOS</h2>
+    <div class="contenedor-servicio">
+
+        <div class="container mt-4 mb-2">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control " id="byid" placeholder="Buscar por Nº incidencia" aria-label="Buscar por Nº incidencia" aria-describedby="button-addon2">
+                        <a href='#' class='btn agregar-link col-md-1 btn-success' data-bs-toggle="modal" data-bs-target="#registrarModal"><i class='material-icons'>add_box</i></a>
+                        <a href='#' class='btn listar-link col-md-1 btn-secondary' onclick="obtenerTodasLasIncidencias()"><i class='material-icons'>list</i></a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-auto">
+                    <div class="alert alert-dismissible" role="alert" id="errormsg"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-bordered" id="tableid">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nºinc</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Ubicacion</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Usuarioback</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Prioridad</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-group-divider"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <!-- Modal REGISTRAR -->
+            <div class="modal fade " id="registrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresar nueva incidencia</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nombre<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="nombre" name="Nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Ubicacion<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="ubicacion" name="Ubicacion" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Descripcion<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="descripcion" name="descripcion" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Usuarioback<span class="required"> *</span></label>
+                                    <select class="form-select border-dark" id="usuarioback" aria-label="Default select example">
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Estado<span class="required"> *</span></label>
+                                    <select class="form-select border-dark" id="estado" aria-label="Default select example">
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Prioridad<span class="required"> *</span></label>
+                                    <select class="form-select border-dark" id="prioridad" aria-label="Default select example">
+                                    </select>
+                                </div>
+
+                                <div class="col-auto">
+                                    <div class="alert alert-dismissible" role="alert" id="errormodal"></div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="alert" role="alert" id="errormodal"></div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-primary" type="submit" id="enviar" onclick="save()">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal ACTUALIZAR -->
+            <div class="modal fade " id="actualizarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Incidencia</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3" id="actu">
+                                <div class="col-md-2">
+                                    <label class="form-label">ID</label>
+                                    <input type="text" class="form-control border-dark" id="idAC" name="idIncidencia" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Nombre<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="nombreAC" name="Nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Ubicacion<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="ubicacionAC" name="Ubicacion" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Descripcion<span class="required"> *</span></label>
+                                    <input type="text" class="form-control border-dark" id="descripcionAC" name="descripcion" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Usuarioback<span class="required">*</span></label>
+                                    <select class="form-select border-dark" id="usuariobackAC" aria-label="Default select example">
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Estado<span class="required">*</span></label>
+                                    <select class="form-select border-dark" id="estadoAC" aria-label="Default select example">
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Prioridad<span class="required">*</span></label>
+                                    <select class="form-select border-dark" id="prioridadAC" aria-label="Default select example">
+                                    </select>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="alert alert-dismissible" role="alert" id="errorAc"></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-success" type="submit" id="enviar" onclick="update()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group">
+                            <a href="#" class="btn listar-link col-md-1 btn-secondary" onclick="obtenerIncidenciasEstado3()">FINALIZADA<i class="material-icons">list</i></a>
+                            <a href="#" class="btn listar-link col-md-1 btn-secondary" onclick="obtenerIncidenciasEstado4()">ESCALADAS<i class="material-icons">list</i></a>
+                            <a href="#" class="btn listar-link col-md-1 btn-secondary" onclick="obtenerIncidenciasEstado1()">PENDIENTES<i class="material-icons">list</i></a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered" id="tableid2">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nºinc</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Ubicacion</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Usuarioback</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Prioridad</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+</section>
+
+<section class="contenedor" id="comentarios">
+    <h2 class="subtitulo">COMENTARIOS DE INCIDENCIAS</h2>
+    <div class="contenedor-servicio">
+        <div id="comments">
+            <h2>Deja un comentario</h2>
+            <input type="text" id="commentName" placeholder="Nombre">
+            <input type="text" id="commentIncidences" placeholder="Número de Incidencias">
+            <textarea id="commentText" rows="4" cols="50" placeholder="Escribe tu comentario"></textarea>
+            <input type="file" accept="image/*" id="commentImage" onchange="addImage()" />
+            <button onclick="addComment()">Agregar Comentario</button>
+            <button onclick="exportToExcel()">Exportar a Excel</button>
+
+            <!-- Agrega un contenedor para la imagen cargada -->
+            <div id="uploadedImageContainer"></div>
+        </div>
+
+        <div id="commentList">
+            <h2>Comentarios anteriores</h2>
+            <div id="chatContainer"></div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="/style.css">
+<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="javaScript/menu.js"></script>
+<script src="js/insertaIncidencia.js"></script>
+<script src="js/cargar.js"></script>
+<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<!-- Agrega estos enlaces en el encabezado de tu HTML -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script src="js/insertaUsuario.js"></script>
+</html>

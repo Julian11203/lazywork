@@ -22,27 +22,26 @@ $(document).ready(function() {
         }
     });
 
-
-    let listaUsr = document.querySelector('#usuarioback')
-    listaUsr.innerHTML = ''
-    let listaUsrAC = document.querySelector('#usuariobackAC')
-    listaUsrAC.innerHTML = ''
-    $.ajax({
-        url: "http://localhost:8080/api/usuario/listar",
-        type: "GET",
-        datatype: "JSON",
-        success: function(respuesta) {
-            listaUsr.innerHTML += '<option selected> </option>'
-            listaUsrAC.innerHTML += '<option selected> </option>'
-            for(i=0;i<respuesta.length;i++){
-                listaUsr.innerHTML += '<option value="' +respuesta[i].id +'">'
-                + respuesta[i].id+'  '
+       let listaEst = document.querySelector('#usuarioback')
+       listaEst.innerHTML = ''
+       let listaEstAC = document.querySelector('#estadoAC')
+       listaEstAC.innerHTML = ''
+       $.ajax({
+           url: "http://localhost:8080/api/usuario/listar",
+           type: "GET",
+           datatype: "JSON",
+           success: function(respuesta) {
+               listaEst.innerHTML += '<option selected> </option>'
+               listaEstAC.innerHTML += '<option selected> </option>'
+               for(i=0;i<respuesta.length;i++){
+                listaUsr.innerHTML += '<option value="' +respuesta[i].usuarioid +'">'
+                + respuesta[i].usuarioid+'  '
                 + respuesta[i].nombre+'  '
                 + respuesta[i].apellido+'  '
                 + respuesta[i].documento +'</option>';
 
-                listaUsrAC.innerHTML += '<option value="' +respuesta[i].id +'">'
-                + respuesta[i].id+'  '
+                listaUsrAC.innerHTML += '<option value="' +respuesta[i].usuarioid +'">'
+                + respuesta[i].usuarioid+'  '
                 + respuesta[i].nombre+'  '
                 + respuesta[i].apellido+'  '
                 + respuesta[i].documento +'</option>';
@@ -50,6 +49,7 @@ $(document).ready(function() {
 
         }
     });
+
 
     let listaEst = document.querySelector('#estado')
     listaEst.innerHTML = ''
