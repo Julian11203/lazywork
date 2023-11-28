@@ -8,24 +8,21 @@ import javax.persistence.*;
 public class Usuario {
 
     @Id
-private String email;
+    private String email;
     @Column(name="name")
     private  String name;
-@Column(name="nick", unique = true)
-private String nick;
+    @Column(name="nick", unique = true)
+    private String nick;
 
-@Column(name="img")
-private String img;
+    @Column(name="img")
+    private String img;
 
-@Column(name="auth_id", unique = true)
-private String auth_id;
+    @Column(name="auth_id", unique = true)
+    private String auth_id;
 
-@Column(name="rol")
-private String rol;
-
-
-
-
+    @Column(name="rol")
+    private String rol;
+    
     @ManyToOne
     @JoinColumn(name = "UsuarioID")  // Ajusta el nombre de la columna según tu modelo de base de datos
     private Usuarioback usuarioback;
