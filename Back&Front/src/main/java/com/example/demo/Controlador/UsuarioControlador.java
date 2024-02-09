@@ -1,22 +1,23 @@
 package com.example.demo.Controlador;
 
 import com.example.demo.Entidad.Usuario;
-import com.example.demo.Servicio.ServicioUsuarioback;
-import com.example.demo.Servicio.usuarioServicio;
+import com.example.demo.Servicio.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ControladorUsuario {
+@RequestMapping("/login")
+public class UsuarioControlador {
 
-    usuarioServicio userServicio;
-    ServicioUsuarioback estServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 
-    public ControladorUsuario(ServicioUsuarioback estServicio, usuarioServicio userServicio) {
-        this.userServicio = userServicio;
-        this.estServicio = estServicio;
+    public UsuarioControlador(UsuarioServicio usuarioServicio) {
+        this.usuarioServicio = usuarioServicio;
     }
 
     @GetMapping("/user")
@@ -25,13 +26,12 @@ public class ControladorUsuario {
         //System.out.println(principal.getUserInfo()); // Cacharrearle
         //System.out.println(principal.getIdToken()); // Cacharrearle
         Usuario user = new Usuario(
-                (String) principal.getClaims().get("email"),
-                (String) principal.getClaims().get("nickname"),
-                (String) principal.getClaims().get("picture"),
-                (String) principal.getClaims().get("sub"),
-                (String) principal.getClaims().get("rol") // Cacharrearle
+                (Long) principal.getClaims().get("documento"),
+                (String) principal.getClaims().get("nombre"),
+                (String) principal.getClaims().get("auth_id"),
+                (String) principal.getClaims().get("role")
         );
-        userServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
+        usuarioServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
 
         // E_Usuario user = this.userServicio.buscarEmail(email);
         return user;
