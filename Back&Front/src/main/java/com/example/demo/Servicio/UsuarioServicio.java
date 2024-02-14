@@ -27,27 +27,4 @@ public class UsuarioServicio {
         }
     }
 
-    public Usuario getCrearUsuario(Map<String, Object> dataUser) {
-        Long documento = (Long) dataUser.get("documento");
-        Usuario usuario = buscarDocumento(documento);
-
-        if (usuario == null) {
-            String nombre = (String) dataUser.get("nombre");
-            String auth_id = (String) dataUser.get("sub");
-
-            // Utiliza repoUsu para obtener Usuarioback
-            usuario = usuarioCrudRepository.findByDocumento(documento);
-
-            if (usuario != null) {
-                // Asigna la relación y el tipoderol al nuevo usuario
-                Usuario nuevo = new Usuario(documento, nombre, auth_id, usuario.getRole());
-                return this.crear(nuevo);
-            } else {
-                // Si no se encuentra Usuarioback, puedes manejarlo según tus necesidades
-                return null;
-            }
-        } else {
-            return usuario;
-        }
-    }
 }

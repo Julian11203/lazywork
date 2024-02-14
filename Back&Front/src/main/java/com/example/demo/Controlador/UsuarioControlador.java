@@ -5,7 +5,9 @@ import com.example.demo.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,20 +24,29 @@ public class UsuarioControlador {
 
     @GetMapping("/user")
     public Usuario usuario(@AuthenticationPrincipal OidcUser principal) {
-        System.out.println(principal.getClaims());
         //System.out.println(principal.getUserInfo()); // Cacharrearle
         //System.out.println(principal.getIdToken()); // Cacharrearle
         Usuario user = new Usuario(
-                (Long) principal.getClaims().get("documento"),
-                (String) principal.getClaims().get("nombre"),
-                (String) principal.getClaims().get("auth_id"),
-                (String) principal.getClaims().get("role")
+                (String) principal.getClaims().get("name"),
+                (String) principal.getClaims().get("user_id")
         );
-        usuarioServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
 
         // E_Usuario user = this.userServicio.buscarEmail(email);
         return user;
+    }
+    @PostMapping("/registro")
+    public String registrarUsuarioDespuesAutenticacion(@AuthenticationPrincipal OAuth2User oauth2User) {
+        // Extraer información del usuario autenticado
+        String user_id = oauth2User.getAttribute("user_id");
+        String name = oauth2User.getAttribute("name");
 
+        // Crear un nuevo usuario en la base de datos
+        Usuario usuario = new Usuario();
+        usuario.setUser_id(user_id);
+        usuario.setName(name);
+        usuarioServicio.crear(usuario);
+
+        return "redirect:/index";
     }
 
 

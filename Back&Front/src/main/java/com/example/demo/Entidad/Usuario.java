@@ -5,57 +5,32 @@ import javax.persistence.*;
 
 @Entity
 public class Usuario {
-
     @Id
-    private Long documento;
+    private String user_id;
     @Column
-    private  String nombre;
-
-    @Column(unique = true)
-    private String auth_id;
-
-    @Column
-    private String role;
+    private  String name;
 
     public Usuario() {
     }
 
-    public Usuario(Long documento, String nombre, String auth_id, String role) {
-        this.documento = documento;
-        this.nombre = nombre;
-        this.auth_id = auth_id;
-        this.role = role;
+    public Usuario(String user_id, String name) {
+        this.user_id = user_id;
+        this.name = name;
     }
 
-    public Long getDocumento() {
-        return documento;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setDocumento(Long documento) {
-        this.documento = documento;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getAuth_id() {
-        return auth_id;
-    }
-
-    public void setAuth_id(String auth_id) {
-        this.auth_id = auth_id;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 }

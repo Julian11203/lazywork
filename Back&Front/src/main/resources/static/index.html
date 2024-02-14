@@ -309,24 +309,10 @@
 
 
 
-            <div sec:authorize="!isAuthenticated()">
-                <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+
+            <div class="btn-container">
                 <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
             </div>
-
-
-            <div sec:authorize="isAuthenticated()">
-                <p>You are logged in!</p>
-                <img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/>
-                <h2 th:text="${profile.get('name')}"></h2>
-                <p th:text="${profile.get('email')}"></p>
-                <form name="logoutForm" th:action="@{/logout}" method="post">
-                    <button type="submit" value="Log out"/>
-                </form>
-            </div>
-<!--            <div class="btn-container">-->
-<!--                <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>-->
-<!--            </div>-->
 
 
 
@@ -347,11 +333,7 @@
 
 
 
-<!--    <div class="rFrNMe N3Hzgf jjwyfe QBQrY zKHdkd sdJrJc Tyc9J" jscontroller="pxq3x" jsaction="clickonly:KjsqPd; focus:Jt1EX; blur:fpfTEe; input:Lg5SV" jsshadow="" jsname="Ufn6O"><div class="aCsJod oJeWuf"><div class="aXBtI Wic03c"><div class="Xb9hP"><input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Correo electrónico o teléfono" name="identifier" value="" aria-disabled="false" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value=""><div jsname="YRMmle" class="AxOyFc snByac" aria-hidden="true">Correo electrónico o teléfono</div></div><div class="i9lrp mIZh1c"></div><div jsname="XmnwAc" class="OabDMe cXrdqd Y2Zypf"></div></div></div><div class="LXRPh"><div jsname="ty6ygf" class="ovnfwe Is7Fhb"></div><div jsname="B34EJ" class="dEOOab RxsGPe" aria-atomic="true" aria-live="assertive"></div></div></div>-->
 
-<!--    <div>Bienvenido <span id="valorInput"></span>!</div>-->
-
-<!--    https://dev-we51wzjgmx6v0f6c.us.auth0.com/userinfo-->
 
 
 
