@@ -2,40 +2,48 @@ package com.example.demo.Controlador;
 
 import com.example.demo.Entidad.Usuario;
 import com.example.demo.Servicio.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/user")
 public class UsuarioControlador {
+    @Autowired
     UsuarioServicio usuarioServicio;
 
     public UsuarioControlador(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
 
+    @GetMapping("/{email}")
+    public ResponseEntity<Usuario> findOneById(@PathVariable String correoElectronico) {
+        if(usuarioServicio.existsByEmail(correoElectronico)){
+            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
+        }
+
+    }
+
     @GetMapping("/user")
-    public Usuario usuario(@AuthenticationPrincipal OidcUser principal) {
-        //System.out.println(principal.getUserInfo()); // Cacharrearle
-        //System.out.println(principal.getIdToken()); // Cacharrearle
+    public ResponseEntity<Usuario> user(@AuthenticationPrincipal OidcUser principal) {
         String roles = String.valueOf(principal.getAuthorities());
         Usuario user = new Usuario(
-                (String) principal.getClaims().get("email"), // correoElectronico
-                (String) principal.getClaims().get("given_name"), // nombreUsuario
-                (String) principal.getClaims().get("picture"), // fotoPerfil
-                (String) principal.getClaims().get("sub"), // auth_id
-                roles // rolDeUsuario
+                (String) principal.getClaims().get("email"),            // correoElectronico
+                (String) principal.getClaims().get("given_name"),       // nombreUsuario
+                (String) principal.getClaims().get("picture"),          // fotoPerfil
+                (String) principal.getClaims().get("sub"),              // auth_id
+                roles                                                   // rolDeUsuario
         );
         usuarioServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
 
         // E_Usuario user = this.userServicio.buscarEmail(email);
-        return user;
+        return ResponseEntity.ok(user);
 
     }
 

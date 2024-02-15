@@ -25,13 +25,17 @@ public class UsuarioServicio {
         usuarioRepository.deleteById(Long.valueOf(id));
     }
 
-    public boolean existsById(int id) {
+    public boolean existsByEmail(String email) {
         // Lógica para verificar si un usuario existe por su ID
-        return usuarioRepository.existsById(Long.valueOf(id));
+        return usuarioRepository.existsById(Long.valueOf(email));
     }
 
 
     public Usuario crear(Usuario user) {
         return usuarioRepository.save(user);
+    }
+
+    public Usuario findOneById(String correoElectronico) {
+        usuarioRepository.findById(correoElectronico);
     }
 }
