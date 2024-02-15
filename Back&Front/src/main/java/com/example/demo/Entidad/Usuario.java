@@ -4,33 +4,55 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="usuarios")
 public class Usuario {
     @Id
-    private String user_id;
+    private String correoElectronico;
     @Column
-    private  String name;
-
+    private  String nombreUsuario;
+    @Column
+    private String fotoPerfil;
+    @Column(unique = true)
+    private String auth_id;
+    @Column
+    private String rolDeUsuario;
     public Usuario() {
     }
-
-    public Usuario(String user_id, String name) {
-        this.user_id = user_id;
-        this.name = name;
+    public Usuario(String email, String name, String img, String auth_id, String role) {
+        this.correoElectronico = email;
+        this.nombreUsuario = name;
+        this.fotoPerfil = img;
+        this.auth_id = auth_id;
+        this.rolDeUsuario = role;
     }
-
-    public String getUser_id() {
-        return user_id;
+    public String getEmail() {
+        return correoElectronico;
     }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setEmail(String email) {
+        this.correoElectronico = email;
     }
-
     public String getName() {
-        return name;
+        return nombreUsuario;
     }
-
     public void setName(String name) {
-        this.name = name;
+        this.nombreUsuario = name;
+    }
+    public String getImg() {
+        return fotoPerfil;
+    }
+    public void setImg(String img) {
+        this.fotoPerfil = img;
+    }
+    public String getAuth_id() {
+        return auth_id;
+    }
+    public void setAuth_id(String auth_id) {
+        this.auth_id = auth_id;
+    }
+    public String getRole() {
+        return rolDeUsuario;
+    }
+    public void setRole(String role) {
+        this.rolDeUsuario = role;
     }
 }

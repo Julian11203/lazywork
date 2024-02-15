@@ -13,28 +13,14 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http
-                .authorizeHttpRequests(a -> a
-                        .antMatchers("/**").permitAll()
-                        .anyRequest().authenticated()
-                ).exceptionHandling(e -> e
-                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-                ).oauth2Login();
+        http.authorizeHttpRequests(a -> a
+                .antMatchers("/").permitAll()
+                .anyRequest().authenticated()
+        ).exceptionHandling(e -> e
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+        ).oauth2Login();
 
         http.cors().and().csrf().disable();
     }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http
-//                .authorizeHttpRequests(a -> a
-//                .antMatchers("/api/v1/**").permitAll()
-//                .anyRequest().authenticated()
-//        ).exceptionHandling(e -> e
-//                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-//        ).oauth2Login();
-//
-//        http.cors().and().csrf().disable();
-//    }
 
 }

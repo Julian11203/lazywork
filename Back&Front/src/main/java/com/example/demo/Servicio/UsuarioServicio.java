@@ -5,26 +5,33 @@ import com.example.demo.Repositorio.UsuarioCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 public class UsuarioServicio {
+
     @Autowired
-    private UsuarioCrudRepository usuarioCrudRepository;
+    private final UsuarioCrudRepository usuarioRepository;
 
-    public UsuarioServicio(UsuarioCrudRepository usuarioCrudRepository) {
-        this.usuarioCrudRepository = usuarioCrudRepository;
+    public UsuarioServicio(UsuarioCrudRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
     }
 
-    public Usuario crear(Usuario usuario) {
-        return usuarioCrudRepository.save(usuario);
+
+
+    public void delete(int id) {
+        usuarioRepository.deleteById(Long.valueOf(id));
     }
 
-    public Usuario buscarDocumento(Long documento) {
-        if (usuarioCrudRepository.findById(documento).isPresent()) {
-            return usuarioCrudRepository.findById(documento).get();
-        } else {
-            return null;
-        }
+    public boolean existsById(int id) {
+        // Lógica para verificar si un usuario existe por su ID
+        return usuarioRepository.existsById(Long.valueOf(id));
     }
 
+
+    public Usuario crear(Usuario user) {
+        return usuarioRepository.save(user);
+    }
 }
