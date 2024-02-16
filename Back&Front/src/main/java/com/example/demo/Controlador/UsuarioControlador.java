@@ -50,14 +50,14 @@ public class UsuarioControlador {
 
 
 
-  /*  @PostMapping("/logout")
-    public String logout(HttpServletRequest request){
-        // Realiza la revocación del token de acceso en Auth0
-
-        // Invalída la sesión y redirige a la página de inicio o donde quieras
-        request.getSession().invalidate();
-        return "redirect:/Login";
-    }*/
+//    @PostMapping("/logout")
+//    public String logout(HttpServletRequest request){
+//        // Realiza la revocación del token de acceso en Auth0
+//
+//        // Invalída la sesión y redirige a la página de inicio o donde quieras
+//        request.getSession().invalidate();
+//        return "redirect:/";
+//    }
 
 
 
