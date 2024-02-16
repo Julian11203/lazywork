@@ -24,7 +24,7 @@ public class UsuarioControlador {
 
     @GetMapping
     public ResponseEntity<Usuario> guardarDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
-        String roles = "USER";
+        String roles = "ADMIN";
         Usuario user = new Usuario(
                 (String) principal.getClaims().get("email"),            // correoElectronico
                 (String) principal.getClaims().get("name"),             // nombreCompleto

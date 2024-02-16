@@ -10,10 +10,17 @@
 <script>
     $.get("/user", function(data){
         if(data!=null){
-            $("#mensaje").text("Mostrando información del usuario");
+            var gestionUsuario = document.querySelector("#GestionUser");
+            var gestionAdministrador = document.querySelector("#GestionAdmin");
             $("#nombreCompleto").html(data.nombreCompleto);
             $("#correoElectronico").html(data.correoElectronico);
             $("#rolDeUsuario").html(data.rolDeUsuario);
+            if (data.rolDeUsuario == 'USER') {
+                gestionAdministrador.style.display = 'none';
+            }
+            if (data.rolDeUsuario == 'ADMIN') {
+                gestionUsuario.style.display = 'none';
+            }
         }
     });
 </script>
@@ -25,15 +32,18 @@
 
 <!-- Script para ocultar las líneas -->
 <script>
-    // Seleccionar los elementos a ocultar
-    var gestionUser = $("#GestionUser").val();
-    var gestionAdmin = $("#GestionAdmin").val();
-    var b = true;
-    // Verificar si los elementos existen antes de intentar ocultarlos
-    if (b) {
-        // administradorLink.style.display = 'none';
-        tecnicoLink.style.display = 'none';
-    }
+
+<!--    // Seleccionar los elementos a ocultar-->
+<!--    var gestionUser = document.querySelector("#GestionUser");-->
+<!--    var gestionAdmin = document.querySelector("#gestionAdmin");-->
+<!--    var role = $("#rolDeUsuario").val();-->
+<!--    // Verificar si los elementos existen antes de intentar ocultarlos-->
+<!--    if (role == '') {-->
+<!--        $("#mensaje").text("Es USER");-->
+<!--    }-->
+<!--    else{-->
+<!--        $("#mensaje").text("No es USER");-->
+<!--    }-->
 </script>
 
 <div id="GestionUser">
