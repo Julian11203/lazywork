@@ -56,7 +56,7 @@ public class UsuarioControlador {
 
         // Invalída la sesión y redirige a la página de inicio o donde quieras
         request.getSession().invalidate();
-        return "redirect:/index";
+        return "redirect:/Login";
     }*/
 
 
