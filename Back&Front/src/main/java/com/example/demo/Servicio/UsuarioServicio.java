@@ -5,8 +5,6 @@ import com.example.demo.Repositorio.UsuarioCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -20,14 +18,9 @@ public class UsuarioServicio {
     }
 
 
-
-    public void delete(int id) {
-        usuarioRepository.deleteById(Long.valueOf(id));
-    }
-
     public boolean existsByEmail(String email) {
         // Lógica para verificar si un usuario existe por su ID
-        return usuarioRepository.existsById(Long.valueOf(email));
+        return usuarioRepository.existsById(email);
     }
 
 
@@ -35,7 +28,7 @@ public class UsuarioServicio {
         return usuarioRepository.save(user);
     }
 
-    public Usuario findOneById(String correoElectronico) {
-        usuarioRepository.findById(correoElectronico);
+    public Optional<Usuario> findOneById(String correoElectronico) {
+        return usuarioRepository.findById(correoElectronico);
     }
 }

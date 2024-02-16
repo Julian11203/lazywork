@@ -7,10 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.GrantedAuthority;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -21,21 +19,12 @@ public class UsuarioControlador {
     public UsuarioControlador(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
-
-    @GetMapping("/{email}")
-    public ResponseEntity<Usuario> findOneById(@PathVariable String correoElectronico) {
-        if(usuarioServicio.existsByEmail(correoElectronico)){
-            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
-        }
-
-    }
-
-    @GetMapping("/user")
+    @GetMapping
     public ResponseEntity<Usuario> user(@AuthenticationPrincipal OidcUser principal) {
         String roles = String.valueOf(principal.getAuthorities());
         Usuario user = new Usuario(
                 (String) principal.getClaims().get("email"),            // correoElectronico
-                (String) principal.getClaims().get("given_name"),       // nombreUsuario
+                (String) principal.getClaims().get("name"),             // nombreCompleto
                 (String) principal.getClaims().get("picture"),          // fotoPerfil
                 (String) principal.getClaims().get("sub"),              // auth_id
                 roles                                                   // rolDeUsuario
@@ -46,6 +35,18 @@ public class UsuarioControlador {
         return ResponseEntity.ok(user);
 
     }
+
+    @GetMapping("/{correoElectronico}")
+    public ResponseEntity<Optional<Usuario>> loadUserInfo(@PathVariable String correoElectronico) {
+        if(usuarioServicio.existsByEmail(correoElectronico)){
+            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 
 
   /*  @PostMapping("/logout")

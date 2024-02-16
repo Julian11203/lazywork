@@ -9,7 +9,7 @@ public class Usuario {
     @Id
     private String correoElectronico;
     @Column
-    private  String nombreUsuario;
+    private  String nombreCompleto;
     @Column
     private String fotoPerfil;
     @Column(unique = true)
@@ -20,7 +20,7 @@ public class Usuario {
     }
     public Usuario(String email, String name, String img, String auth_id, String role) {
         this.correoElectronico = email;
-        this.nombreUsuario = name;
+        this.nombreCompleto = name;
         this.fotoPerfil = img;
         this.auth_id = auth_id;
         this.rolDeUsuario = role;
@@ -32,10 +32,10 @@ public class Usuario {
         this.correoElectronico = email;
     }
     public String getName() {
-        return nombreUsuario;
+        return nombreCompleto;
     }
     public void setName(String name) {
-        this.nombreUsuario = name;
+        this.nombreCompleto = name;
     }
     public String getImg() {
         return fotoPerfil;
