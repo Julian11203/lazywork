@@ -1,14 +1,14 @@
-function validateBD() { // Este deja la BD con los mismos datos almacenados en OAuth0
+function guardarDatosDeOAuth0ABaseDeDatos() { // Este deja la BD con los mismos datos almacenados en OAuth0
     $.ajax({
         url: "http://localhost:8080/user",
         type: "GET",
         dataType: "json",
         success: function (respuesta) {
-            $("#nombreCompleto").text(respuesta.nombreCompleto);
+            mostrarInfoDelUsuario();
         },
         error: function (xhr) {
             if (xhr.status === 404) {
-                $("#nombreCompleto").text("❌ El usuario no se encontró...");
+                $("#mensaje").text("❌ Error al guardar datos de Auth0 a base de datos");
                 return;
             }
         }
@@ -16,23 +16,23 @@ function validateBD() { // Este deja la BD con los mismos datos almacenados en O
 }
 
 
-function loadUserInfo() { // Este muestra los datos en interface trayéndolos de BD
-    validateBD();
-    let correoElectronico = "juliandaguzz@gmail.com";
+function mostrarInfoDelUsuario() { // Este muestra los datos en interface trayéndolos de BD y no de Auth0
+    let correoElectronico = "prueba@gmail.com";
     let nombreCompleto = document.querySelector("#nombreCompleto");
-    let fotoPerfil = document.querySelector("#fotoPerfil");
-    let auth_id = document.querySelector("#auth_id");
     let rolDeUsuario = document.querySelector("#rolDeUsuario");
     $.ajax({
         url: "http://localhost:8080/user/" + correoElectronico,
         type: "GET",
         dataType: "json",
         success: function (respuesta) {
-            $("#correoElectronico").text("respuesta.nombreCompleto");
+            $("#mensaje").text("Mostrando información del usuario");
+            $("#correoElectronico").text(respuesta.correoElectronico);
+            $("#nombreCompleto").text(respuesta.nombreCompleto);
+            $("#rolDeUsuario").text(respuesta.rolDeUsuario); // respuesta.{dato} no lo trae de Auth0 sino de la BD
         },
         error: function (xhr) {
             if (xhr.status === 404) {
-                $("#correoElectronico").text("❌ El usuario no se encontró...");
+                $("#mensaje").text("❌ Error al mostrar la información del usuario");
                 return;
             }
         }

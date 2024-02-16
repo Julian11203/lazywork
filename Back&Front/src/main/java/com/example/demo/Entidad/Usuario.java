@@ -11,48 +11,37 @@ public class Usuario {
     @Column
     private  String nombreCompleto;
     @Column
-    private String fotoPerfil;
-    @Column(unique = true)
-    private String auth_id;
-    @Column
     private String rolDeUsuario;
     public Usuario() {
     }
-    public Usuario(String email, String name, String img, String auth_id, String role) {
-        this.correoElectronico = email;
-        this.nombreCompleto = name;
-        this.fotoPerfil = img;
-        this.auth_id = auth_id;
-        this.rolDeUsuario = role;
+
+    public Usuario(String correoElectronico, String nombreCompleto, String rolDeUsuario) {
+        this.correoElectronico = correoElectronico;
+        this.nombreCompleto = nombreCompleto;
+        this.rolDeUsuario = rolDeUsuario;
     }
-    public String getEmail() {
+
+    public String getCorreoElectronico() {
         return correoElectronico;
     }
-    public void setEmail(String email) {
-        this.correoElectronico = email;
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
-    public String getName() {
+
+    public String getNombreCompleto() {
         return nombreCompleto;
     }
-    public void setName(String name) {
-        this.nombreCompleto = name;
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
-    public String getImg() {
-        return fotoPerfil;
-    }
-    public void setImg(String img) {
-        this.fotoPerfil = img;
-    }
-    public String getAuth_id() {
-        return auth_id;
-    }
-    public void setAuth_id(String auth_id) {
-        this.auth_id = auth_id;
-    }
-    public String getRole() {
+
+    public String getRolDeUsuario() {
         return rolDeUsuario;
     }
-    public void setRole(String role) {
-        this.rolDeUsuario = role;
+
+    public void setRolDeUsuario(String rolDeUsuario) {
+        this.rolDeUsuario = rolDeUsuario;
     }
 }

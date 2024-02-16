@@ -15,18 +15,19 @@ import java.util.Optional;
 public class UsuarioControlador {
     @Autowired
     UsuarioServicio usuarioServicio;
-
     public UsuarioControlador(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
+
+
+
+
     @GetMapping
-    public ResponseEntity<Usuario> user(@AuthenticationPrincipal OidcUser principal) {
-        String roles = String.valueOf(principal.getAuthorities());
+    public ResponseEntity<Usuario> guardarDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
+        String roles = "USER";
         Usuario user = new Usuario(
                 (String) principal.getClaims().get("email"),            // correoElectronico
                 (String) principal.getClaims().get("name"),             // nombreCompleto
-                (String) principal.getClaims().get("picture"),          // fotoPerfil
-                (String) principal.getClaims().get("sub"),              // auth_id
                 roles                                                   // rolDeUsuario
         );
         usuarioServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
@@ -35,6 +36,9 @@ public class UsuarioControlador {
         return ResponseEntity.ok(user);
 
     }
+
+
+
 
     @GetMapping("/{correoElectronico}")
     public ResponseEntity<Optional<Usuario>> loadUserInfo(@PathVariable String correoElectronico) {
@@ -58,4 +62,7 @@ public class UsuarioControlador {
         request.getSession().invalidate();
         return "redirect:/index";
     }*/
+
+
+
 }
