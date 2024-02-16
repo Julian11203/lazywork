@@ -30,11 +30,8 @@ public class UsuarioControlador {
                 (String) principal.getClaims().get("name"),             // nombreCompleto
                 roles                                                   // rolDeUsuario
         );
-        usuarioServicio.crear(user); // Con este inserta a la base de datos, sin embargo falta cacharrear como insertar el rol
-
-        // E_Usuario user = this.userServicio.buscarEmail(email);
+        usuarioServicio.crear(user);
         return ResponseEntity.ok(user);
-
     }
 
 
@@ -54,11 +51,10 @@ public class UsuarioControlador {
 
 
   /*  @PostMapping("/logout")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request){
         // Realiza la revocación del token de acceso en Auth0
-        // ...
 
-        // Invalida la sesión y redirige a la página de inicio o donde quieras
+        // Invalída la sesión y redirige a la página de inicio o donde quieras
         request.getSession().invalidate();
         return "redirect:/index";
     }*/
