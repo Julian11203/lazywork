@@ -55,15 +55,7 @@ public class UsuarioControlador {
 
 
 
-    @PostMapping("/login")
-    public String login(HttpServletRequest request){
-        return "redirect:http://localhost:8080/";
-    }
-//    @PostMapping("/logout")
-//    public String logout(HttpServletRequest request){
-//        request.getSession().invalidate();
-//        return "redirect:http://localhost:8080/";
-//    }
+
 
 
 

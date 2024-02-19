@@ -1,20 +1,24 @@
-//function mostrarInfoDelUsuario() { // Este muestra los datos en interface trayéndolos de BD y no de Auth0
-//    let correoElectronico = $("#correoElectronico").val();
-//    $.ajax({
-//        url: "http://localhost:8080/user/" + correoElectronico,
-//        type: "GET",
-//        dataType: "json",
-//        success: function (respuesta) {
-//            $("#mensaje").text("Mostrando información del usuario");
-//            $("#correoElectronico").text(respuesta.correoElectronico);
-//            $("#nombreCompleto").text(respuesta.nombreCompleto);
-//            $("#rolDeUsuario").text(respuesta.rolDeUsuario); // respuesta.{dato} no lo trae de Auth0 sino de la BD
-//        },
-//        error: function (xhr) {
-//            if (xhr.status === 404) {
-//                $("#mensaje").text("❌ Error al mostrar la información del usuario");
-//                return;
-//            }
-//        }
-//    });
-//}
+function mostrarInfoDelUsuario() {
+    $.get("/user", function(data){
+            if(data!=null){
+                var gestionVisitante = document.querySelector("#GestionVisitante");
+                var gestionUsuario = document.querySelector("#GestionUser");
+                var gestionAdministrador = document.querySelector("#GestionAdmin");
+                $("#nombreCompleto").html(data.nombreCompleto);
+                $("#correoElectronico").html(data.correoElectronico);
+                $("#rolDeUsuario").html(data.rolDeUsuario);
+                if (data.rolDeUsuario == 'USER') {
+                    gestionAdministrador.style.display = 'none';
+                    gestionVisitante.style.display = 'none';
+                }
+                else if (data.rolDeUsuario == 'ADMIN') {
+                    gestionUsuario.style.display = 'none';
+                    gestionVisitante.style.display = 'none';
+                }
+                else{
+                    gestionAdministrador.style.display = 'none';
+                    gestionUsuario.style.display = 'none';
+                }
+            }
+        });
+}

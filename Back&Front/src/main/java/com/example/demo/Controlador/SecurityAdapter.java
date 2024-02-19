@@ -14,13 +14,6 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
-//                .formLogin()
-//                .loginPage("/oauth2/authorization/auth0") // Especifica la URL de inicio de sesión
-//                .defaultSuccessUrl("http://localhost:8080/") // Establece la URL a la que se redireccionará después del inicio de sesión exitoso
-//                .permitAll() // Permite a cualquier usuario acceder a la URL de inicio de sesión
-//
-//                .and()
-
                 .logout()
                 .logoutUrl("/logout") // Especifica la URL de logout
                 .logoutSuccessUrl("http://localhost:8080/") // Establece la URL a la que se redireccionará después del logout
