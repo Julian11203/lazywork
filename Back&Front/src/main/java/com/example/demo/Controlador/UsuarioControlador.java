@@ -25,7 +25,14 @@ public class UsuarioControlador {
     @GetMapping
     public ResponseEntity<Usuario> persistenciaDeDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
-            String role = "USER";
+            String role;
+            if(usuarioServicio.existsByEmail(principal.getEmail())){
+                // Busca el rol que tiene el usuario ya existente
+                role = usuarioServicio.findOneById(principal.getEmail()).get().getRolDeUsuario();
+            } else{
+                // Asigna el rol por defecto
+                role = "USER";
+            }
             Usuario user = new Usuario(
                     // Los datos los trae de Auth0 y los almacena en la BD
                     (String) principal.getClaims().get("email"),            // correoElectronico
