@@ -49,7 +49,7 @@ public class UsuarioControlador {
 
 
     @GetMapping("/{correoElectronico}")
-    public ResponseEntity<Optional<Usuario>> loadUserInfo(@PathVariable String correoElectronico) {
+    public ResponseEntity<Optional<Usuario>> findOneById(@PathVariable String correoElectronico) {
         if(usuarioServicio.existsByEmail(correoElectronico)){
             return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
         }
