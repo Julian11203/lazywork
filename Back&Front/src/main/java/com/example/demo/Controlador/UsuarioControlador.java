@@ -20,18 +20,17 @@ public class UsuarioControlador {
         this.usuarioServicio = usuarioServicio;
     }
 
-
-
-
+    // Esta funcion crea y mantiene actualizada la base de datos con la informacion de Auth0
+    // No es posible dejar el ROLE en esta funcion ya que cambiaria los ROLES de los usuarios continuamente
     @GetMapping
-    public ResponseEntity<Usuario> guardarDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
+    public ResponseEntity<Usuario> persistenciaDeDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
-            String roles = "ADMIN";
+            String role = "USER";
             Usuario user = new Usuario(
                     // Los datos los trae de Auth0 y los almacena en la BD
                     (String) principal.getClaims().get("email"),            // correoElectronico
                     (String) principal.getClaims().get("name"),             // nombreCompleto
-                    roles                                                   // rolDeUsuario
+                    role                                                    // rolDeUsuario
             );
             usuarioServicio.crear(user);
             return ResponseEntity.ok(user);
