@@ -26,6 +26,7 @@ public class UsuarioControlador {
     public ResponseEntity<Usuario> guardarDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         String roles = "ADMIN";
         Usuario user = new Usuario(
+                // Los datos los trae de Auth0 y los almacena en la BD
                 (String) principal.getClaims().get("email"),            // correoElectronico
                 (String) principal.getClaims().get("name"),             // nombreCompleto
                 roles                                                   // rolDeUsuario
