@@ -2,18 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <script src="funciones.js"></script>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
     <title>LazyWork</title>
 </head>
 <body>
 
-
-
-
+<script>
+    $.get("/user", function(data){
+        if(data!=null){
+            var gestionVisitante = document.querySelector("#GestionVisitante");
+            var gestionUsuario = document.querySelector("#GestionUser");
+            var gestionAdministrador = document.querySelector("#GestionAdmin");
+            $("#nombreCompleto").html(data.nombreCompleto);
+            $("#correoElectronico").html(data.correoElectronico);
+            $("#rolDeUsuario").html(data.rolDeUsuario);
+            if (data.rolDeUsuario == 'USER') {
+                gestionAdministrador.style.display = 'none';
+                gestionVisitante.style.display = 'none';
+            }
+            else if (data.rolDeUsuario == 'ADMIN') {
+                gestionUsuario.style.display = 'none';
+                gestionVisitante.style.display = 'none';
+            }
+            else{
+                gestionAdministrador.style.display = 'none';
+                gestionUsuario.style.display = 'none';
+            }
+        }
+    });
+</script>
 
 <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
-<a href="Inicio.html" class="btn btn-light">Inicio</a>
+<a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
 
+<h5 class="bg-primary dispaly-5 mt-0" id="correo">Correo -----------------------> <span id="correoElectronico">...</span></h5>
+<h5 class="bg-primary dispaly-5 mt-0" id="nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
+<h5 class="bg-primary dispaly-5 mt-0" id="role">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
 
+<div id="GestionVisitante">
+    esto lo ven todos
+</div>
+<div id="GestionUser">
+    esto lo ve un user
+</div>
+<div id="GestionAdmin">
+    esto lo ve un admin
+</div>
 
 
 

@@ -7,32 +7,32 @@
     <title>LazyWork</title>
 </head>
 <body>
-<script>
-    $.get("/user", function(data){
-        if(data!=null){
-            var gestionUsuario = document.querySelector("#GestionUser");
-            var gestionAdministrador = document.querySelector("#GestionAdmin");
-            $("#nombreCompleto").html(data.nombreCompleto);
-            $("#correoElectronico").html(data.correoElectronico);
-            $("#rolDeUsuario").html(data.rolDeUsuario);
-            if (data.rolDeUsuario == 'USER') {
-                gestionAdministrador.style.display = 'none';
-            }
-            if (data.rolDeUsuario == 'ADMIN') {
-                gestionUsuario.style.display = 'none';
-            }
-        }
-    });
-</script>
-<h5 class="bg-primary dispaly-5 mt-0">Correo -----------------------> <span id="correoElectronico"></span></h5>
-<h5 class="bg-primary dispaly-5 mt-0">Nombre completo --------------> <span id="nombreCompleto"></span></h5>
-<h5 class="bg-primary dispaly-5 mt-0">rolDeUsuario -----------------> <span id="rolDeUsuario"></span></h5>
+<!--<script>-->
+<!--    $.get("/user", function(data){-->
+<!--        if(data!=null){-->
+<!--            var gestionUsuario = document.querySelector("#GestionUser");-->
+<!--            var gestionAdministrador = document.querySelector("#GestionAdmin");-->
+<!--            $("#nombreCompleto").html(data.nombreCompleto);-->
+<!--            $("#correoElectronico").html(data.correoElectronico);-->
+<!--            $("#rolDeUsuario").html(data.rolDeUsuario);-->
+<!--            if (data.rolDeUsuario == 'USER') {-->
+<!--                gestionAdministrador.style.display = 'none';-->
+<!--            }-->
+<!--            if (data.rolDeUsuario == 'ADMIN') {-->
+<!--                gestionUsuario.style.display = 'none';-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--<h5 class="bg-primary dispaly-5 mt-0" id="correo">Correo -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt; <span id="correoElectronico">...</span></h5>-->
+<!--<h5 class="bg-primary dispaly-5 mt-0" id="nombre">Nombre completo &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt; <span id="nombreCompleto"></span></h5>-->
+<!--<h5 class="bg-primary dispaly-5 mt-0" id="role">rolDeUsuario -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt; <span id="rolDeUsuario"></span></h5>-->
 
-<div id="GestionUser">
-    esto lo ve un user
-</div>
-<div id="GestionAdmin">
-    esto lo ve un admin
-</div>
+<!--<div id="GestionUser">-->
+<!--    esto lo ve un user-->
+<!--</div>-->
+<!--<div id="GestionAdmin">-->
+<!--    esto lo ve un admin-->
+<!--</div>-->
 </body>
 </html>
