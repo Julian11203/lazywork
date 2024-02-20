@@ -3,10 +3,13 @@ package com.example.demo.Controlador;
 import com.example.demo.Entidad.Usuario;
 import com.example.demo.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
@@ -44,7 +47,16 @@ public class UsuarioControlador {
         }
         return ResponseEntity.noContent().build();
     }
-
+    // Este valida si esta o no autenticado
+    @GetMapping("/auth")
+    public ResponseEntity<Boolean> verificarAutenticacion() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.isAuthenticated()) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        }
+    }
 
 
 
