@@ -42,7 +42,7 @@ public class UsuarioControlador {
             usuarioServicio.crear(user);
             return ResponseEntity.ok(user);
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 
