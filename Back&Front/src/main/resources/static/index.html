@@ -2,71 +2,68 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <script src="funciones.js"></script>
-    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
-    <title>LazyWork</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="funciones.js"></script>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+    <script src="styles.js"></script>
+    <title>MasterStyle</title>
 </head>
 <body onload="mostrarInfoDelUsuario()">
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">MasterStyle</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-cogs"></i></a>
+          </li>
+        </ul>
+    </nav>
+    <div class="d-flex justify-content-center">
+        <img src="img/MasterStyle.jfif" class="img-fluid imagen-bienvenida" alt="..." id="imgMasterStyle">
+    </div>
+    <!-- Mensaje de bienvenida -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mensaje-bienvenida text-center">¡Bienvenido a MasterStyle!</h1>
+            </div>
         </div>
     </div>
-</nav>
 
-<a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
-<a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
-<a href="http://localhost:8080/logout" class="btn btn-light">Actualizar usuario</a>
+    <h5 id="correo" class="fontText text-center correo">Correo -----------------------> <span id="correoElectronico">...</span></h5>
+    <h5 id="nombre" class="fontText text-center nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
+    <h5 id="role" class="fontText text-center rol">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
 
-<h5 class="bg-primary dispaly-5 mt-0" id="correo">Correo -----------------------> <span id="correoElectronico">...</span></h5>
-<h5 class="bg-primary dispaly-5 mt-0" id="nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
-<h5 class="bg-primary dispaly-5 mt-0" id="role">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
-
-<div id="GestionVisitante">
-    esto lo ven todos
-</div>
-<div id="GestionUser">
-    esto lo ve un user
-</div>
-<div id="GestionAdmin">
-    esto lo ve un admin
-</div>
-
-
-
+    
+    <div id="GestionVisitante" class="fontText text-center contentRole">
+        esto lo ven todos
+    </div>
+    <div id="GestionUser" class="fontText text-center contentRole">
+        esto lo ve un user
+    </div>
+    <div id="GestionAdmin" class="fontText text-center contentRole">
+        esto lo ve un admin
+    </div>
+    
+    <div class="position-fixed bottom-0 end-0 m-5">
+        <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
+    </div>
+    <div class="position-fixed bottom-0 end-0 m-5">
+        <a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
+    </div>
 </body>
 </html>
