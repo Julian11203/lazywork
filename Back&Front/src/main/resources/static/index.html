@@ -14,7 +14,7 @@
     <script src="styles.js"></script>
     <title>MasterStyle</title>
 </head>
-<body onload="mostrarInfoDelUsuario()">
+<body onload="mostrarInfoAlUsuario()">
 
     <nav class="navbar">
         <ul class="navbar-nav">
@@ -63,26 +63,8 @@
     <div class="position-fixed bottom-0 end-0 m-5" id="iniciarSesionBtn">
         <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
     </div>
-    <div class="position-fixed bottom-0 end-0 m-3" id="cerrarSesionBtn">
+    <div class="position-fixed bottom-0 end-0 m-5" id="cerrarSesionBtn">
         <a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
     </div>
-    <script>
-        var usuarioAutenticado = true; // Aqui voy
-        var iniciarSesionBtn = document.querySelector("#iniciarSesionBtn");
-        var cerrarSesionBtn = document.querySelector("#cerrarSesionBtn");
-        $.get("/user/auth", function(data){
-            if(data){
-                usuarioAutenticado = true;
-            }
-            else{
-                usuarioAutenticado = false;
-            }
-        });
-        if (usuarioAutenticado) {
-            iniciarSesionBtn.style.display = 'none';
-        }else{
-            cerrarSesionBtn.style.display = 'none';
-        }
-    </script>
 </body>
 </html>

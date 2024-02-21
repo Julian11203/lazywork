@@ -28,13 +28,10 @@ public class UsuarioControlador {
     @GetMapping
     public ResponseEntity<Usuario> persistenciaDeDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
-            String role;
+            String role = "USER"; // Rol por defecto
             if(usuarioServicio.existsByEmail(principal.getEmail())){
-                // Busca el rol que tiene el usuario ya existente
+                // Obtiene el rol del usuario
                 role = usuarioServicio.findOneById(principal.getEmail()).get().getRolDeUsuario();
-            } else{
-                // Asigna el rol por defecto
-                role = "USER";
             }
             Usuario user = new Usuario(
                     // Los datos los trae de Auth0 y los almacena en la BD
@@ -45,16 +42,8 @@ public class UsuarioControlador {
             usuarioServicio.crear(user);
             return ResponseEntity.ok(user);
         }
-        return ResponseEntity.noContent().build();
-    }
-    // Este valida si esta o no autenticado
-    @GetMapping("/auth")
-    public ResponseEntity<Boolean> verificarAutenticacion() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.isAuthenticated()) {
-            return ResponseEntity.ok(true);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+        else{
+            return null;
         }
     }
 
