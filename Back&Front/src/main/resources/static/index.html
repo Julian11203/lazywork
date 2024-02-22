@@ -12,20 +12,17 @@
     <script src="JS/code.jquery.com_jquery-3.7.0.min.js"></script>
     <link href="CSS/styles.css" rel="stylesheet">
     <script src="JS/styles.js"></script>
-    <title>MasterStyle</title>
+    <title>Inicio</title>
 </head>
 <body onload="mostrarInfoAlUsuario()">
-
+<!--navbar-->
     <nav class="navbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+            <a class="nav-link" href="perfil.html"><i class="fas fa-user"></i></a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="#"><i class="fas fa-cogs"></i></a>
@@ -48,19 +45,26 @@
     <h5 id="nombre" class="fontText text-center nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
     <h5 id="role" class="fontText text-center rol">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
 
-    
+
     <div class="fontText text-center contentRole">
-        esto lo ven todos
-        <div id="GestionUser">esto solo lo ve un user</div>
-        <div id="GestionAdmin">esto solo lo ve un admin</div>
+        <div id="GestionUsuarioNoLogeado">
+            Contenido sin login
+            <div class="position-fixed bottom-0 end-0 m-5" id="iniciarSesionBtn">
+                <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
+            </div>
+        </div>
+        <div id="GestionUsuarioLogeado">
+            Contenido con login
+            <div id="GestionUser">esto solo lo ve un user</div>
+            <div id="GestionAdmin">esto solo lo ve un admin</div>
+            <div class="position-fixed bottom-0 end-0 m-5" id="cerrarSesionBtn">
+                <a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
+            </div>
+        </div>
     </div>
     
     
-    <div class="position-fixed bottom-0 end-0 m-5" id="iniciarSesionBtn">
-        <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
-    </div>
-    <div class="position-fixed bottom-0 end-0 m-5" id="cerrarSesionBtn">
-        <a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
-    </div>
+
+
 </body>
 </html>
