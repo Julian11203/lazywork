@@ -13,6 +13,7 @@ function mostrarInfoAlUsuario() {
             $("#correoElectronico").html(data.correoElectronico);
             $("#rolDeUsuario").html(data.rolDeUsuario);
             if (data.rolDeUsuario == 'USER' || data.rolDeUsuario == 'ADMIN') {
+                iniciarSesionBtn.style.display = 'none';
                 if(data.rolDeUsuario == 'USER'){
                     gestionAdministrador.style.display = 'none';
                 }
