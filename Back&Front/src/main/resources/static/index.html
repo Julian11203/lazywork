@@ -29,34 +29,37 @@
           </li>
         </ul>
     </nav>
-    <div class="d-flex justify-content-center">
-        <img src="IMG/MasterStyle.jfif" class="img-fluid imagen-bienvenida" alt="..." id="imgMasterStyle">
-    </div>
-    <!-- Mensaje de bienvenida -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="mensaje-bienvenida text-center">¡Bienvenido a MasterStyle!</h1>
-            </div>
-        </div>
-    </div>
-
-    <h5 id="correo" class="fontText text-center correo">Correo -----------------------> <span id="correoElectronico">...</span></h5>
-    <h5 id="nombre" class="fontText text-center nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
-    <h5 id="role" class="fontText text-center rol">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
 
 
     <div class="fontText text-center contentRole">
         <div id="GestionUsuarioNoLogeado">
-            Contenido sin login
+            <div class="d-flex justify-content-center">
+                <img src="IMG/MasterStyle.jfif" class="img-fluid imagen-bienvenida" alt="..." id="imgMasterStyle">
+            </div>
             <div class="position-fixed bottom-0 end-0 m-5" id="iniciarSesionBtn">
                 <a href="http://localhost:8080/oauth2/authorization/auth0" class="btn btn-light">Iniciar Sesión</a>
             </div>
         </div>
         <div id="GestionUsuarioLogeado">
-            Contenido con login
-            <div id="GestionUser">esto solo lo ve un user</div>
-            <div id="GestionAdmin">esto solo lo ve un admin</div>
+            <!-- Mensaje de bienvenida -->
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="mensaje-bienvenida text-center">¡Bienvenido a MasterStyle!</h1>
+                    </div>
+                </div>
+            </div>
+            <h5 id="correo" class="fontText text-center correo">Correo -----------------------> <span id="correoElectronico">...</span></h5>
+            <h5 id="nombre" class="fontText text-center nombre">Nombre completo --------------> <span id="nombreCompleto">...</span></h5>
+            <h5 id="role" class="fontText text-center rol">rolDeUsuario -------------------> <span id="rolDeUsuario">...</span></h5>
+            <h6><button onclick="" type="button" class="btn btn-danger rounded">Eliminar usuario</button></h6>
+            <h6><button onclick="" type="button" class="btn btn-primary rounded">Actualizar mi usuario</button></h6>
+            <div id="GestionUser">
+
+            </div>
+            <div id="GestionAdmin">
+                <h6><button onclick="" type="button" class="btn btn-custom-gold rounded">Actualizar otro usuario</button></h6>
+            </div>
             <div class="position-fixed bottom-0 end-0 m-5" id="cerrarSesionBtn">
                 <a href="http://localhost:8080/logout" class="btn btn-light">Cerrar Sesión</a>
             </div>

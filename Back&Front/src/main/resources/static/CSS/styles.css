@@ -77,4 +77,13 @@ body {
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.btn-custom-gold {
+    background-color: #ffd700; /* Color dorado */
+    border-color: #ffd700; /* Color del borde */
+    color: #333; /* Color del texto */
+}
 
+.btn-custom-gold:hover {
+    background-color: #daa520; /* Cambia el color de fondo al pasar el mouse */
+    border-color: #daa520; /* Cambia el color del borde al pasar el mouse */
+}
