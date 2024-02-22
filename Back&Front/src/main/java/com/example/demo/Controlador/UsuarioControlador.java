@@ -47,16 +47,15 @@ public class UsuarioControlador {
         }
     }
 
+    @DeleteMapping("/{correoElectronico}")
+    public ResponseEntity<String> deleteById(@PathVariable String correoElectronico) {
+        return ResponseEntity.ok(usuarioServicio.deleteById(correoElectronico));
+    }
 
 
     @GetMapping("/{correoElectronico}")
-    public ResponseEntity<Optional<Usuario>> findOneById(@PathVariable String correoElectronico) {
-        if(usuarioServicio.existsByEmail(correoElectronico)){
-            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
-        }
-        else{
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Optional<Usuario>> findById(@PathVariable String correoElectronico) {
+        return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
     }
 
 
