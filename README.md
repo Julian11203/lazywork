@@ -1,8 +1,4 @@
-(plazo domingo 3 diciembre)
-- Dejar una sola entidad de Usuario
-- Colocar un input invisible que reciba el correo para redireccionar a administrador o tecnico
-- Mejorar diseño de interface
-- Recibir carton
+- validar autorizacion en SecurityAdapter
 
 -----------------------------------------
 
