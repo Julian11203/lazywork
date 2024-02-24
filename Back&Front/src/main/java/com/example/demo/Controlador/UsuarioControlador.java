@@ -2,25 +2,23 @@ package com.example.demo.Controlador;
 
 import com.example.demo.Entidad.Usuario;
 import com.example.demo.Servicio.UsuarioServicio;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
 public class UsuarioControlador {
     @Autowired
-    private final UsuarioServicio usuarioServicio;
-
+    UsuarioServicio usuarioServicio;
     public UsuarioControlador(UsuarioServicio usuarioServicio) {
         this.usuarioServicio = usuarioServicio;
     }
@@ -49,15 +47,23 @@ public class UsuarioControlador {
         }
     }
 
-    @DeleteMapping("/{correoElectronico}")
-    public ResponseEntity<String> deleteById(@PathVariable String correoElectronico) {
-        
-        return null;
-    }
 
 
     @GetMapping("/{correoElectronico}")
-    public ResponseEntity<Optional<Usuario>> findById(@PathVariable String correoElectronico) {
-        return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
+    public ResponseEntity<Optional<Usuario>> findOneById(@PathVariable String correoElectronico) {
+        if(usuarioServicio.existsByEmail(correoElectronico)){
+            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
     }
+
+
+
+
+
+
+
+
 }
