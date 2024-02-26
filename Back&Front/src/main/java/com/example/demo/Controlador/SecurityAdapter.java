@@ -17,21 +17,21 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .authorizeHttpRequests(a -> {
                     try {
                         a
-                                .antMatchers("/**", "/**/funciones.js", "/**/code.jquery.com_jquery-3.7.0.min.js").permitAll()
+                                .antMatchers("/", "/**/funciones.js", "/**/code.jquery.com_jquery-3.7.0.min.js").permitAll()
                                 .anyRequest().authenticated()
+                                .and()
+                                .oauth2Login()
                                 .and()
                                 .logout()
                                 .logoutUrl("/logout")
-                                .logoutSuccessUrl("http://localhost:8080/")
-                                .permitAll();
+                                .logoutSuccessUrl("http://localhost:8080/").permitAll();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 })
                 .exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-                )
-                .oauth2Login();
+                );
 
         http.cors().and().csrf().disable();
     }
