@@ -14,16 +14,20 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
-                .logout()
-                .logoutUrl("/logout") // Especifica la URL de logout
-                .logoutSuccessUrl("http://localhost:8080/") // Establece la URL a la que se redireccionará después del logout
-                .permitAll() // Permite a cualquier usuario acceder a la URL de logout
-
-                .and()
-
-                .authorizeHttpRequests(a -> a
-                        .antMatchers("/**", "/**/funciones.js", "/**/code.jquery.com_jquery-3.7.0.min.js").permitAll()
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests(a -> {
+                    try {
+                        a
+                                .antMatchers("/**", "/**/funciones.js", "/**/code.jquery.com_jquery-3.7.0.min.js").permitAll()
+                                .anyRequest().authenticated()
+                                .and()
+                                .logout()
+                                .logoutUrl("/logout") // Especifica la URL de logout
+                                .logoutSuccessUrl("http://localhost:8080/") // Establece la URL a la que se redireccionará después del logout
+                                .permitAll();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                        } // Permite a cualquier usuario acceder a la URL de logout
                 ).exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 ).oauth2Login();
