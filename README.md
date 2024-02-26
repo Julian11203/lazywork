@@ -1,4 +1,4 @@
-- validar autorizacion en SecurityAdapter
+- Revisar que en postman devuelva token con payload
 
 -----------------------------------------
 
