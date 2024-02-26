@@ -21,16 +21,17 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                                 .anyRequest().authenticated()
                                 .and()
                                 .logout()
-                                .logoutUrl("/logout") // Especifica la URL de logout
-                                .logoutSuccessUrl("http://localhost:8080/") // Establece la URL a la que se redireccionará después del logout
+                                .logoutUrl("/logout")
+                                .logoutSuccessUrl("http://localhost:8080/")
                                 .permitAll();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                        } // Permite a cualquier usuario acceder a la URL de logout
-                ).exceptionHandling(e -> e
+                })
+                .exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-                ).oauth2Login();
+                )
+                .oauth2Login();
 
         http.cors().and().csrf().disable();
     }
