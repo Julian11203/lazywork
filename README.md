@@ -1,4 +1,4 @@
-# Revisar que en postman devuelva token con payload
+# Validar token desde controlador
 
 -----------------------------------------
 
