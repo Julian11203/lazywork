@@ -1,4 +1,5 @@
 # Conectar base de datos local a Auth0
+# Que retorne token con info del usuario
 
 -----------------------------------------
 
