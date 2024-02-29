@@ -1,3 +1,4 @@
+# Configurar Auth0 hasta que retorne token con payload
 # Validar token desde SecurytyAdapter
 
 -----------------------------------------
