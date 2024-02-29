@@ -1,4 +1,4 @@
-# Validar token desde controlador
+# Validar token desde SecurytyAdapter
 
 -----------------------------------------
 
