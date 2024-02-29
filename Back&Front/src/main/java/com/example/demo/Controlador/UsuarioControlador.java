@@ -51,20 +51,12 @@ public class UsuarioControlador {
 
     @GetMapping("/{correoElectronico}")
     public ResponseEntity<Optional<Usuario>> findOneById(@PathVariable String correoElectronico) {
-        if(isAuthenticated()){
-            if(usuarioServicio.existsByEmail(correoElectronico)){
-                return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
-            }
-            else{
-                return ResponseEntity.notFound().build();
-            }
-        }else{
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        if(usuarioServicio.existsByEmail(correoElectronico)){
+            return ResponseEntity.ok(usuarioServicio.findOneById(correoElectronico));
         }
-    }
-
-    private boolean isAuthenticated() {
-        return false;
+        else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
