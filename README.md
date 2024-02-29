@@ -1,4 +1,4 @@
-# Revisar que en postman devuelva token con payload
+# Conectar base de datos local a Auth0
 
 -----------------------------------------
 
