@@ -1,4 +1,4 @@
-# Ver Curso de Spring Auth0
+# Trabajar con proyecto del curso
 
 -----------------------------------------
 
