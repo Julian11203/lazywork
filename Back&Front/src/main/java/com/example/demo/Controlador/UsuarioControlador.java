@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,16 +29,24 @@ public class UsuarioControlador {
     @GetMapping
     public ResponseEntity<Usuario> persistenciaDeDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
-            String role = "USER"; // Rol por defecto
+            Boolean roleUser = true; // Rol por defecto
+            Boolean roleAdmin = false;
             if(usuarioServicio.existsByEmail(principal.getEmail())){
                 // Obtiene el rol del usuario
-                role = usuarioServicio.findOneById(principal.getEmail()).get().getRolDeUsuario();
+                if(principal.getClaims().containsKey("${namespace}/roles")) {
+                    Object rolesObject = principal.getClaims().get("${namespace}/roles");
+                    if (rolesObject instanceof List) {
+                        List<String> roles = (List<String>) rolesObject;
+                        roleAdmin = roles.contains("ADMIN");
+                    }
+                }
             }
             Usuario user = new Usuario(
                     // Los datos los trae de Auth0 y los almacena en la BD
                     (String) principal.getClaims().get("email"),            // correoElectronico
                     (String) principal.getClaims().get("name"),             // nombreCompleto
-                    role                                                    // rolDeUsuario
+                    roleUser,                                                    // roleUser
+                    roleAdmin                                                    // roleAdmin
             );
             usuarioServicio.crear(user);
             return ResponseEntity.ok(user);

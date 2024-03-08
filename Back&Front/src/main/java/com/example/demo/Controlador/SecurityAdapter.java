@@ -24,7 +24,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .authorizeHttpRequests(a -> a
-                        .antMatchers("/**", "/**/public/**/**").permitAll()
+                        .antMatchers("/**").permitAll()
+                        .antMatchers("/", "/**/private/**/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 ).exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
