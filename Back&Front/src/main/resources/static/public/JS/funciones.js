@@ -14,12 +14,12 @@ function mostrarInfoAlUsuario() {
             $("#rolActual").html(data.rolActual);
             $("#roleUser").html(data.roleUser);
             $("#roleAdmin").html(data.roleAdmin);
-            if (data.roleUser == 1 || data.roleAdmin == 1) {
+            if (data.rolActual == 'USER' || data.rolActual == 'ADMIN') {
                 iniciarSesionBtn.style.display = 'none';
-                if(data.roleUser == 1){
+                if(data.rolActual == 'USER'){
                     gestionAdministrador.style.display = 'none';
                 }
-                else if(data.roleAdmin == 1){
+                else if(data.rolActual == 'ADMIN'){
                     gestionUsuario.style.display = 'none';
                 }
             }
