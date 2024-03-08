@@ -24,7 +24,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .authorizeHttpRequests(a -> a
-                        .antMatchers("/", "/**/funciones.js", "/**/code.jquery.com_jquery-3.7.0.min.js").permitAll()
+                        .antMatchers("/**", "/**/public/**/**").permitAll()
                         .anyRequest().authenticated()
                 ).exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
