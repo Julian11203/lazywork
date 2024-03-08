@@ -11,6 +11,7 @@ function mostrarInfoAlUsuario() {
         if(data!=null){
             $("#nombreCompleto").html(data.nombreCompleto);
             $("#correoElectronico").html(data.correoElectronico);
+            $("#rolActual").html(data.rolActual);
             $("#roleUser").html(data.roleUser);
             $("#roleAdmin").html(data.roleAdmin);
             if (data.roleUser == 1 || data.roleAdmin == 1) {

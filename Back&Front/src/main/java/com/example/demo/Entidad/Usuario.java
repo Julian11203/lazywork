@@ -11,17 +11,23 @@ public class Usuario {
     @Column
     private  String nombreCompleto;
     @Column
+    private String rolActual;
+    @Column
     private Boolean roleUser;
     @Column
     private Boolean roleAdmin;
+    @Column
+    private String token;
     public Usuario() {
     }
 
-    public Usuario(String correoElectronico, String nombreCompleto, Boolean roleUser, Boolean roleAdmin) {
+    public Usuario(String correoElectronico, String nombreCompleto, String rolActual, Boolean roleUser, Boolean roleAdmin, String token) {
         this.correoElectronico = correoElectronico;
         this.nombreCompleto = nombreCompleto;
+        this.rolActual = rolActual;
         this.roleUser = roleUser;
         this.roleAdmin = roleAdmin;
+        this.token = token;
     }
 
     public String getCorreoElectronico() {
@@ -54,5 +60,21 @@ public class Usuario {
 
     public void setRoleAdmin(Boolean roleAdmin) {
         this.roleAdmin = roleAdmin;
+    }
+
+    public String getRolActual() {
+        return rolActual;
+    }
+
+    public void setRolActual(String rolActual) {
+        this.rolActual = rolActual;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

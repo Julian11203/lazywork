@@ -29,7 +29,8 @@ public class UsuarioControlador {
     @GetMapping
     public ResponseEntity<Usuario> persistenciaDeDatosDeOAuth0ABaseDeDatos(@AuthenticationPrincipal OidcUser principal) {
         if(principal != null){
-            Boolean roleUser = true; // Rol por defecto
+            String rolActual = "USER"; // Rol por defecto
+            Boolean roleUser = false;
             Boolean roleAdmin = false;
             if(usuarioServicio.existsByEmail(principal.getEmail())){
                 // Obtiene el rol del usuario
@@ -38,15 +39,19 @@ public class UsuarioControlador {
                     if (rolesObject instanceof List) {
                         List<String> roles = (List<String>) rolesObject;
                         roleAdmin = roles.contains("ADMIN");
+                        roleUser = roles.contains("USER");
                     }
                 }
+                rolActual = usuarioServicio.findOneById(principal.getEmail()).get().getRolActual();
             }
             Usuario user = new Usuario(
                     // Los datos los trae de Auth0 y los almacena en la BD
                     (String) principal.getClaims().get("email"),            // correoElectronico
                     (String) principal.getClaims().get("name"),             // nombreCompleto
+                    rolActual,
                     roleUser,                                                    // roleUser
-                    roleAdmin                                                    // roleAdmin
+                    roleAdmin,                                                    // roleAdmin
+                    principal.getAccessTokenHash()
             );
             usuarioServicio.crear(user);
             return ResponseEntity.ok(user);
