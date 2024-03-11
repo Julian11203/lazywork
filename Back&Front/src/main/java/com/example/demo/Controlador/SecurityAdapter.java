@@ -1,11 +1,9 @@
 package com.example.demo.Controlador;
 
 
-import antlr.Token;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +23,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
                 .authorizeHttpRequests(a -> a
                         .antMatchers("/", "/inicio", "/**/public/**/**").permitAll()
-                        .antMatchers().hasAnyRole("ADMIN", "USER")
+                        .antMatchers("/inicio/**").hasAnyAuthority("ADMIN", "USER")
                         .anyRequest().authenticated()
                 ).exceptionHandling(e -> e
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
