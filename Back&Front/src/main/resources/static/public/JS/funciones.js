@@ -1,5 +1,5 @@
 function mostrarInfoAlUsuario() {
-    $.get("/user", function(data){
+    $.get("/inicio", function(data){
         var GestionUsuarioNoLogeado = document.querySelector("#GestionUsuarioNoLogeado");
         var gestionUsuarioLogeado = document.querySelector("#GestionUsuarioLogeado");
         var gestionUsuario = document.querySelector("#GestionUser");
